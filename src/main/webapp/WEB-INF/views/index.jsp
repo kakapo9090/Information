@@ -61,7 +61,7 @@
                     </ul>
                 </li>
                 <li><a href="./resources/shop-grid.html">리뷰</a></li>
-                <li><a href="./blog.html">QnA</a></li>
+                <li><a href="./blog.html">공지사항</a></li>
                 <li><a href="./contact.html">Center</a></li>
             </ul>
         </nav>
@@ -124,7 +124,7 @@
                                 </ul>
                             </li>
                             <li><a href="./shop-grid.html">리뷰</a></li>
-                            <li><a href="./blog.html">QnA</a></li>
+                            <li><a href="./blog.html">공지사항</a></li>
                             <li><a href="./contact.html">Center</a></li>
                         </ul>
                     </nav>
