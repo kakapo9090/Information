@@ -23,4 +23,7 @@
 	
 	<context:component-scan base-package="com.thr.i1" />
 	
+	<!-- 컨트롤러 설정 -->
+	<context:component-scan base-package="org.zerock.controller"/>
+	
 </beans:beans>
