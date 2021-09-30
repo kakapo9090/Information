@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -41,7 +40,19 @@
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul> 
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="../resources/img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
             <div class="header__top__right__auth">
                 <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
@@ -51,12 +62,12 @@
             	<li class="active"><a href="../">Home</a></li>
             	<li><a href="#">List</a>
             		<ul class="header__menu__dropdown">
-	            		<li><a href="./shop-details.html">인스턴트</a></li>
-	            		<li><a href="./shoping-cart.html">음료</a></li>
-	            		<li><a href="./checkout.html">신선식품</a></li>
-	            		<li><a href="./blog-details.html">간식</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
             		</ul>
-            	</li><li><a href="${pageContext.request.contextPath}/link/reviews">리뷰</a></li>
+            	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
             </ul>
@@ -104,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../resources/img/logo.png" alt=""></a>
+                        <a href="../"><img src="../resources/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -113,13 +124,13 @@
                             <li class="active"><a href="../">Home</a></li>
                             <li><a href="#">List</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">인스턴트</a></li>
-                                    <li><a href="./shoping-cart.html">음료</a></li>
-                                    <li><a href="./checkout.html">신선식품</a></li>
-                                    <li><a href="./blog-details.html">간식</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
                                 </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/link/reviews">리뷰</a></li>
+                            <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
@@ -150,20 +161,23 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Smaple List</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">과일/야채</a></li>
+                            <li><a href="#">과자</a></li>
+                            <li><a href="#">기타음료</a></li>
+                            <li><a href="#">냉동식품</a></li>
+                            <li><a href="#">라면</a></li>
+                            <li><a href="#">베이커리</a></li>
+                            <li><a href="#">생수/탄산수</a></li>
+                            <li><a href="#">수산물</a></li>
+                            <li><a href="#">식물성음료</a></li>
+                            <li><a href="#">아이스크림</a></li>
+                            <li><a href="#">정육</a></li>
+                            <li><a href="#">주스</a></li>
+                            <li><a href="#">즉석식품</a></li>
+                            <li><a href="#">초콜릿</a></li>
                         </ul>
                     </div>
                 </div>
@@ -727,7 +741,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="../resources/img/logo.png" alt=""></a>
+                            <a href="../"><img src="../resources/img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>

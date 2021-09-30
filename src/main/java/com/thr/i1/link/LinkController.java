@@ -19,10 +19,10 @@ public class LinkController {
 	}
 	
 	//리뷰
-	@RequestMapping(value = "reviews", method = RequestMethod.GET)
-	public ModelAndView reviews() throws Exception {
+	@RequestMapping(value = "eventx", method = RequestMethod.GET)
+	public ModelAndView eventx () throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/reviews");
+		mv.setViewName("link/eventx");
 		
 		return mv;
 	}
@@ -36,4 +36,39 @@ public class LinkController {
 		return mv;
 	}
 	
+	//List - instant
+	@RequestMapping(value = "/instant", method = RequestMethod.GET)
+	public ModelAndView instant () throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/instant");
+		
+		return mv;
+	}
+	
+	//List - drink
+	@RequestMapping(value = "/drink", method = RequestMethod.GET)
+	public ModelAndView drink () throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/drink");
+			
+		return mv;
+	}
+	
+	//List - fresh
+	@RequestMapping(value = "/fresh", method = RequestMethod.GET)
+	public ModelAndView fresh () throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/fresh");
+		
+		return mv;
+	}
+	
+	//List - snack
+	@RequestMapping(value = "/snack", method = RequestMethod.GET)
+	public ModelAndView snack () throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/snack");
+			
+		return mv;
+	}
 }
