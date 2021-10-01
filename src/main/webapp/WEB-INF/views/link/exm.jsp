@@ -45,23 +45,43 @@
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
         <form class="validation-form" novalidate>
+        
+          <!-- 아이디 -->
+          <div class="mb-3">
+            <label for="email">아이디</label>
+            <input type="email" class="form-control" id="id" placeholder="" required>
+            <div class="invalid-feedback">
+              아이디를 입력해주세요.
+            </div>
+          </div>
+          
+          <!-- 비밀번호 -->
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" placeholder="" value="" required>
+              <label for="name">비밀번호</label>
+              <input type="text" class="form-control" id="password1" placeholder="" value="" required>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="nickname">별명</label>
-              <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
+              <label for="nickname">비밀번호 확인</label>
+              <input type="text" class="form-control" id="password2" placeholder="" value="" required>
               <div class="invalid-feedback">
                 별명을 입력해주세요.
               </div>
             </div>
           </div>
-
+          
+          <!-- 이름 -->
+          <div class="mb-3">
+            <label for="email">이름</label>
+            <input type="email" class="form-control" id="name" placeholder="" required>
+            <div class="invalid-feedback">
+              이름을 입력해주세요.
+            </div>
+          </div>
+          
           <div class="mb-3">
             <label for="email">이메일</label>
             <input type="email" class="form-control" id="email" placeholder="you@example.com" required>

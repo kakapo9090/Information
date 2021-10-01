@@ -1,5 +1,12 @@
 package com.thr.i1.member;
 
-public class MemberController {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class MemberController {
+	
+	@Autowired
+	private MemberService memberService;
+	
 }
