@@ -111,7 +111,7 @@
           <div class="mb-4"></div>
           <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
           <!-- 돌아가기 -->
-          <a class="btn btn-block py-2 btn-primary" href="${pageContext.request.contextPath}/link/login">돌아가기</a>
+          <a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/link/login">돌아가기</a>
         </form>
       </div>
     </div>
