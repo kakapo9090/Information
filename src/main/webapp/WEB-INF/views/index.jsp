@@ -46,7 +46,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -90,7 +90,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </div>
                     </div>
