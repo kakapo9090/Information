@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<<<<<<< HEAD
 	<!-- database mybatis 연결 -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 			<property name="username" value="user02"></property>
@@ -18,7 +17,17 @@
 			<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
 			<property name="configLocation" value="classpath:database/config/myBatisConfig.xml"></property>
 		</bean> -->
-=======
->>>>>>> parent of 1be88b3 (Merge branch 'EX_1' of https://github.com/kakapo9090/Information into EX_1)
 		
+		<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+		</bean>
+	
+		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+			<property name="defaultEncoding" value="UTF-8"></property>
+			<!-- 파일 1개당의 사이즈 byte 단위 기준 -->
+			<property name="maxUploadSizePerFile" value="10485760"></property>
+			<!-- 전체 파일의 크기 -->
+			<property name="maxUploadSize" value="52428800"></property>
+		</bean>
+	
 </beans>
