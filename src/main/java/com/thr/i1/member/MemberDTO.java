@@ -16,6 +16,9 @@ public class MemberDTO {
 	private String email;
 	//전화번호
 	private int phone;
+	//주소
+	private String address;
+	
 	
 	public Long getNum() {
 		return num;
@@ -59,7 +62,11 @@ public class MemberDTO {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	
-	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	
 }

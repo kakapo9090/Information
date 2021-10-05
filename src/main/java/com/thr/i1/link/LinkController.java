@@ -89,4 +89,13 @@ public class LinkController {
 			
 		return mv;
 	}
+	
+	//장바구니
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public ModelAndView cart () throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/cart");
+			
+		return mv;
+	}
 }

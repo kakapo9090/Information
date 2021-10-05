@@ -2,12 +2,12 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
   <configuration>
   	<typeAliases>
-  
-  
-  
-  
+  		<typeAlias type="com.thr.i1.member.memberDTO" alias="memberDTO"/>
+  		<typeAlias type="com.thr.i1.member.memberDAO" alias="memberDAO"/>
+ 
   	</typeAliases>
   
   

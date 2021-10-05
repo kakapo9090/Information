@@ -52,7 +52,8 @@
                 </div>
 
 				<!-- 로그인 -->
-                <input type="submit" value="Log In" class="btn btn-block py-2 btn-primary">
+<!--                 <input type="submit" value="Log In" class="btn btn-block py-2 btn-primary" id="loginBtn"> -->
+				<input type="button" value="Log In" class="btn btn-block py-2 btn-primary" id="loginBtn">
                 <!-- 회원가입 -->
                 <a class="btn btn-block py-2 btn-primary" href="${pageContext.request.contextPath}/link/exm">회원가입</a>
                 <!-- 돌아가기 -->
