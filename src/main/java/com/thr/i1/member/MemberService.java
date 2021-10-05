@@ -16,4 +16,14 @@ public class MemberService {
 	@Autowired
 	private ServletContext servletContext;
 	
+	//회원 생성
+	public int setNew(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setNew(memberDTO);
+	}
+	
+	//로그인
+	public MemberDTO getLogin(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getLogin(memberDTO);
+	}
+	
 }

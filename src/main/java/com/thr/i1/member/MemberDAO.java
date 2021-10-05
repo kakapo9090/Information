@@ -9,5 +9,16 @@ public class MemberDAO {
 	
 	
 	private SqlSession sqlSessin;
+	private final String NAMESPACE = "com.thr.i1.member.memberDAO";
+	
+	//회원 생성
+	public int setNew (MemberDTO memberDTO) throws Exception {
+		return sqlSessin.insert(NAMESPACE+"setNew", memberDTO);
+	}
+	
+	//로그인
+	public MemberDTO getLogin (MemberDTO memberDTO) throws Exception {
+		return sqlSessin.selectOne(NAMESPACE+"getLogin", memberDTO);
+	}
 	
 }

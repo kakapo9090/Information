@@ -1,1 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="memberDAO">
+  
+  	<!-- 회원 생성 -->
+  	<insert id="setNew" parameterType="MemberDTO">
+  		INSERT INTO MEMBER
+  		(num, id, pw, name, email, phone, address)
+  		VALUES
+  		(MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, #{phone}, #{address})
+  	</insert>
+  	
+  	<!-- 로그인 -->
+  	<select id="getLogin" parameterType="MemberDTO">
+  		SELECT * FROM MEMBER WHERE id = #{id} and pw= #{pw}
+  	</select>
+  
+  </mapper>

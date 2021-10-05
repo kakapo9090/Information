@@ -5,8 +5,8 @@
   
   <configuration>
   	<typeAliases>
-  		<typeAlias type="com.thr.i1.member.memberDTO" alias="memberDTO"/>
-  		<typeAlias type="com.thr.i1.member.memberDAO" alias="memberDAO"/>
+  		<typeAlias type="com.thr.i1.member.memberDTO" alias="MemberDTO"/>
+  		<typeAlias type="com.thr.i1.member.memberDAO" alias="MemberDAO"/>
  
   	</typeAliases>
   
