@@ -139,22 +139,7 @@
       <p class="mb-1">&copy; 2021 YD</p>
     </footer>
   </div>
-  <script>
-    window.addEventListener('load', () => {
-      const forms = document.getElementsByClassName('validation-form');
-
-      Array.prototype.filter.call(forms, (form) => {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  </script>
+  <script src="../resources/js/exm.js"></script>
 </body>
 
 </html>
