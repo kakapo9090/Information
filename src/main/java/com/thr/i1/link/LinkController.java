@@ -22,8 +22,8 @@ public class LinkController {
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public ModelAndView notices () throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/notices");
-		
+		//mv.setViewName("link/notices");
+		mv.setViewName("notice/noticeList");
 		return mv;
 	}
 	

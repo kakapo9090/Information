@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.notice.NoticeDAO">
+
+
+	  <select id="getCount" resultType="Long">
+		select count(no_num) from noticei1
+	  </select>
+
+	  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
+	  	select * from
+	    	(select rownum r, noti.* from 
+	        	(select * from noticei1 
+	        	where no_title
+	        	like '%' || #{search} || '%'
+	        	order by no_num desc)
+	    	noti)
+		where r between #{startRow} and #{lastRow}
+	  </select>
+	  
+	  <select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
+	  	SELECT * FROM NOTICEI1 WHERE NO_NUM=#{no_num}
+	  </select>
+	  
+	  <delete id="setFileDelete" parameterType="NotiFilesDTO">
+	  	delete notiFiles where fileNum = #{fileNum}
+	  </delete>
+	  
+	  <select id="getFile" parameterType="NoticeDTO" resultType="NotiFilesDTO">
+	  	select * from notiFiles where no_num = #{no_num}
+	  </select>
+	  
+	  <insert id="setFileInsert" parameterType="NotiFilesDTO">
+	  	insert into notiFiles(fileNum, no_num, fileName, oriName)
+	  	values(nofile_seq.nextval, #{no_num}, #{fileName}, #{oriName})
+	  </insert>
+     
+     <insert id="setInsert" parameterType="NoticeDTO">
+           <selectKey order="BEFORE" resultType="Long" keyProperty="no_num">
+              select noti_seq.nextval from dual
+           </selectKey>
+        insert into noticei1 (no_num, no_title, no_writer, no_contents)
+        values(#{no_num}, #{no_title}, #{no_writer}, #{no_contents})
+     </insert>
+	  
+	  
+	  <update id="setUpdate" parameterType="NoticeDTO">
+	  	update noticei1 set no_title=#{no_title}, no_contents= #{no_contents}, no_regdate = sysdate  where no_num = #{no_num}
+	  </update>
+	  
+	  <delete id="setDelete" parameterType="NoticeDTO">
+	  	delete noticei1 where no_num=#{no_num}
+	  </delete>
+  
+  </mapper>
