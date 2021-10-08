@@ -9,15 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/link")
 public class LinkController {
 	
-	//로그인 화면
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login () throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/login");
-			
-		return mv;
-	}
-	
 	//공지사항
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public ModelAndView notices () throws Exception {
