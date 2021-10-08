@@ -46,7 +46,15 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            	<c:choose>
+            		<c:when test="$sessionScope.id == null">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:when>
+            		<c:otherwise>
+            			<a href="./"><i class="fa fa-user"></i> Login</a>
+            		</c:otherwise>
+            	</c:choose>
+                
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -126,7 +134,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/link/cart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                     </div>
                 </div>
