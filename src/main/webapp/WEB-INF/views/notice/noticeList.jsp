@@ -41,8 +41,34 @@
     	.bt-ho:hover{
 			background-color: #7fad39;
     	}
+		.card-h{
+			float: left;
+			margin-left: 200px; 
+			
+		}
+		
+		.FAQ{
+			width: 130px;
+			font-size: 18;
+			font-style: sans-serif;
+			font-weight: 700;
+			align-content: center;
+			
+		}
+		.card-b{
+			padding-left: 10px;
+		}
 
-
+		.noti-btn{
+			background-color: white;
+			border: 2px solid #7fad39;
+			width: 200px;
+			float: left;
+			margin-left: 100px;
+			margin-top: 150px;
+		}
+		
+		
     </style>
     
 </head>
@@ -223,15 +249,29 @@
 
     <!-- Blog Section Begin -->
     <section class="blog spad">
+   
+    	<!-- 공지사항, FAQ -->
+		<div class="card card-h " style="width: 150px;">
+		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
+		 <div class="card-body card-b">
+		 <!-- <p class="card-text">상담원 연결</p> -->
+		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
+		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
+		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+    	</div>
+    	</div>
+		 <!-- 공지사항, FAQ 끝 -->
+		 <!-- 공지사항 시작 -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
-                    <div class="blog__sidebar">
+                    <div class="blog__sidebar" >
                         <div class="blog__sidebar__item">
                             <h4 class="category">Categories</h4>
                             <!-- search form -->
 							<form action="./list" method="get">
 								<div class="col-md-9 pd">
+									
 									<button name="search" class="btn bt-ho" type="submit" value="">전체공지</button><br>
 									<button name="search" class="btn bt-ho" type="submit" value="[일반공지]">일반공지</button><br>
 									<button name="search" class="btn bt-ho" type="submit" value="[배송공지]">배송공지</button><br>
@@ -283,12 +323,15 @@
                         </div>
                         <!-- 페이징 처리 끝-->
                     </div>
+                    
                     <div>
 						<a href="./insert">insert</a>
 					</div>
                 </div>
+                
             </div>
         </div>
+
     </section>
     <!-- Blog Section End -->
 
@@ -363,7 +406,6 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
 
 
 </body>

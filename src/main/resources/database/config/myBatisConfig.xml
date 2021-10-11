@@ -11,6 +11,9 @@
   	<typeAlias type="com.thr.i1.util.Pager" alias="Pager"/>
   	<typeAlias type="java.lang.Long" alias="Long"/>
   
+  	<typeAlias type="com.thr.i1.question.QuestionDTO" alias="QuestionDTO"/>
+  
+  
   	</typeAliases>
   
   

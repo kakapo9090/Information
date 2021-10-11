@@ -50,6 +50,27 @@
 		border: 1px solid black;
 		float: left;
 	}
+	.card-h{
+		float: left;
+		margin-left: 200px; 
+		margin-top: 200px;
+			
+	}	
+	.FAQ{
+		width: 180px;
+		font-size: 18;
+		font-style: sans-serif;
+		font-weight: 700;
+		align-content: center;
+			
+	}
+	.card-b{
+		padding-left: 10px;
+	}
+
+    .bt-ho:hover{
+		background-color: #7fad39;
+    }
 /* 	.noti-bt{
 		float: right;
 	} */

@@ -17,7 +17,6 @@ public class Pager {
 	private Long totalPage;
 	
 	
-	
 	public String getSearch() {
 		if(this.search==null) {
 			this.search="";

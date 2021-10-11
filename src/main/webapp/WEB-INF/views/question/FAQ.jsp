@@ -11,11 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
 
-	
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" type="text/css">
@@ -25,23 +23,52 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     
-    
-    <style type="text/css">
-    	.fileupload{
-    		margin-bottom: 20px;
+ 	<style type="text/css">
+ 	
+ 		.search{
+ 			margin-top: 60px;
+ 			padding-right: 50px;
+ 			
+ 		}
+
+  		.page{
+  			margin-left: 850px;
+  			padding-left: 100px;
+  		}
+  		.accor{
+  			border-bottom: 0.3px gray solid;
+  		}
+  		.blog__pagination:before{
+  			height: 0;
+  		}.bt-ho:hover{
+			background-color: #7fad39;
     	}
-    	
-    	#no_writer{
-			display: none;
+		.card-h{
+			float: left;
+			margin-left: 100px; 
+			margin-top: 200px;
+			
 		}
-    </style>
-       
+		
+		.FAQ{
+			width: 130px;
+			font-size: 18;
+			font-style: sans-serif;
+			font-weight: 700;
+			align-content: center;
+			
+		}
+		.card-b{
+			padding-left: 10px;
+		}
+
+ 	</style>
+    
 </head>
 
 <body>
@@ -132,7 +159,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>
@@ -206,10 +233,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>공지사항</h2>
+                        <h2>FAQ</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>공지사항</span>
+                            <span>FAQ</span>
                         </div>
                     </div>
                 </div>
@@ -217,65 +244,78 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    	<div class="container-xl ">
-		<!-- 글쓰기 시작 -->
-		<div class="row"  >
-		<div class="col-md-8 mx-auto">
-			<br>
-			<br>
-			<br>
-			<form action="./insert" method="post" id="form" enctype="multipart/form-data">
-				
-				<div>
-					<input name="no_writer" value="admin" id="no_writer">
-				</div>
-				<div class="mb-3">
-				  <label for="no_title" class="form-label">Title</label>
-				  <input type="text" class="form-control" name="no_title" id="no_title" placeholder="제목을 입력하세요.">
-				</div>
-				
-				<div class="mb-3">
-				  <label for="no_contents" class="form-label">Contents</label>
-				  <textarea class="form-control" id="no_contents" name="no_contents" rows="3"></textarea>
-				</div>		
-				<div class="fileupload">
-				<button id="fileup" type="button" >file upload</button>
-				</div>
-				
-				<div id="file">
-				
-				</div>
-				
-			<button id="add" type="submit"  class="btn btn-outline-primary">등록</button>
-			<button id="cancel" type="button"  class="btn btn-outline-warning">취소</button>
-			</form>
-			<!-- 모달 -->
-		 	<div class="modal" id="insertCancel"  data-keyboard="false" data-backdrop="static" tabindex="-1">
-			  <div class="modal-dialog modal-dialog-centered">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title">등록 취소</h5>
-			        <button type="button" class="insertClose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <p>등록중인 글이 있습니다.</p>
-			        <p>취소하시겠습니까?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary ok" value ="true" data-bs-dismiss="modal">확인</button>
-			        <button type="button" class="btn btn-primary no" value="false">취소</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- 모달 -->
-			
-		</div>
-		</div>
-		
-	</div>
     
-       <!-- Footer Section Begin -->
+    <!-- FAQ 시작 -->
+        <!-- 공지사항, FAQ -->
+		<div class="card card-h " style="width: 150px;">
+		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
+		 <div class="card-body card-b">
+		 <!-- <p class="card-text">상담원 연결</p> -->
+		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
+		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
+		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+    	</div>
+    	</div>
+		 <!-- 공지사항, FAQ 끝 -->
+    <div class="col-md-10 mx-auto" style="height: 900px;">
+    <!-- FAQ search 시작 -->
+    
+    <form action="./FAQ" method="get" id="f">
+    <div class="input-group mb-3 col-md-4 mx-auto search">
+	  <input type="text" class="form-control input-search" placeholder="궁금한 점을 입력하세요." name="search" aria-label="Recipient's username" aria-describedby="button-addon2">
+	  <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2">Search</button>
+	</div>
+    </form>
+    <!-- 버튼으로 CATE이동 보류 -->
+<!--     <form action="./FAQ" method="get">
+		<div class="col-md-9 pd">
+			<button name="search" class="btn bt-ho" type="submit" value="회원">회원</button>
+			<button name="search" class="btn bt-ho" type="submit" value="배송">배송</button>
+			<button name="search" class="btn bt-ho" type="submit" value="주문/결제">주문/결제</button>
+			<button name="search" class="btn bt-ho" type="submit" value="취소/환불">취소/환불</button>
+			<button name="search" class="btn bt-ho" type="submit" value="교환/반품">교환/반품</button>
+		</div>
+	</form> -->
+    
+    <br>
+    <!-- FAQ search 끝 -->
+    
+    <c:forEach items="${question}" var="q" varStatus="status">
+ 		
+    <div class="accordion accordion-flush col-md-7 mx-auto accor" id="accordionFlushExample">
+  		 <div class="accordion-item accor" >
+  	
+		    <h2 class="accordion-header" id="flush-headingOne">
+		      <button id="fa${status.index}" class="fa accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+		        ${q.faq_title}
+		      </button>
+		    </h2>
+		    
+		   <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+		      <div id="facon${status.index}" style="display: none; font-size: 10; " class="accordion-body facon">${q.faq_contents}</div>
+		      </div>
+		  </div>
+		 		  
+	</div>
+	</c:forEach>
+	
+	<!-- 페이징 처리 -->
+	  <br>
+      <div class="col-lg-12">
+         <div class="product__pagination blog__pagination page">
+               <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="pn">
+                  <a href="./FAQ?pn=${pn}">${pn}</a>
+               </c:forEach>
+                  <a href="./FAQ?pn=${pager.lastNum+1}">&raquo;</a>
+          </div>
+       </div>
+    <!-- 페이징 처리 끝-->
+    
+    
+    <!-- FAQ 끝 -->
+    
+    </div>
+      <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
             <div class="row">
@@ -346,36 +386,39 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-	<script type="text/javascript" src="../resources/js/fileUpload.js"></script>
-	<script type="text/javascript">
 
- 	$(document).ready(function() {
-		  $('#no_contents').summernote();
-		});	
-		
-		
-	/*	$('#no_contents').summernote({
-			height : 300
-		}); */
+<script type="text/javascript">
 
-		//취소 버튼 누르면 모달폼 띄우기
-		$('#cancel').click(function(){
-			//console.log('cancel');
-			$('#insertCancel').modal();
-		});
-		//엑스 누르면 모달폼 끄기
-		$('.insertClose').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-		$('.ok').click(function(){
-			location.href="./list"
-		});
-		
-		$('.no').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-	</script>
+	for(let i=0; i<20; i++){
+		$('#index'+i).click(function(){
+			if($('#faq_con'+i).css('display')== 'none'){
+				
+				$('#faq_con'+i).show();
+			}else{
+				$('#faq_con'+i).hide();
+			}
+		 	
+		 	
+			
+		})
+	}
 
+
+	for(let i=0; i<100; i++){
+		//let aa = $('#fa+i')
+		$('#fa'+i).click(function(){
+			console.log(i);
+			if($('#facon'+i).css('display')== 'none'){
+				$('#facon'+i).show();
+			}else{
+				$('#facon'+i).hide();
+			}
+			
+		})
+	}
+	
+	
+</script>
 </body>
 
 </html>

@@ -201,10 +201,18 @@
     </section>
     <!-- Breadcrumb Section End -->
     <!-- notice 세부 -->
+		<!-- 공지사항, FAQ -->
+		<div class="card card-h " style="width: 200px;">
+		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
+		 <div class="card-body card-b">
+		 <!-- <p class="card-text">상담원 연결</p> -->
+		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
+		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
+		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+    	</div>
+    	</div>
+		 <!-- 공지사항, FAQ 끝 -->
 		<div class="container">
-		<div class="col-md-4 info-bt">
-			<h1>dd</h1>
-		</div>
 		<div class="mx-auto noti noti-bt">
 		 	<hr>
 		 	

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.question.QuestionDAO">
+
+	<select id="getList" resultType="QuestionDTO" parameterType="pager">
+		select * from
+		(select ROWNUM R, FA.* FROM
+			(select * from faq
+			where faq_title 
+			like '%' || #{search} || '%' 
+			order by faq_num desc)
+			FA)
+		WHERE R BETWEEN #{startRow} and #{lastRow}
+		 
+		
+	</select>
+  
+  
+  	<select id="getCount" resultType="Long">
+  		select count(faq_num) from faq
+  	</select>
+  
+  </mapper>
