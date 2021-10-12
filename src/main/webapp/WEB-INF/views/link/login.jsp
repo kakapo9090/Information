@@ -33,14 +33,14 @@
               <div class="text-center mb-5">
                 <h3 class="text-uppercase">Login Page</strong></h3>
               </div>
-              <form name="page1" method="post">
+              <form action="/link/testa" name="page1" method="post">
                 <div class="form-group first">
                   <label for="username">ID</label>
-                  <input type="text" class="form-control" placeholder="Your ID" id="username">
+                  <input type="text" class="form-control" placeholder="Your ID" id="id" name="id">
                 </div>
                 <div class="form-group last mb-3">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="password">
+                  <input type="password" class="form-control" placeholder="Your Password" id="pw" name="pw">
                 </div>
                 
                 <!-- 
@@ -54,8 +54,8 @@
 
 
 				<!-- 로그인 -->
-<!--                 <input type="submit" value="Log In" class="btn btn-block py-2 btn-primary" id="loginBtn"> -->
-				<input type="button" value="Log In" class="btn btn-block py-2 btn-primary" id="btnLogin">
+<!--                 <input type="submit" value="login" class="btn btn-block py-2 btn-primary" id="loginBtn"> -->
+				<input type="button" value="login" class="btn btn-block py-2 btn-primary" id="btnLogin">
                 <!-- 회원가입 -->
                 <a class="btn btn-block py-2 btn-primary" href="${pageContext.request.contextPath}/link/exm">회원가입</a>
                 <!-- 돌아가기 -->

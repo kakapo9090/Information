@@ -46,14 +46,13 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-            	<c:choose>
-            		<c:when test="$sessionScope.id == null">
+            	<c:if test="${not empty tuser}">
             			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:when>
-            		<c:otherwise>
-            			<a href="./"><i class="fa fa-user"></i> Login</a>
-            		</c:otherwise>
-            	</c:choose>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
                 
             </div>
         </div>
@@ -97,9 +96,13 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -737,8 +740,6 @@
     <script src="./resources/js/mixitup.min.js"></script>
     <script src="./resources/js/owl.carousel.min.js"></script>
     <script src="./resources/js/main.js"></script>
-
-
 
 </body>
 

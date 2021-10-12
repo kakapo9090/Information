@@ -16,12 +16,12 @@ public class TuserDAO {
 	
 	//로그인 체크
 	public TuserDTO login (TuserDTO tuserDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"login", tuserDTO);
+		return sqlSession.selectOne(NAMESPACE+".login", tuserDTO);
 	}
 	
 	//로그인 정보
 	public TuserDTO memberView (TuserDTO tuserDTO) {
-		return sqlSession.selectOne(NAMESPACE+"memberView", tuserDTO);
+		return sqlSession.selectOne(NAMESPACE+".memberView", tuserDTO);
 	}
 	
 	//로그아웃
@@ -30,12 +30,12 @@ public class TuserDAO {
 	
 	//회원 생성
 	public int setNew (TuserDTO tuserDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"setNew", tuserDTO);
+		return sqlSession.insert(NAMESPACE+".setNew", tuserDTO);
 	}
 		
 	//ID 중복 확인
 	public TuserDTO idCheck(TuserDTO tuserDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"idCheck", tuserDTO);
+		return sqlSession.selectOne(NAMESPACE+".idCheck", tuserDTO);
 	}
 	
 }

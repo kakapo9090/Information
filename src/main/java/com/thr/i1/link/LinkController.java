@@ -72,15 +72,6 @@ public class LinkController {
 		return mv;
 	}
 	
-	//회원가입
-	@RequestMapping(value = "/exm", method = RequestMethod.GET)
-	public ModelAndView exm () throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/exm");
-			
-		return mv;
-	}
-	
 	//장바구니
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public ModelAndView cart () throws Exception {

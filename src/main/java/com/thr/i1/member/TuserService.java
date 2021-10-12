@@ -31,10 +31,6 @@ public class TuserService {
 		session.invalidate();
 	}
 	
-	
-	
-	
-	
 	//회원 생성
 	public int setNew(TuserDTO tuserDTO) throws Exception {
 		return tuserDAO.setNew(tuserDTO);

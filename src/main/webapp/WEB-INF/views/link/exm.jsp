@@ -44,7 +44,7 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
-        <form action="setNew" class="validation-form" id="frm" method="post" enctype="multipart/form-data">
+        <form action="setNew" class="validation-form" id="frm" method="post" enctype="multipart/form-data" name="frm">
         
           <!-- 아이디 -->
           <div class="mb-3">
@@ -73,11 +73,18 @@
           </div>
           
           <!-- 전화번호 -->
-          <div class="mb-3">
-            <label for="phone">핸드폰 번호</label>
-            <input class="form-control put" id="phone" name="phone" type="tel">
-          </div>
           
+          <div class="col-md-9 mb-3">
+            <label for="phone">핸드폰 번호</label>
+            <div class="row">
+	            <input class="form-control put" id="phone1" name="phone" type="tel" style="width:100px; margin-right:10px">
+	            <span> - </span>
+	            <input class="form-control put" id="phone2" name="phone" type="tel" style="width:100px; margin-left:10px; margin-right:10px">
+	            <span> - </span>
+	            <input class="form-control put" id="phone3" name="phone" type="tel" style="width:100px; margin-left:10px">
+           </div>
+          </div>
+            
           <!-- 이메일 -->
           <div class="mb-3">
             <label for="email">이메일</label>
@@ -87,13 +94,13 @@
           <!-- 주소 -->
           <div class="mb-3">
             <label for="address1">주소</label>
-            <input class="form-control put" id="address1" name="address1" type="text">
+            <input class="form-control put" id="address1" name="address" type="text" placeholder="서울시 은평구">
           </div>
 
           <!-- 상세주소 -->
           <div class="mb-3">
             <label for="address2">상세주소</label>
-            <input class="form-control put" id="address2" name="address2" type="text">
+            <input class="form-control put" id="address2" name="address" type="text" placeholder="응암동 72-33">
           </div>
 
           
@@ -113,7 +120,8 @@
       <p class="mb-1">&copy; 2021 YD</p>
     </footer>
   </div>
-
+  
+<script src="../resources/login/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/exm.js"></script>  
 
 </body>
