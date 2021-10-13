@@ -44,7 +44,7 @@ public class ProductController {
 		session.setAttribute("category", category);
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
-		mv.setViewName("link/fresh");
+		mv.setViewName("product/productList");
 		return mv;
 	}
 	
