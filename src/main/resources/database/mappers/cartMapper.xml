@@ -4,6 +4,52 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.thr.i1.cart.CartDAO">
-
-  
+	<!-- 장바구니에 담기 -->
+   	 <insert id="cartInsert" parameterType="CartDTO">
+        insert into cart (cart_Id, tuser_Id, product_Id, productFile_FileNum, Amount)
+        values 
+          (cart_seq.nextval, #{tuser_Id}, #{product_Id}, #{productFile_FileNum}, #{amount} )
+        
+	  </insert>
+	  
+	  
+	 <!-- 장바구니 리스트 -->
+	 <!-- 카트번호, 제품번호, 회원아이디, 회원명, 상품명, 수량, 가격, 가격합계, 이미지파일명, 파일번호 -->
+	 <!-- 조건: 회원테이블의 회원id = 장바구니테이블의 회원id 
+	 and 장바구니테이블의 상품id = 상품테이블의 상품id 
+	 and 장바구니테이블의 파일번호 = 파일테이블의 파일번호 
+	 and 장바구니테이블의 회원id = 파라미터로 받은 회원id-->
+	  <select id="cartList" resultType="CartDTO" parameterType="String">
+	  	select cart_Id, product_Id, tuser_Id, t.name, p.name product_Name
+	  	, amount, price, (price*amount) money, fileName, productFile_FileNum
+	  
+	  	from tuser t, cart c, product p, productFile f
+	  	
+	  	where t.id=c.tuser_Id and c.product_Id=p.id and c.productFile_FileNum=f.fileNum
+	  	and c.tuser_Id=#{userid}
+	  	
+	  	order by cart_Id desc
+	  </select>
+	  
+	  <!-- 장바구니 금액 합계 -->
+	  <select id="sumMoney" resultType="int" parameterType="String">
+	  	select nvl(sum(price*amount),0)
+	  	
+	  	from cart c, product p
+	  	
+	  	where c.product_Id=p.id and c.tuser_Id=#{userid}
+	  	
+	  </select>
+	  
+	  <!-- 장바구니 1개 삭제 -->
+	  <delete id="deleteOne" parameterType="CartDTO">
+	  	delete from cart
+	  	where cart_Id=#{cart_Id}  
+	  </delete>
+	  
+	  <!-- 장바구니 전체 삭제 -->
+	  <delete id="deleteAll" parameterType="CartDTO">
+	  	delete from cart
+	  	where tuser_Id=#{tuser_Id} 
+	  </delete>
   </mapper>

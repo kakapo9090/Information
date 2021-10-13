@@ -11,7 +11,7 @@ public class CartDTO {
     
     //CART, TUSER, PRODUCT, PRODUCTFILE 테이블을 조인해서 담을 데이터들
     private String name;	//TUSER테이블에서 가져올 회원명
-    private String product_name;	//PRODUCT테이블에서 가져올 상품명
+    private String product_Name;	//PRODUCT테이블에서 가져올 상품명
     private String fileName;	//PRODUCTFILE 테이블에서 가져올 이미지파일명
     private int price;	//PRODUCT테이블에서 가져올 단가. *product테이블의 데이터타입 맞추기
     private int money;	//가격*수량 값 
@@ -69,12 +69,14 @@ public class CartDTO {
 		this.name = name;
 	}
 
-	public String getProduct_name() {
-		return product_name;
+	
+
+	public String getProduct_Name() {
+		return product_Name;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setProduct_Name(String product_Name) {
+		this.product_Name = product_Name;
 	}
 
 	public int getPrice() {

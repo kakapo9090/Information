@@ -22,4 +22,10 @@ public class CartDAO {
 	 public List<CartDTO> cartList(String userid) throws Exception{
 		 return sqlSession.selectList(NAMESPACE+"cartList", userid);
 	 }
+	 
+	 //장바구니 금액 합계
+	 public int sumMoney(String userid) throws Exception{
+	     return sqlSession.selectOne("NAMESPACE"+"sumMoney", userid); 
+	 }
 }
+
