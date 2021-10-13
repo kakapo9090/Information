@@ -19,7 +19,7 @@ public class ProductService {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("product", productDTO);
 		map.put("pager", pager);
-		Long totalCount = productDAO.getCount(map);
+		Long totalCount = productDAO.getCount(productDTO);
 		pager.setTotalCount(totalCount);
 		pager.makeNum();
 		pager.makeRow();

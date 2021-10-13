@@ -9,20 +9,18 @@
 		SELECT * FROM 
 			(SELECT ROWNUM R, P.* FROM 
 				(SELECT * FROM PRODUCT WHERE 
-	  				<if test="product.c1!=null">C1=#{product.c1} AND </if>
-	  				<if test="product.c2!=null">C2=#{product.c2} AND </if>
-	  				<if test="product.c3!=null">C3=#{product.c3} AND </if>
-	  				NAME LIKE '%' || #{pager.search} || '%') P)
+	  				<if test="product.c1!=null">C1=#{product.c1}</if>
+	  				<if test="product.c2!=null">C2=#{product.c2}</if>
+	  				<if test="product.c3!=null">C3=#{product.c3}</if>) P)
 	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
 	</select>
 	
 	<!-- 카테고리별 게시물 수 -->
-	<select id="getCount" parameterType="Map" resultType="Long">
+	<select id="getCount" parameterType="ProductDTO" resultType="Long">
 		SELECT COUNT(ID) FROM PRODUCT WHERE 
-		<if test="product.c1!=null">C1=#{product.c1} AND </if>
-		<if test="product.c2!=null">C2=#{product.c2} AND </if>
-		<if test="product.c3!=null">C3=#{product.c3} AND </if>
-		NAME LIKE '%' || #{pager.search} || '%'
+		<if test="c1!=null">C1=#{c1}</if>
+		<if test="c2!=null">C2=#{c2}</if>
+		<if test="c3!=null">C3=#{c3}</if>
 	</select>
 	
 	<!-- Product Details -->

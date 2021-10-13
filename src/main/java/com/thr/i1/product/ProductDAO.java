@@ -20,8 +20,8 @@ public class ProductDAO {
 	}
 	
 	//카테고리별 게시물 수
-	public Long getCount(Map<String, Object> map) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getCount", map);
+	public Long getCount(ProductDTO productDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getCount", productDTO);
 	}
 	
 	//제품 상세 페이지
