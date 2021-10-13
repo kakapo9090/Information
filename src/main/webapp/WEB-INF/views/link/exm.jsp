@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입 화면 샘플 - Bootstrap</title>
+  <title>회원가입 화면</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -44,92 +44,73 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
-        <form class="validation-form" novalidate>
+        <form action="setNew" class="validation-form" id="frm" method="post" enctype="multipart/form-data" name="frm">
         
           <!-- 아이디 -->
           <div class="mb-3">
-            <label for="email">아이디</label>
-            <input type="email" class="form-control" id="id" placeholder="" required>
-            <div class="invalid-feedback">
-              아이디를 입력해주세요.
-            </div>
-          </div>
+    		<label for="text" class="form-label">ID</label>
+    		<input type="text" class="form-control put" id="id" name="id"><br>
+    		<button type="button" id="idCheck">ID중복확인</button>
+			<div id="idResult"></div>
+ 		 </div>
           
           <!-- 비밀번호 -->
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="name">비밀번호</label>
-              <input type="text" class="form-control" id="password1" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                이름을 입력해주세요.
-              </div>
+              <input class="form-control put pw" id="pw1" name="pw" type="password">
             </div>
             <div class="col-md-6 mb-3">
-              <label for="nickname">비밀번호 확인</label>
-              <input type="text" class="form-control" id="password2" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                별명을 입력해주세요.
-              </div>
+              <label for="name">비밀번호 확인</label>
+              <input class="form-control put pw" id="pw2" name="check" type="password">
             </div>
           </div>
           
           <!-- 이름 -->
           <div class="mb-3">
-            <label for="email">이름</label>
-            <input type="email" class="form-control" id="name" placeholder="" required>
-            <div class="invalid-feedback">
-              이름을 입력해주세요.
-            </div>
+            <label for="name">이름</label>
+            <input class="form-control put" id="name" name="name" type="text">
           </div>
           
+          <!-- 전화번호 -->
+          
+          <div class="col-md-9 mb-3">
+            <label for="phone">핸드폰 번호</label>
+            <div class="row">
+	            <input class="form-control put" id="phone1" name="phone" type="tel" style="width:100px; margin-right:10px">
+	            <span> - </span>
+	            <input class="form-control put" id="phone2" name="phone" type="tel" style="width:100px; margin-left:10px; margin-right:10px">
+	            <span> - </span>
+	            <input class="form-control put" id="phone3" name="phone" type="tel" style="width:100px; margin-left:10px">
+           </div>
+          </div>
+            
+          <!-- 이메일 -->
           <div class="mb-3">
             <label for="email">이메일</label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-            <div class="invalid-feedback">
-              이메일을 입력해주세요.
-            </div>
+            <input class="form-control put" id="email" name="email" type="email">
           </div>
 
+          <!-- 주소 -->
           <div class="mb-3">
-            <label for="address">주소</label>
-            <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
-            <div class="invalid-feedback">
-              주소를 입력해주세요.
-            </div>
+            <label for="address1">주소</label>
+            <input class="form-control put" id="address1" name="address" type="text" placeholder="서울시 은평구">
           </div>
 
+          <!-- 상세주소 -->
           <div class="mb-3">
-            <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
+            <label for="address2">상세주소</label>
+            <input class="form-control put" id="address2" name="address" type="text" placeholder="응암동 72-33">
           </div>
 
-          <div class="row">
-            <div class="col-md-8 mb-3">
-              <label for="root">가입 경로</label>
-              <select class="custom-select d-block w-100" id="root">
-                <option value=""></option>
-                <option>검색</option>
-                <option>카페</option>
-              </select>
-              <div class="invalid-feedback">
-                가입 경로를 선택해주세요.
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="code">추천인 코드</label>
-              <input type="text" class="form-control" id="code" placeholder="" required>
-              <div class="invalid-feedback">
-                추천인 코드를 입력해주세요.
-              </div>
-            </div>
-          </div>
+          
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
           <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+          <button class="btn btn-primary btn-lg btn-block" id="btn" type="button">가입 완료</button>
           <!-- 돌아가기 -->
           <a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/link/login">돌아가기</a>
         </form>
@@ -139,22 +120,10 @@
       <p class="mb-1">&copy; 2021 YD</p>
     </footer>
   </div>
-  <script>
-    window.addEventListener('load', () => {
-      const forms = document.getElementsByClassName('validation-form');
+  
+<script src="../resources/login/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/exm.js"></script>  
 
-      Array.prototype.filter.call(forms, (form) => {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  </script>
 </body>
 
 </html>

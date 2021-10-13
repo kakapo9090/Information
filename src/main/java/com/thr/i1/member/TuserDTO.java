@@ -1,11 +1,11 @@
 package com.thr.i1.member;
 
-public class MemberDTO {
+public class TuserDTO {
 	
 	//순서
 	private Long num;
 	//관리자 유무
-	private String master;
+	private int master;
 	//아이디
 	private String id;
 	//비밀번호
@@ -16,6 +16,9 @@ public class MemberDTO {
 	private String email;
 	//전화번호
 	private int phone;
+	//주소
+	private String address;
+	
 	
 	public Long getNum() {
 		return num;
@@ -23,10 +26,10 @@ public class MemberDTO {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-	public String getMaster() {
+	public int getMaster() {
 		return master;
 	}
-	public void setMaster(String master) {
+	public void setMaster(int master) {
 		this.master = master;
 	}
 	public String getId() {
@@ -59,7 +62,11 @@ public class MemberDTO {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	
-	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	
 }

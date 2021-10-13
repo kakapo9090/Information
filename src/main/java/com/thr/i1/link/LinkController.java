@@ -8,21 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/link")
 public class LinkController {
-	
-	//로그인 화면
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login () throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/login");
-			
-		return mv;
-	}
-	
 	//공지사항
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public ModelAndView notices () throws Exception {
 		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("link/notices");
 		mv.setViewName("notice/noticeList");
 		return mv;
 	}
@@ -81,12 +70,12 @@ public class LinkController {
 		return mv;
 	}
 	
-	//회원가입
-	@RequestMapping(value = "/exm", method = RequestMethod.GET)
-	public ModelAndView exm () throws Exception {
+	//장바구니
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public ModelAndView cart () throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/exm");
-			
+		mv.setViewName("link/cart");
+				
 		return mv;
 	}
 }
