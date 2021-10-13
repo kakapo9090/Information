@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.thr.i1.util.Pager;
+
 @Repository
 public class ProductDAO {
 
@@ -28,6 +30,14 @@ public class ProductDAO {
 	  //제품 상세 페이지 
 	public ProductDTO getSelect(ProductDTO productDTO) throws Exception { 
 		return sqlSession.selectOne(NAMESPACE+"getSelect", productDTO); 
+	}
+	
+	public List<ProductDTO> getSearch(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getSearch", pager);
+	}
+	
+	public Long getSearchCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getSearchCount", pager);
 	}
 	 
 

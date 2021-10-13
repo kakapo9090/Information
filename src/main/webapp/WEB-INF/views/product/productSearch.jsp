@@ -380,13 +380,13 @@
                     <div class="product__pagination">
 						<nav>
 							<c:if test="${pager.totalCount gt pager.perPage}">
-								<a href="./productList?category=${param.category}&pn=1">&laquo;</a>
-								<a href="./productList?category=${param.category}&pn=${pager.startNum-1}">&lt;</a>
+								<a href="./productList?search=${param.search}&pn=1">&laquo;</a>
+								<a href="./productList?search=${param.search}&pn=${pager.startNum-1}">&lt;</a>
 								<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
-									<a class="page-link pager" href="./productList?category=${param.category}&pn=${n}">${n}</a>
+									<a class="page-link pager" href="./productList?search=${param.search}&pn=${n}">${n}</a>
 								</c:forEach>
-								<a class="page-link pager" href="./productList?category=${param.category}&pn=${pager.lastNum+1}">&gt;</a>
-								<a class="page-link pager last" href="./productList?category=${param.category}&pn=${pager.totalPage}">&raquo;</a>
+								<a class="page-link pager" href="./productList?search=${param.search}&pn=${pager.lastNum+1}">&gt;</a>
+								<a class="page-link pager last" href="./productList?search=${param.search}&pn=${pager.totalPage}">&raquo;</a>
 							</c:if>						
 						</nav>
                     </div>

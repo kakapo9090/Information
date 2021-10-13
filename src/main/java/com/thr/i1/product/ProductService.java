@@ -32,6 +32,16 @@ public class ProductService {
 	public ProductDTO getSelect(ProductDTO productDTO) throws Exception { 
 		return productDAO.getSelect(productDTO); 
 	}
+	
+	//제품 검색
+	public List<ProductDTO> getSearch(Pager pager) throws Exception {
+		Long totalCount = productDAO.getSearchCount(pager);
+		pager.setTotalCount(totalCount);
+		pager.makeNum();
+		pager.makeRow();
+		
+		return productDAO.getSearch(pager);
+	}
 	 
 
 }

@@ -37,5 +37,15 @@ public class ProductController {
 		 return mv; 
 	 }
 	 
+	 @GetMapping("productSearch")
+	 public ModelAndView getSearch(Pager pager) throws Exception {
+		 ModelAndView mv = new ModelAndView();
+		 List<ProductDTO> ar = productService.getSearch(pager);
+		 mv.setViewName("product/productSearch");
+		 mv.addObject("list", ar);
+		 mv.addObject("pager", pager);
+		 return mv;
+	 }
+	 
 
 }
