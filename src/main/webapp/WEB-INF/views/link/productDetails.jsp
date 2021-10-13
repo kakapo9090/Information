@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
 </head>
-
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -209,191 +208,68 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <c:import url="../temp/sidebar.jsp"></c:import>
-                <div class="col-lg-9 col-md-7">
-                    <div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-1.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-2.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Vegetables</span>
-                                            <h5><a href="#">Vegetables’package</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-3.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Mixed Fruitss</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-4.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-5.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="../resources/img/product/discount/pd-6.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter__item">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>${pager.totalCount }</span> Products found</h6>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <!-- Product List Begin -->
-                    <c:if test="${pager.totalCount eq 0}">검색된 상품이 없습니다</c:if>
-                    <div class="row">
-                    	<c:forEach items="${list}" var="dto">
-	                        <div class="col-lg-4 col-md-6 col-sm-6">
-	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="../resources/img/product/product-1.jpg">
-	                                    <ul class="product__item__pic__hover">
-	                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-	                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-	                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-	                                    </ul>
-	                                </div>
-	                                <div class="product__item__text">
-	                                    <h6><a href="./productDetails?id=${dto.id}">${dto.name}</a></h6>
-	                                    <h5>${dto.price}</h5>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </c:forEach>
-                    </div>
-                    <!-- Product List End -->
-                    
-                    <!-- Product Pagination Begin -->
-                    <div class="product__pagination">
-						<nav>
-							<c:if test="${pager.totalCount gt pager.perPage }">
-								<a href="./productList?${paraName}=${category}&pn=1">&laquo;</a>
-								<a href="./productList?${paraName}=${category}&pn=${pager.startNum-1}">&lt;</a>
-								<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
-									<a class="page-link pager" href="./productList?${paraName}=${category}&pn=${n}">${n}</a>
-								</c:forEach>
-								<a class="page-link pager" href="./productList?${paraName}=${category}&pn=${pager.lastNum+1}">&gt;</a>
-								<a class="page-link pager last" href="./productList?${paraName}=${category}&pn=${pager.totalPage}">&raquo;</a>
-							</c:if>						
-						</nav>
-                    </div>
-                    <!-- Product Pagination End -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Section End -->
+	<!-- Product Details Section Begin -->
+	<section class="product-details spad">
+		<div class="content">
+			<div class="section_view">
+				<div class="sectionView">
+					<div class="inner_view">
+						<div class="thumb">
+						</div>
+						<p class="product_name">${dto.name}</p>
+						<p class="product_price">${dto.price}</p>
+						<div class="product_info">
+							<dl class="list">
+								<c:if test="${not empty dto.etc}">
+									<dt class="tit">원산지</dt>
+									<dd class="desc">${dto.etc}</dd>								
+								</c:if>
+							</dl>
+							<dl>
+								<dt class="tit">간단설명</dt>
+								<dd class="desc">${dto.explain}</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="cartPut">
+					<div class="inner_option">
+						<span class="tit_item">구매수량</span>
+						<div class="option">
+							<span class="count">
+								<button type="button" class="btn down on">-</button>
+								<input type="number" readonly="readonly" onfocus="this.blur()" class="inp">
+								<button type="button" class="btn up on">+</button>
+							</span>
+						</div>
+						<div class="total">
+							<strong class="tit">총 상품금액 : </strong>
+							<span class="sum">
+								<span class="num"></span>
+								<span class="won">원</span>
+							</span>
+						</div>
+						<div class="group_btn">
+							<button type="button" class="txt_type goCart">장바구니 담기</button>
+							<div class="cart_inner">
+								<p class="cart_txt">
+									선택하신 상품이 장바구니에 담겼습니다
+									<br>
+									<strong>장바구니로 이동하시겠습니까?</strong>
+									<button class="btn_shopping">쇼핑 계속하기</button>
+									<button class="btn_goCart">장바구니 바로가기</button>
+								</p>
+							</div>
+							<button type="button" class="txt_type goBuy">바로구매</button>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</section>
+	<!-- Product Details Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -472,9 +348,5 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
-
-
 </body>
-
 </html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.product.ProductDAO">
+  	<!-- Product List 카테고리별로 구분, 검색(전체) -->
+	<select id="getList" parameterType="Map" resultType="ProductDTO">
+		SELECT * FROM 
+			(SELECT ROWNUM R, P.* FROM 
+				(SELECT * FROM PRODUCT WHERE 
+	  				<if test="product.c1!=null">C1=#{product.c1} AND </if>
+	  				<if test="product.c2!=null">C2=#{product.c2} AND </if>
+	  				<if test="product.c3!=null">C3=#{product.c3} AND </if>
+	  				NAME LIKE '%' || #{pager.search} || '%') P)
+	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	</select>
+	
+	<!-- 카테고리별 게시물 수 -->
+	<select id="getCount" parameterType="Map" resultType="Long">
+		SELECT COUNT(ID) FROM PRODUCT WHERE 
+		<if test="product.c1!=null">C1=#{product.c1} AND </if>
+		<if test="product.c2!=null">C2=#{product.c2} AND </if>
+		<if test="product.c3!=null">C3=#{product.c3} AND </if>
+		NAME LIKE '%' || #{pager.search} || '%'
+	</select>
+	
+	<!-- Product Details -->
+	<select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">
+		SELECT * FROM PRODUCT WHERE ID=#{id}
+	</select>
+	
+  
+  </mapper>

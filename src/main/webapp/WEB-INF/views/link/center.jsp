@@ -53,10 +53,10 @@
             	<li class="active"><a href="../">Home</a></li>
             	<li><a href="#">List</a>
             		<ul class="header__menu__dropdown">
-	            		<li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/product/productList?c1=instant">인스턴트</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/product/productList?c1=drink">음료</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/product/productList?c1=fresh">신선식품</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/product/productList?c1=snack">간식</a></li>
             		</ul>
             	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
@@ -108,10 +108,10 @@
                             <li class="active"><a href="../">Home</a></li>
                             <li><a href="#">List</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=instant">인스턴트</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=drink">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=fresh">신선식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=snack">간식</a></li>
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
@@ -148,17 +148,17 @@
                             <span>Smaple List</span>
                         </div>
                         <ul>
-                            <li><a href="#">과일/야채</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=vegetable">과일/야채</a></li>
                             <li><a href="#">과자</a></li>
                             <li><a href="#">기타음료</a></li>
                             <li><a href="#">냉동식품</a></li>
                             <li><a href="#">라면</a></li>
                             <li><a href="#">베이커리</a></li>
                             <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="#">수산물</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=aquatic">수산물</a></li>
                             <li><a href="#">식물성음료</a></li>
                             <li><a href="#">아이스크림</a></li>
-                            <li><a href="#">정육</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=meat">정육</a></li>
                             <li><a href="#">주스</a></li>
                             <li><a href="#">즉석식품</a></li>
                             <li><a href="#">초콜릿</a></li>
