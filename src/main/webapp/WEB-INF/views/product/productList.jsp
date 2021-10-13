@@ -115,10 +115,10 @@
                             <li class="active"><a href="../">Home</a></li>
                             <li><a href="${pageContext.request.contextPath}/product/productList">List</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=instant">인스턴트</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=drink">음료</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=fresh">신선식품</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/product/productList?c1=snack">간식</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=1000">인스턴트</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=2000">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=3000">신선식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=4000">간식</a></li>
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
@@ -154,17 +154,17 @@
                             <span>Smaple List</span>
                         </div>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=vegetable">과일/야채</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3300">과일/야채</a></li>
                             <li><a href="#">과자</a></li>
                             <li><a href="#">기타음료</a></li>
                             <li><a href="#">냉동식품</a></li>
                             <li><a href="#">라면</a></li>
                             <li><a href="#">베이커리</a></li>
                             <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=aquatic">수산물</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3200">수산물</a></li>
                             <li><a href="#">식물성음료</a></li>
                             <li><a href="#">아이스크림</a></li>
-                            <li><a href="${pageContext.request.contextPath}/product/productList?c2=meat">정육</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3100">정육</a></li>
                             <li><a href="#">주스</a></li>
                             <li><a href="#">즉석식품</a></li>
                             <li><a href="#">초콜릿</a></li>
@@ -344,14 +344,14 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span>${pager.totalCount }</span> Products found</h6>
+                                    <h6><span>${pager.totalCount}</span> Products found</h6>
                                 </div>
                             </div>
                             
                         </div>
                     </div>
                     <!-- Product List Begin -->
-                    <c:if test="${pager.totalCount eq 0}">검색된 상품이 없습니다</c:if>
+                    <c:if test="${pager.totalCount eq 0}">해당 상품이 없습니다</c:if>
                     <div class="row">
                     	<c:forEach items="${list}" var="dto">
 	                        <div class="col-lg-4 col-md-6 col-sm-6">
@@ -376,14 +376,14 @@
                     <!-- Product Pagination Begin -->
                     <div class="product__pagination">
 						<nav>
-							<c:if test="${pager.totalCount gt pager.perPage }">
-								<a href="./productList?${paraName}=${category}&pn=1">&laquo;</a>
-								<a href="./productList?${paraName}=${category}&pn=${pager.startNum-1}">&lt;</a>
+							<c:if test="${pager.totalCount gt pager.perPage}">
+								<a href="./productList?category=${param.category}&pn=1">&laquo;</a>
+								<a href="./productList?category=${param.category}&pn=${pager.startNum-1}">&lt;</a>
 								<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
-									<a class="page-link pager" href="./productList?${paraName}=${category}&pn=${n}">${n}</a>
+									<a class="page-link pager" href="./productList?category=${param.category}&pn=${n}">${n}</a>
 								</c:forEach>
-								<a class="page-link pager" href="./productList?${paraName}=${category}&pn=${pager.lastNum+1}">&gt;</a>
-								<a class="page-link pager last" href="./productList?${paraName}=${category}&pn=${pager.totalPage}">&raquo;</a>
+								<a class="page-link pager" href="./productList?category=${param.category}&pn=${pager.lastNum+1}">&gt;</a>
+								<a class="page-link pager last" href="./productList?category=${param.category}&pn=${pager.totalPage}">&raquo;</a>
 							</c:if>						
 						</nav>
                     </div>
