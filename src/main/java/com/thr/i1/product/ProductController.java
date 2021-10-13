@@ -3,6 +3,7 @@ package com.thr.i1.product;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("productList")
-	public ModelAndView getList(ProductDTO productDTO, Pager pager, HttpServletRequest request) throws Exception {
+	public ModelAndView getList(ProductDTO productDTO, Pager pager, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<ProductDTO> ar = productService.getList(productDTO, pager);
 		//Product List의 카테고리 파라미터이름, 값 가져오기
@@ -39,8 +40,8 @@ public class ProductController {
 			category=productDTO.getC3();
 		}
 		System.out.println(category);
-		mv.addObject("paraName", paraName);
-		mv.addObject("category", category);
+		session.setAttribute("paraName", paraName);
+		session.setAttribute("category", category);
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("link/fresh");
