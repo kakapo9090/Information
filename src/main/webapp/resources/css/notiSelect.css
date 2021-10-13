@@ -28,17 +28,16 @@
 		padding-top: 100px;
 	}
 	.up{
-		float: left;
-		margin-left: 50px;
+		
+		margin-bottom: 50px;
 	}
 	
 	.del{
-		float: right;
-		margin-right: 50px;
+		margin-bottom: 50px;
+		
 	}
 	.li{
-		margin-left: 150px;
-		margin-right: 200px;
+		margin-bottom: 50px;
 	}
 	.contents{
 		height: 500px;

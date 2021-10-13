@@ -26,4 +26,12 @@ public class QuestionDAO {
 		return sqlSession.selectOne(NAMESPACE+"getCount");
 	}
 	
-}
+	public int setOneInsert(One_on_oneDTO oneDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setOneInsert", oneDTO);
+	}
+	
+	public List<One_on_oneDTO> getOneList(One_on_oneDTO oneDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getOneList", oneDTO);
+		
+	}
+ }

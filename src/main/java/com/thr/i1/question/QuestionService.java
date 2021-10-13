@@ -22,4 +22,14 @@ public class QuestionService {
 		return questionDAO.getList(pager);
 	}
 	
+	public int setOneInsert(One_on_oneDTO oneDTO) throws Exception{
+		System.out.println(oneDTO.getOne_cate());
+		return questionDAO.setOneInsert(oneDTO);
+	}
+	
+	
+	public List<One_on_oneDTO> getOneList(One_on_oneDTO oneDTO) throws Exception{
+		System.out.println(oneDTO.getOne_writer());
+		return questionDAO.getOneList(oneDTO);
+	}
 }

@@ -195,38 +195,39 @@
     	<div class="one_menu">
 	    	<a href="../notices/list">공지사항</a>
 	    	<a href="./FAQ">FAQ</a>
-	    	<%-- <c:if test="${member not eq null}"> --%>
+	    	<c:if test="${not empty tuser}">
 	    	<a href="./one_on_one">문의내역</a>
-	    	<%-- </c:if> --%>
+	    	</c:if>
     	</div>
     </div>
     <!-- 문의 시작 -->
 	<div class="container-fluid col-md-8 mx-auto" style="height: 800px;">
-	<form action="./one_on_one" method="Post" >
+	<form action="./one_insert" method="Post" class="f" accept-charset="UTF-8">
 	
 	
 	<h2 class="col-md-8 mx-auto" style="margin-top: 100px;">1:1 문의하기</h2><br>
 	<!-- 문의 카테고리 -->
 	<div class="col-md-8 mx-auto">
-	<select class="form-select" aria-label="Default select example" >
+	<select  name="one_cate" class="form-select" aria-label="Default select example" >
 	  <option selected>문의 카테고리</option>
-	  <option value="1">배송문의</option>
-	  <option value="2">주문/결제 문의</option>
-	  <option value="3">취소/환불 문의</option>
-	  <option value="4">교환/반품 문의</option>
-	  <option value="5">기타 문의</option>
+	  <option value="배송">배송문의</option>
+	  <option value="주문/결제">주문/결제 문의</option>
+	  <option value="취소/환불">취소/환불 문의</option>
+	  <option value="교환/반품">교환/반품 문의</option>
+	  <option value="기타">기타 문의</option>
 	</select>
 	</div>
+	<input style="display: none;" name="one_writer" id="tuser_id" value="${tuser.id}">
 	<!-- 문의 제목 -->
 	<div class="" style="margin-top: 70px;"> 
 	<div class="mb-3 col-md-8 mx-auto">
-	  <label for="exampleFormControlInput1" class="form-label">문의 제목</label>
-	  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="문의제목을 입력해주세요.">
+	  <label for="one_title" class="form-label">문의 제목</label>
+	  <input type="text" class="form-control" id="one_title" name="one_title" placeholder="문의제목을 입력해주세요.">
 	</div>
 	<!-- 문의 내용 -->
 	<div class="mb-3 col-md-8 mx-auto">
-	  <label for="exampleFormControlTextarea1" class="form-label">문의 내용</label>
-	  <textarea class="form-control" id="one_contents" rows="5" placeholder="취소,교환,반품 신청은 주문배송조회에서 직접 신청 가능합니다."></textarea>
+	  <label for="one_contents" class="form-label">문의 내용</label>
+	  <textarea class="form-control" id="one_contents" name="one_contents" rows="5" placeholder="취소,교환,반품 신청은 주문배송조회에서 직접 신청 가능합니다."></textarea>
 	</div>
 	</div>
 	<br>
@@ -235,10 +236,10 @@
 	<div class="col-md-8 mx-auto">
 		<div class="row">
 		  <div class="col-md-6 ph-ema">
-		    <input type="text" readonly="readonly" class="form-control" value="010-0000-0000" aria-label="member-phone">
+		    <input type="text" readonly="readonly" value="${tuser.phone}" class="form-control"  aria-label="member-phone">
 		  </div>
 		  <div class="col-md-6 ph-ema" >
-		    <input type="email" readonly="readonly" class="form-control" value="kim@naver.com" aria-label="member-email">
+		    <input type="email" readonly="readonly"  value="${tuser.email}" class="form-control"  aria-label="member-email">
 		  </div>
 		</div>
 	</div>
@@ -248,31 +249,31 @@
 	<div class="col-md-8 mx-auto">
 	<span>문의 답변 방식을 선택해주세요.</span>
 	<div class="form-check">
-	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-	  <label class="form-check-label" for="flexRadioDefault1">
+	  <input class="form-check-input answer" type="radio" name="one_answer" id="sms" value="sms" checked>
+	  <label class="form-check-label" for="sms">
 	    sms
 	  </label>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-	  <label class="form-check-label" for="flexRadioDefault2">
+	  <input class="form-check-input answer" type="radio" name="one_answer" id="email">
+	  <label class="form-check-label" for="email">
 	    이메일
 	  </label>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-	  <label class="form-check-label" for="flexRadioDefault3">
+	  <input class="form-check-input answer" type="radio" name="one_answer" id="one_on">
+	  <label class="form-check-label" for="one_on">
 	    문의내역
 	  </label>
 	</div>
 	</div>
-	</form>
+	
 		<!-- 문의 등록/취소 버튼 -->
 	<div class="col-md-8 mx-auto" style="padding-left: 250px;">
-		<button type="button" class="btn btn-primary btn-lg" style="width: 150px;">취소</button>
-		<button type="button" class="btn btn-primary btn-lg" style="width: 150px;">확인</button>
+		<button type="button" class="btn btn-primary btn-lg cancel" style="width: 150px;">취소</button>
+		<button type="submit" class="btn btn-primary btn-lg confirm" style="width: 150px;">확인</button>
 	</div>
-	
+	</form>
 	</div>
 	<!--  문의 끝 -->
 <!-- Footer Section Begin -->
@@ -346,5 +347,21 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
+    
+    <script type="text/javascript">
+    	$('.cancel').click(function(){
+    		location.href="../notices/list";
+    	});
+    
+    	let one_answer = $('input:radio[name=one_answer]:checked').val();
+    	console.log(one_answer);
+    	let id = $('#tuser_id').val();
+    	$('.confirm').click(function(){
+    		alert('문의가 등록되었습니다.');
+    		
+    		
+    	});
+    	
+    </script>
 </body>
 </html>

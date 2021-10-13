@@ -256,11 +256,14 @@
 			  </div>
 			</div>
 			<!-- 모달 -->
-		 	<div class="button3">
+		 	<div class="button3 col-md-5 mx-auto" style="padding-left: 100px;">
+		 	<c:if test="${not empty tuser and tuser.id eq 'test'}">
 			 	<button type="button" value="${notice.no_num}" class="up btn btn-outline-warning">공지수정</button>
-			 	<button type="button" class=" li btn btn-info">목록으로</button>
 			 	<!-- 관리자에게만 보이기 -->
 			 	<button type="button" value="${notice.no_num}" style="color: black"  class="del btn btn-outline-light">공지삭제</button>
+			 </c:if>	
+			 	<button type="button" class=" li btn btn-info mx-auto  ">목록으로</button>
+
 		 	</div>
 		 	</div>
 		</div>

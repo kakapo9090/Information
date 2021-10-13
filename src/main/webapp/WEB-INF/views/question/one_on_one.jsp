@@ -41,6 +41,7 @@
 			font-weight: 700;
 			align-content: center;
 			
+			
 		}
 		.card-b{
 			padding-left: 10px;
@@ -224,6 +225,8 @@
     </section>
     <!-- Breadcrumb Section End -->
     
+    
+   
     <!-- 공지사항, FAQ -->
 		<div class="card card-h " style="width: 150px;">
 		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
@@ -235,11 +238,33 @@
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
-		 
+		 <div class="col-md-8 mx-auto" style="height: 800px;">
 		 <!-- 1:1문의 -->
+		 <div class="container-fluid col-me-8 mx-auto" style="margin-top: 150px;">
+		 	<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">문의</th>
+			      <th scope="col">문의 제목</th>
+			      <th scope="col">문의일</th>
+			      <th scope="col">답변 방식</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <c:forEach items="${one}" var="one">
+			    <tr>
+			      <th scope="row">${one.one_cate}</th>
+			      <td>Mark</td>
+			      <td>Otto</td>
+			      <td>@mdo</td>
+			    </tr>
+			   </c:forEach>
+			  </tbody>
+			</table>
+					 
+		 </div>
 		 
-		 
-		 
+		  </div>
 		 
 		 <!-- 1:1문의 끝 -->
 	<!-- Footer Section Begin -->

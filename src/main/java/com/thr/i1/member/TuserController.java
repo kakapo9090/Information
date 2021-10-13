@@ -58,7 +58,7 @@ public class TuserController {
 		
 		if (tuserDTO != null) {
 			// 로그인 성공!
-			session.setAttribute("tuser", id);
+			session.setAttribute("tuser", tuserDTO);
 			result = "1";
 			//mv.setViewName("redirect:../");
 		} else {

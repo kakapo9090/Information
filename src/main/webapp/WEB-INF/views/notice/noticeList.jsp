@@ -257,7 +257,7 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
@@ -323,10 +323,11 @@
                         </div>
                         <!-- 페이징 처리 끝-->
                     </div>
-                    
+                    <c:if test="${not empty tuser and tuser.id eq 'test'}">
                     <div>
 						<a href="./insert">insert</a>
 					</div>
+					</c:if>
                 </div>
                 
             </div>
@@ -406,7 +407,11 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
+	<script type="text/javascript">
+		$('.one').click(function(){
+			
+		})
+	</script>
 
 </body>
 

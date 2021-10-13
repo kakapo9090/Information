@@ -23,4 +23,21 @@
   		select count(faq_num) from faq
   	</select>
   
+  
+  	<insert id="setOneInsert" parameterType="One_on_oneDTO">
+  		insert into one_on_one 
+  		values(one_seq.nextval, #{one_cate}, #{one_title}, #{one_contents}, #{one_writer}, sysdate, #{one_answer}, 0,0,0)
+  	</insert>
+  
+  	<select id="getOneList" parameterType="One_on_oneDTO">
+  		select * from one_on_one where one_writer=#{one_writer}
+  	</select>
+  
+  
+  
+  
+  
+  
+  
+  
   </mapper>
