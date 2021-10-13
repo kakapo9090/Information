@@ -6,9 +6,9 @@
   <mapper namespace="com.thr.i1.cart.CartDAO">
 	<!-- 장바구니에 담기 -->
    	 <insert id="cartInsert" parameterType="CartDTO">
-        insert into cart (cart_Id, tuser_Id, product_Id, productFile_FileNum, Amount)
+        insert into cart (cart_Id, tuser_Id, product_Id, pf_FileNum, Amount)
         values 
-          (cart_seq.nextval, #{tuser_Id}, #{product_Id}, #{productFile_FileNum}, #{amount} )
+          (cart_seq.nextval, #{tuser_Id}, #{product_Id}, #{pf_FileNum}, #{amount} )
         
 	  </insert>
 	  
@@ -21,11 +21,11 @@
 	 and 장바구니테이블의 회원id = 파라미터로 받은 회원id-->
 	  <select id="cartList" resultType="CartDTO" parameterType="String">
 	  	select cart_Id, product_Id, tuser_Id, t.name, p.name product_Name
-	  	, amount, price, (price*amount) money, fileName, productFile_FileNum
+	  	, amount, price, (price*amount) money, fileName, pf_FileNum
 	  
-	  	from tuser t, cart c, product p, productFile f
+	  	from tuser t, cart c, product p, productFiles f
 	  	
-	  	where t.id=c.tuser_Id and c.product_Id=p.id and c.productFile_FileNum=f.fileNum
+	  	where t.id=c.tuser_Id and c.product_Id=p.id and c.pf_FileNum=f.fileNum
 	  	and c.tuser_Id=#{userid}
 	  	
 	  	order by cart_Id desc

@@ -5,7 +5,7 @@ public class CartDTO {
 	private Long cart_Id;	//시퀀스 값, PK
     private String tuser_Id;	//TUSER테이블의 id컬럼 조인
     private int product_Id;	//PRODUCT테이블의 id컬럼 조인 *product테이블의 데이터타입 맞추기
-    private int productFile_FileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
+    private int pf_FileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
     private int amount;	//수량
     
     
@@ -21,12 +21,13 @@ public class CartDTO {
     
   
 
-	public int getProductFile_FileNum() {
-		return productFile_FileNum;
+
+	public int getPf_FileNum() {
+		return pf_FileNum;
 	}
 
-	public void setProductFile_FileNum(int productFile_FileNum) {
-		this.productFile_FileNum = productFile_FileNum;
+	public void setPf_FileNum(int pf_FileNum) {
+		this.pf_FileNum = pf_FileNum;
 	}
 
 	public Long getCart_Id() {
