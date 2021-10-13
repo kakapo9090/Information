@@ -253,7 +253,7 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
@@ -266,16 +266,6 @@
 	  <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2">Search</button>
 	</div>
     </form>
-    <!-- 버튼으로 CATE이동 보류 -->
-<!--     <form action="./FAQ" method="get">
-		<div class="col-md-9 pd">
-			<button name="search" class="btn bt-ho" type="submit" value="회원">회원</button>
-			<button name="search" class="btn bt-ho" type="submit" value="배송">배송</button>
-			<button name="search" class="btn bt-ho" type="submit" value="주문/결제">주문/결제</button>
-			<button name="search" class="btn bt-ho" type="submit" value="취소/환불">취소/환불</button>
-			<button name="search" class="btn bt-ho" type="submit" value="교환/반품">교환/반품</button>
-		</div>
-	</form> -->
     
     <br>
     <!-- FAQ search 끝 -->
@@ -287,11 +277,11 @@
   	
 		    <h2 class="accordion-header" id="flush-headingOne">
 		      <button id="fa${status.index}" class="fa accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-		        ${q.faq_title}
+		        [${q.faq_cate}]     ${q.faq_title}
 		      </button>
 		    </h2>
 		    
-		   <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+		   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 		      <div id="facon${status.index}" style="display: none; font-size: 10; " class="accordion-body facon">${q.faq_contents}</div>
 		      </div>
 		  </div>

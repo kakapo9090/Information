@@ -257,7 +257,7 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->

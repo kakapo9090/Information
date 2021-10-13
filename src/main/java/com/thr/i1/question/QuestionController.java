@@ -30,10 +30,10 @@ public class QuestionController {
 		return mv;
 	}
 
-	@GetMapping("one_on_one")
+	@GetMapping("one_insert")
 	public ModelAndView getOneonList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("question/one_on_one");
+		mv.setViewName("question/one_insert");
 		return mv;
 	}
 	

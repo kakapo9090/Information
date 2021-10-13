@@ -11,7 +11,7 @@
 			(select * from faq
 			where faq_title 
 			like '%' || #{search} || '%' 
-			order by faq_num desc)
+			order by faq_cate desc)
 			FA)
 		WHERE R BETWEEN #{startRow} and #{lastRow}
 		 

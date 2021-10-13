@@ -23,12 +23,19 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-	<link type="text/css" href="<%=request.getContextPath()%>/resources/css/notiSelect.css" rel="styleSheet">
+<style type="text/css">
+	.one_menubar{
+		border-bottom: solid 2px #7fad39;
+	}
+	.ph-ema{
+		margin: 0;
+	}
+
+</style>    
     
 </head>
-
 <body>
-    <!-- Page Preloder -->
+	<!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -115,7 +122,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>
@@ -182,90 +189,93 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="../resources/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Blog</h2>
-                        <div class="breadcrumb__option">
-                            <a href="../">Home</a>
-                            <span>Blog</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-    <!-- notice 세부 -->
-		<!-- 공지사항, FAQ -->
-		<div class="card card-h " style="width: 200px;">
-		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
-		 <div class="card-body card-b">
-		 <!-- <p class="card-text">상담원 연결</p> -->
-		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
-		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
+    
+    <!-- 문의내역, 공지사항, FAQ 이동 메뉴바 -->
+    <div class="one_menubar">
+    	<div class="one_menu">
+	    	<a href="../notices/list">공지사항</a>
+	    	<a href="./FAQ">FAQ</a>
+	    	<%-- <c:if test="${member not eq null}"> --%>
+	    	<a href="./one_on_one">문의내역</a>
+	    	<%-- </c:if> --%>
     	</div>
-    	</div>
-		 <!-- 공지사항, FAQ 끝 -->
-		<div class="container">
-		<div class="mx-auto noti noti-bt">
-		 	<hr>
-		 	
-		 	<div class="con con1">
-		 		<p class="d">${notice.no_num}</p>
-		 		<h4 class="d dp">${notice.no_title}</h4>
-		 		<p class="d">${notice.no_regdate}</p>
-			 	
-		 	</div>
-		 	<hr>
-		 	
-		 	<div class="con contents">
-		 		${notice.no_contents}
-		 	</div>
-		 	
-		 	<hr>
-		 	<br>
-			 	<c:forEach items="${noti}" var = "no">
-			 		<div>
-			 			<a href="down?fileName=${no.fileName}">${no.oriName}</a>
-			 		</div>
-			 	</c:forEach>
-		 	
-		 	<br>
-		 	<!-- 모달 -->
-		 	<div class="modal" id="closeModal"  data-keyboard="false" data-backdrop="static" tabindex="-1">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title">삭제</h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <p>공지사항을 삭제하시겠습니까?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary delModal" value ="true" data-bs-dismiss="modal">삭제</button>
-			        <button type="button" class="btn btn-primary nodelModal" value="false">삭제 취소</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- 모달 -->
-		 	<div class="button3">
-			 	<button type="button" value="${notice.no_num}" class="up btn btn-outline-warning">공지수정</button>
-			 	<button type="button" class=" li btn btn-info">목록으로</button>
-			 	<!-- 관리자에게만 보이기 -->
-			 	<button type="button" value="${notice.no_num}" style="color: black"  class="del btn btn-outline-light">공지삭제</button>
-		 	</div>
-		 	</div>
+    </div>
+    <!-- 문의 시작 -->
+	<div class="container-fluid col-md-8 mx-auto" style="height: 800px;">
+	<form action="./one_on_one" method="Post" >
+	
+	
+	<h2 class="col-md-8 mx-auto" style="margin-top: 100px;">1:1 문의하기</h2><br>
+	<!-- 문의 카테고리 -->
+	<div class="col-md-8 mx-auto">
+	<select class="form-select" aria-label="Default select example" >
+	  <option selected>문의 카테고리</option>
+	  <option value="1">배송문의</option>
+	  <option value="2">주문/결제 문의</option>
+	  <option value="3">취소/환불 문의</option>
+	  <option value="4">교환/반품 문의</option>
+	  <option value="5">기타 문의</option>
+	</select>
+	</div>
+	<!-- 문의 제목 -->
+	<div class="" style="margin-top: 70px;"> 
+	<div class="mb-3 col-md-8 mx-auto">
+	  <label for="exampleFormControlInput1" class="form-label">문의 제목</label>
+	  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="문의제목을 입력해주세요.">
+	</div>
+	<!-- 문의 내용 -->
+	<div class="mb-3 col-md-8 mx-auto">
+	  <label for="exampleFormControlTextarea1" class="form-label">문의 내용</label>
+	  <textarea class="form-control" id="one_contents" rows="5" placeholder="취소,교환,반품 신청은 주문배송조회에서 직접 신청 가능합니다."></textarea>
+	</div>
+	</div>
+	<br>
+	<br>
+	<!-- 문의자 휴대폰 번호, 이메일 불러오기 -->
+	<div class="col-md-8 mx-auto">
+		<div class="row">
+		  <div class="col-md-6 ph-ema">
+		    <input type="text" readonly="readonly" class="form-control" value="010-0000-0000" aria-label="member-phone">
+		  </div>
+		  <div class="col-md-6 ph-ema" >
+		    <input type="email" readonly="readonly" class="form-control" value="kim@naver.com" aria-label="member-email">
+		  </div>
 		</div>
-		<!-- notice 세부 끝 -->
-    <!-- Footer Section Begin -->
+	</div>
+	<br>
+	<br>
+	<!-- 문의 답변 받을 곳 선택 -->
+	<div class="col-md-8 mx-auto">
+	<span>문의 답변 방식을 선택해주세요.</span>
+	<div class="form-check">
+	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+	  <label class="form-check-label" for="flexRadioDefault1">
+	    sms
+	  </label>
+	</div>
+	<div class="form-check">
+	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+	  <label class="form-check-label" for="flexRadioDefault2">
+	    이메일
+	  </label>
+	</div>
+	<div class="form-check">
+	  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+	  <label class="form-check-label" for="flexRadioDefault3">
+	    문의내역
+	  </label>
+	</div>
+	</div>
+	</form>
+		<!-- 문의 등록/취소 버튼 -->
+	<div class="col-md-8 mx-auto" style="padding-left: 250px;">
+		<button type="button" class="btn btn-primary btn-lg" style="width: 150px;">취소</button>
+		<button type="button" class="btn btn-primary btn-lg" style="width: 150px;">확인</button>
+	</div>
+	
+	</div>
+	<!--  문의 끝 -->
+<!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
             <div class="row">
@@ -336,36 +346,5 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
-<script type="text/javascript">
-	$('.li').click(function(){
-		location.href="./list";
-	});
-	//모달 x누르면 닫기
-	$('.btn-close').click(function(){
-		$('#closeModal').modal('hide');
-	})
-	
-	let num = $('.del').val();
-	//공지삭제 버튼 눌렀을 때 모달폼 띄우기
-	$('.del').click(function(){
-		$('#closeModal').modal();
-	});
-	//모달폼 내의 삭제 버튼 누르면 삭제하기
-	$('.delModal').click(function(){
-		location.href="./delete?no_num="+num;
-	});
-	//모달폼 내의 삭제취소 버튼 누르면 모달폼 닫기
-	$('.nodelModal').click(function(){
-		$('#closeModal').modal('hide');
-	});
-	//공지수정 버튼 누르면 업데이트로 이동
-	$('.up').click(function(){
-		location.href="./update?no_num="+num;
-	});
-	
-</script>
-
 </body>
-
- </html>
+</html>
