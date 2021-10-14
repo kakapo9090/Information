@@ -15,6 +15,9 @@
   	
   	<typeAlias type="com.thr.i1.member.TuserDTO" alias="TuserDTO"/>
   	<typeAlias type="com.thr.i1.member.TuserDAO" alias="TuserDAO"/>
+  	
+  	<typeAlias type="com.thr.i1.cart.CartDTO" alias="CartDTO"/>
+  	<typeAlias type="java.lang.String" alias="String"/>
   
   	</typeAliases>
   

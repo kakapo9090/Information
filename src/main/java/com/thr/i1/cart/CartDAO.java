@@ -22,4 +22,24 @@ public class CartDAO {
 	 public List<CartDTO> cartList(String userid) throws Exception{
 		 return sqlSession.selectList(NAMESPACE+"cartList", userid);
 	 }
+	 
+	 //장바구니 금액 합계
+	 public int sumMoney(String userid) throws Exception{
+	     return sqlSession.selectOne("NAMESPACE"+"sumMoney", userid); 
+	 }
+	 
+	 //장바구니 1개 삭제
+	 public int deleteOne(CartDTO cartDTO) throws Exception{
+		 return sqlSession.delete(NAMESPACE+"deleteOne", cartDTO);
+	 }
+	//장바구니 전체 삭제
+	 public int deleteAll(String userid) throws Exception{
+		 return sqlSession.delete(NAMESPACE+"deleteAll", userid);
+	}
+	 //장바구니 수정
+	 public int update(CartDTO cartDTO) throws Exception{
+		 return sqlSession.update(NAMESPACE+"update", cartDTO);
+	 }
+	 
 }
+
