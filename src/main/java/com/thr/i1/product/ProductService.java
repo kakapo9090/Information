@@ -14,7 +14,7 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 
-	// 카테고리별 list, pagination, 검색
+	// 카테고리별 list, pagination
 	public List<ProductDTO> getList(ProductDTO productDTO, Pager pager) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("product", productDTO);
@@ -33,7 +33,7 @@ public class ProductService {
 		return productDAO.getSelect(productDTO); 
 	}
 	
-	//제품 검색
+	//제품 검색, 검색된 제품 pagination 처리
 	public List<ProductDTO> getSearch(Pager pager) throws Exception {
 		Long totalCount = productDAO.getSearchCount(pager);
 		pager.setTotalCount(totalCount);

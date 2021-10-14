@@ -17,6 +17,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	//제품 list 사이트 이동
 	@GetMapping("productList")
 	public ModelAndView getList(ProductDTO productDTO, Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -27,7 +28,7 @@ public class ProductController {
 		return mv;
 	}
 	
-	
+	//제품 상세페이지 사이트로 이동
 	 @GetMapping("productDetails") 
 	 public ModelAndView getSelect(ProductDTO productDTO) throws Exception { 
 		 ModelAndView mv = new ModelAndView();
@@ -37,6 +38,7 @@ public class ProductController {
 		 return mv; 
 	 }
 	 
+	 //제품 검색 사이트로 이동
 	 @GetMapping("productSearch")
 	 public ModelAndView getSearch(Pager pager) throws Exception {
 		 ModelAndView mv = new ModelAndView();
