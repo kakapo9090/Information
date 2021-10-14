@@ -48,8 +48,16 @@
 	  </delete>
 	  
 	  <!-- 장바구니 전체 삭제 -->
-	  <delete id="deleteAll" parameterType="CartDTO">
+	  <delete id="deleteAll" parameterType="String">
 	  	delete from cart
-	  	where tuser_Id=#{tuser_Id} 
+	  	where tuser_Id=#{userid} 
 	  </delete>
+	  
+	  <!-- 장바구니 수량 수정 -->
+	  <update id="update" parameterType="CartDTO">
+	  	update cart 
+	  	set amount=#{amount}
+	  	where cart_Id=#{cart_Id}
+	  </update>
+	  
   </mapper>

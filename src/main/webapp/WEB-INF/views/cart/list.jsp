@@ -25,6 +25,19 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
+
+
+<script type="text/javascript">
+$(function(){
+	 $("#btnDelete").click(function(){
+	        if(confirm("장바구니를 비우시겠습니까?")){
+	            location.href="${pageContext.request.contextPath}/cart/deleteAll.do";//경로명 부정확...
+	            alert("장바구니를 모두 비웠습니다!")
+	        }
+	    });
+});
+</script>
+
 </head>
 
 <body>
@@ -225,7 +238,7 @@
 						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->		
 							    <div class="row">  
 							    	<form id="form1" name="form1" method="post"
-     									   action="./cartUpdate">      
+     									   action="${pageContext.request.contextPath}/cart/update.do">      
 			                            <table class="table">
 										  <thead>
 										    <tr align="center">
@@ -247,9 +260,9 @@
 								                    <td><input type="number" name="amount" style="width:30px;" 
                     									value="<fmt:formatNumber value="${row.amount}"
                             								pattern="#,###,###" />">
-                            							<input type="hidden" name="cart_id" value="${row.cart_Id}"></td>
+                            							<input type="hidden" name="cart_Id" value="${row.cart_Id}"></td>
 											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
-                   									<td><a href="./cart/delete?cart_id=${row.cart_Id}">[X]</a></td>
+                   									<td><a href="${pageContext.request.contextPath}/cart/delete.do?cart_Id=${row.cart_Id}">삭제</a></td>
 								                </tr>
 								            </c:forEach>
 								             	<tr>
@@ -261,8 +274,8 @@
 								               </tr>					   
 										  </tbody>
 										</table>
+											<button type="submit" id="btnUpdate" class="btn btn-success">수정</button>
 											<!-- 자바스크립트 처리 -->
-											<button type="button" id="btnUpdate" class="btn btn-success">수정</button>
 								            <button type="button" id="btnDelete" class="btn btn-danger">장바구니 비우기</button>
 								            
 									</form>
