@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/link")
 public class LinkController {
+	
 	//공지사항
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public ModelAndView notices () throws Exception {
