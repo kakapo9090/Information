@@ -212,9 +212,9 @@
     <!-- Breadcrumb Section End -->
 
 	<!-- Product Details Section Begin -->
-	<section class="product-details spad">
-		<div class="content">
-			<div class="section_view">
+	<section class="product_details spad">
+		<div class="content container">
+			<div class="section_view row">
 				<div class="sectionView">
 					<div class="inner_view">
 						<div class="thumb">
@@ -264,12 +264,81 @@
 								</p>
 							</div>
 							<button type="button" class="txt_type goBuy">바로구매</button>
-						</div>
-						
+						</div>						
 					</div>
 				</div>
 			</div>
-		
+            <div class="detail_view">
+                <div >
+                    <div>
+                        <div class="view_tab">
+                            <ul>
+                                <li>
+                                    <a href="#">상품상세정보</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										후기
+										<span class="count_review"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#">배송/반품/교환 안내</a>
+								</li>
+							</ul>
+                        </div>
+						<div>
+							상세 설명
+						</div>
+						<div>
+							PRODUCT REVIEW
+							<ul>
+								<li>
+									<p class="txt">
+										상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제될 수 있습니다.
+									</p>
+								</li>
+								<li>
+									<p class="txt">
+										배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 1:1 문의에 남겨주세요.
+									</p>
+								</li>
+							</ul>
+							<table>
+								<caption style="display: none;">구매후기 제목</caption>
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>작성자</th>
+										<th>작성일</th>
+										<th>조회</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<a href="#">후기작성</a>
+							</div>
+						</div>
+						<nav>
+
+						</nav>
+						<div>
+							배송 안내
+						</div>
+                    </div>
+					<div>
+						<div>
+
+						</div>
+					</div>
+                </div>
+            </div>
 		</div>
 	</section>
 	<!-- Product Details Section End -->
