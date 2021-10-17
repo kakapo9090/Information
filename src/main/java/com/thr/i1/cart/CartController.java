@@ -45,7 +45,7 @@ public class CartController {
 	public ModelAndView list(HttpSession session, ModelAndView mv) throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		String userid=(String)session.getAttribute("member");//키값 미정
+		String userid=(String)session.getAttribute("tuser");//키값 미정
 		//로그인한 상태면 실행
 		if(userid!=null) {
 			List<CartDTO> list = cartService.cartList(userid);//장바구니 목록 출력

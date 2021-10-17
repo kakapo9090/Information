@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -169,5 +170,21 @@ public class TuserController {
 		mv.setViewName("redirect:../");
 		return mv;
 	}
+	
+	//관리자-회원 목록
+	@RequestMapping("userList")
+	public String userList (Model model) {
+		List<TuserDTO> list = tuserService.userList();
+		model.addAttribute("list", list);
+		return "link/userList";
+	}
+	
+	//관리자-회원 상세조회
+	@RequestMapping("userView")
+	public String userView (String id, Model model) {
+		model.addAttribute("dto", tuserService.userView(id));
+		return "link/userView";
+	}
+	
 	
 }

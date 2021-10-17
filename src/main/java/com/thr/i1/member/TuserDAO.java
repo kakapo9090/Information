@@ -3,6 +3,8 @@ package com.thr.i1.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,4 +40,13 @@ public class TuserDAO {
 		return sqlSession.selectOne(NAMESPACE+".idCheck", tuserDTO);
 	}
 	
+	//관리자-회원 목록
+	public List<TuserDTO> userList() {
+		return sqlSession.selectList(NAMESPACE+".memberList");
+	}
+	
+	//관리자-회원 상세조회
+	public TuserDTO userView(String id) {
+		return sqlSession.selectOne(NAMESPACE+"userView", id);
+	}
 }
