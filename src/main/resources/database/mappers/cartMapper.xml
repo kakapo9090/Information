@@ -6,9 +6,9 @@
   <mapper namespace="com.thr.i1.cart.CartDAO">
 	<!-- 장바구니에 담기 -->
    	 <insert id="cartInsert" parameterType="CartDTO">
-        insert into cart (cart_Id, tuser_Id, product_Id, pf_FileNum, Amount)
+        insert into cart (cart_Id, id, product_Id, pf_FileNum, Amount)
         values 
-          (cart_seq.nextval, #{tuser_Id}, #{product_Id}, #{pf_FileNum}, #{amount} )
+          (cart_seq.nextval, #{id}, #{product_Id}, #{pf_FileNum}, #{amount} )
         
 	  </insert>
 	  
@@ -20,13 +20,13 @@
 	 and 장바구니테이블의 파일번호 = 파일테이블의 파일번호 
 	 and 장바구니테이블의 회원id = 파라미터로 받은 회원id-->
 	  <select id="cartList" resultType="CartDTO" parameterType="String">
-	  	select cart_Id, product_Id, tuser_Id, t.name, p.name product_Name
+	  	select cart_Id, product_Id, id, t.name, p.name product_Name
 	  	, amount, price, (price*amount) money, fileName, pf_FileNum
 	  
 	  	from tuser t, cart c, product p, productFiles f
 	  	
-	  	where t.id=c.tuser_Id and c.product_Id=p.id and c.pf_FileNum=f.fileNum
-	  	and c.tuser_Id=#{userid}
+	  	where t.id=c.id and c.product_Id=p.id and c.pf_FileNum=f.fileNum
+	  	and c.id=#{userid}
 	  	
 	  	order by cart_Id desc
 	  </select>
@@ -37,7 +37,7 @@
 	  	
 	  	from cart c, product p
 	  	
-	  	where c.product_Id=p.id and c.tuser_Id=#{userid}
+	  	where c.product_Id=p.id and c.id=#{userid}
 	  	
 	  </select>
 	  
@@ -50,7 +50,7 @@
 	  <!-- 장바구니 전체 삭제 -->
 	  <delete id="deleteAll" parameterType="String">
 	  	delete from cart
-	  	where tuser_Id=#{userid} 
+	  	where id=#{userid} 
 	  </delete>
 	  
 	  <!-- 장바구니 수량 수정 -->

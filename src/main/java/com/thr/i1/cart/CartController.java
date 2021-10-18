@@ -32,7 +32,7 @@ public class CartController {
 		}
 		
 		//로그인이 되어있을 경우 장바구니 목록 페이지로 이동
-		cartDTO.setTuser_Id(userid);
+		cartDTO.setId(userid);
 		cartService.cartInsert(cartDTO); //장바구니 테이블에 저장
 	
 		return "redirect:/cart/list.do";	//장바구니 목록 이동

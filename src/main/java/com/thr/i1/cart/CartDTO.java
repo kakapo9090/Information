@@ -3,7 +3,7 @@ package com.thr.i1.cart;
 public class CartDTO {
 	//CART테이블에 실제로 있는 컬럼들
 	private Long cart_Id;	//시퀀스 값, PK
-    private String tuser_Id;	//TUSER테이블의 id컬럼 조인
+    private String id;	//TUSER테이블의 id컬럼 조인
     private int product_Id;	//PRODUCT테이블의 id컬럼 조인 *product테이블의 데이터타입 맞추기
     private int pf_FileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
     private int amount;	//수량
@@ -38,12 +38,12 @@ public class CartDTO {
 		this.cart_Id = cart_Id;
 	}
 
-	public String getTuser_Id() {
-		return tuser_Id;
+	public String getId() {
+		return id;
 	}
 
-	public void setTuser_Id(String tuser_Id) {
-		this.tuser_Id = tuser_Id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getProduct_Id() {
