@@ -10,7 +10,7 @@
 		select count(no_num) from noticei1
 	  </select>
 
-	  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
+	  <select id="getList" resultType="NoticeDTO" parameterType="NoticePager">
 	  	select * from
 	    	(select rownum r, noti.* from 
 	        	(select * from noticei1 

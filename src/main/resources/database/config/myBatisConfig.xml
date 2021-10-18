@@ -8,7 +8,7 @@
   	<typeAlias type="com.thr.i1.notice.NoticeDTO" alias="NoticeDTO"/>
   	<typeAlias type="com.thr.i1.notice.NotiFilesDTO" alias="NotiFilesDTO"/>
   
-  	<typeAlias type="com.thr.i1.util.Pager" alias="Pager"/>
+  	<typeAlias type="com.thr.i1.util.NoticePager" alias="NoticePager"/>
   	<typeAlias type="java.lang.Long" alias="Long"/>
   
   	<typeAlias type="com.thr.i1.question.QuestionDTO" alias="QuestionDTO"/>
@@ -18,6 +18,13 @@
   	
   	<typeAlias type="com.thr.i1.cart.CartDTO" alias="CartDTO"/>
   	<typeAlias type="java.lang.String" alias="String"/>
+  	
+  	<typeAlias type="com.thr.i1.product.ProductDTO" alias="ProductDTO"/>
+  	<typeAlias type="java.lang.Long" alias="Long"/>
+  	<typeAlias type="java.util.Map" alias="Map"/>
+  	<typeAlias type="com.thr.i1.product.ProductCategoryDTO" alias="ProductCategoryDTO"/>
+  	<typeAlias type="com.thr.i1.util.Pager" alias="Pager"/>
+  	
   
   	</typeAliases>
   

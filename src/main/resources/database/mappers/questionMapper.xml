@@ -5,7 +5,7 @@
   
   <mapper namespace="com.thr.i1.question.QuestionDAO">
 
-	<select id="getList" resultType="QuestionDTO" parameterType="pager">
+	<select id="getList" resultType="QuestionDTO" parameterType="NoticePager">
 		select * from
 		(select ROWNUM R, FA.* FROM
 			(select * from faq

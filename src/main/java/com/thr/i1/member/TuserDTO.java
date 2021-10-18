@@ -15,7 +15,7 @@ public class TuserDTO {
 	//이메일
 	private String email;
 	//전화번호
-	private int phone;
+	private String phone;
 	//주소
 	private String address;
 	
@@ -56,10 +56,10 @@ public class TuserDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getAddress() {

@@ -99,7 +99,7 @@ public class TuserController {
 		tuserDTO.setPw(pw);
 		tuserDTO.setName(name);
 		tuserDTO.setEmail(email);
-		tuserDTO.setPhone(Integer.parseInt(phone));
+		tuserDTO.setPhone(phone);
 		tuserDTO.setAddress(address);
 		sqlresult = tuserService.setNew(tuserDTO);
 		
