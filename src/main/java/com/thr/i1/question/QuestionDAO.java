@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 @Repository
 public class QuestionDAO {
@@ -16,7 +16,7 @@ public class QuestionDAO {
 	
 	private final String NAMESPACE="com.thr.i1.question.QuestionDAO.";
 	
-	public List<QuestionDTO> getList(Pager pager) throws Exception{
+	public List<QuestionDTO> getList(NoticePager pager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 		
 	}

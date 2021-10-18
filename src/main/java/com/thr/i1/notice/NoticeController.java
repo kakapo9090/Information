@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 
 
@@ -23,13 +23,13 @@ public class NoticeController {
 	
 	//리스트 가져오기
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(NoticePager noticePager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
-		List<NoticeDTO> ar = noticeService.getList(pager);
+		List<NoticeDTO> ar = noticeService.getList(noticePager);
 		//System.out.println(ar.get(0).getNo_num());
 		mv.addObject("list", ar);
-		mv.addObject("pager", pager);
+		mv.addObject("pager", noticePager);
 		mv.setViewName("./notice/noticeList");
 		return mv;
 		

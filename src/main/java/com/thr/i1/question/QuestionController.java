@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 
 @RequestMapping("/question/**")
@@ -19,7 +19,7 @@ public class QuestionController {
 	private QuestionService questionService;
 	
 	@GetMapping("FAQ")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(NoticePager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<QuestionDTO> question= questionService.getList(pager);
 		System.out.println("serach:"+pager.getSearch());

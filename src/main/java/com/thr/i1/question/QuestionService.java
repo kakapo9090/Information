@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 @Service
 public class QuestionService {
@@ -13,7 +13,7 @@ public class QuestionService {
 	@Autowired
 	private QuestionDAO questionDAO;
 	
-	public List<QuestionDTO> getList(Pager pager) throws Exception{
+	public List<QuestionDTO> getList(NoticePager pager) throws Exception{
 		System.out.println(pager.getSearch());
 		Long totalCount = questionDAO.getCount();
 		pager.setPerPage(10L);

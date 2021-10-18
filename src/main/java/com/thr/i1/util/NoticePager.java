@@ -1,6 +1,6 @@
 package com.thr.i1.util;
 
-public class Pager {
+public class NoticePager {
 
 	private String search;
 	
