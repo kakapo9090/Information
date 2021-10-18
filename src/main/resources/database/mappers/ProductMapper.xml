@@ -6,9 +6,9 @@
   <mapper namespace="com.thr.i1.product.ProductDAO">
   	<!-- Product List 카테고리별로 구분, 검색(전체) -->
   	<resultMap type="ProductDTO" id="getListResult">
-  		<id column="id" property="id"/>
+  		<id column="product_id" property="product_id"/>
   		<result column="category" property="category"/>
-  		<result column="name" property="name"/>
+  		<result column="product_name" property="product_name"/>
   		<result column="price" property="price"/>
   		<result column="explain" property="explain"/>
   		<result column="etc" property="etc"/>
@@ -33,7 +33,7 @@
 	
  	<!-- 카테고리별 게시물 수 -->
  	<select id="getCount" parameterType="ProductDTO" resultType="Long">
-		SELECT COUNT(ID) FROM PRODUCT P INNER JOIN PRODUCT_CATEGORY PC 
+		SELECT COUNT(PRODUCT_ID) FROM PRODUCT P INNER JOIN PRODUCT_CATEGORY PC 
 		ON P.CATEGORY = PC.CATEGORY 
 		<if test="category!=null">
 		WHERE P.CATEGORY=#{category} OR PC.CATEREF1=#{category} OR PC.CATEREF2=#{category}
@@ -42,7 +42,7 @@
 	
 	<!-- 상품 상세 페이지 보기 -->
 	<select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">
-		SELECT * FROM PRODUCT WHERE ID=#{id}
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#{product_id}
 	</select>
 	
 	<!-- 상품 검색 -->
@@ -50,14 +50,14 @@
 		SELECT * FROM 
 			(SELECT ROWNUM R, SEARCH.* FROM
 				(SELECT * FROM PRODUCT 
-				WHERE NAME LIKE '%' || #{search} || '%') SEARCH) 
+				WHERE PRODUCT_NAME LIKE '%' || #{search} || '%') SEARCH) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<!-- 검색된 상품의 수 -->
 	<select id="getSearchCount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(ID) FROM PRODUCT 
-		WHERE NAME LIKE '%' || #{search} || '%'
+		SELECT COUNT(PRODUCT_ID) FROM PRODUCT 
+		WHERE PRODUCT_NAME LIKE '%' || #{search} || '%'
 	</select>
 	
   

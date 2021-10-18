@@ -2,31 +2,33 @@ package com.thr.i1.product;
 
 public class ProductDTO {
 	
-	private Long id;
+	private Long product_id;
 	private Long category;
-	private String name;
+	private String product_name;
 	private Long price;
 	private String explain;
 	private String etc;
 	private ProductCategoryDTO productCategoryDTO;
 	
-	public Long getId() {
-		return id;
+		
+	public Long getProduct_id() {
+		return product_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}	
+	public void setProduct_id(Long product_id) {
+		this.product_id = product_id;
+	}
 	public Long getCategory() {
 		return category;
 	}
 	public void setCategory(Long category) {
 		this.category = category;
 	}
-	public String getName() {
-		return name;
+	
+	public String getProduct_name() {
+		return product_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	public Long getPrice() {
 		return price;

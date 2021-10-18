@@ -219,7 +219,7 @@
 					<div class="inner_view">
 						<div class="thumb">
 						</div>
-						<p class="product_name">${dto.name}</p>
+						<p class="product_name">${dto.product_name}</p>
 						<p class="product_price">${dto.price}</p>
 						<div class="product_info">
 							<dl class="list">

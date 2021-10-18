@@ -367,7 +367,7 @@
 	                                    </ul>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./productDetails?id=${dto.id}">${dto.name}</a></h6>
+	                                    <h6><a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a></h6>
 	                                    <h5>${dto.price}</h5>
 	                                </div>
 	                            </div>
