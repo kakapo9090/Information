@@ -1,25 +1,19 @@
 package com.thr.i1.member;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -168,6 +162,21 @@ public class TuserController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:../");
 		return mv;
+	}
+	
+	//관리자-회원 목록
+	@RequestMapping("userList")
+	public String userList (Model model) {
+		List<TuserDTO> list = tuserService.userList();
+		model.addAttribute("list", list);
+		return "link/userList";
+	}
+		
+	//관리자-회원 상세조회
+	@RequestMapping("userView")
+	public String userView (String id, Model model) {
+		model.addAttribute("dto", tuserService.userView(id));
+		return "link/userView";
 	}
 	
 }

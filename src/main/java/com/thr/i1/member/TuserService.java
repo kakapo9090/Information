@@ -1,5 +1,7 @@
 package com.thr.i1.member;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -39,5 +41,15 @@ public class TuserService {
 	//ID 중복 확인
 	public TuserDTO idCheck(TuserDTO tuserDTO) throws Exception {
 		return tuserDAO.idCheck(tuserDTO);
+	}
+	
+	//관리자-회원 목록
+	public List<TuserDTO> userList () {
+		return tuserDAO.userList();
+	}
+		
+	//관리자-회원 상세조회
+	public TuserDTO userView(String id) {
+		return tuserDAO.userView(id);
 	}
 }
