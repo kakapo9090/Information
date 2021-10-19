@@ -31,5 +31,10 @@
   		VALUES
   		(Tuser_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, #{phone}, #{address})
   	</insert>
+  	
+  	<!-- 관리자-회원 목록 -->
+  	<select id="userList" resultType="TuserDTO">
+  	
+  	</select>
   
   </mapper>

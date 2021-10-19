@@ -6,10 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.mybatis.logging.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,7 @@ public class TuserController {
 	
 	@Autowired
 	private TuserService tuserService;
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(TuserController.class);
 	
 	//로그인 화면
 	@GetMapping("login")
@@ -176,7 +180,15 @@ public class TuserController {
 	@RequestMapping("userView")
 	public String userView (String id, Model model) {
 		model.addAttribute("dto", tuserService.userView(id));
+		logger.info("클릭한 아이디 : " + id);
 		return "link/userView";
+	}
+	
+	//관리자-회원 정보 수정
+	@RequestMapping("userEdit")
+	public String userEdit (@ModelAttribute TuserDTO tuserDTO) {
+		tuserService.userEdit(tuserDTO);
+		return "link/userList";
 	}
 	
 }

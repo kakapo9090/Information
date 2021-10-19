@@ -47,9 +47,18 @@ public class TuserService {
 	public List<TuserDTO> userList () {
 		return tuserDAO.userList();
 	}
-		
+		 
 	//관리자-회원 상세조회
 	public TuserDTO userView(String id) {
 		return tuserDAO.userView(id);
+	}
+	
+	//관리자-회원 정보 수정
+	public void userEdit (TuserDTO tuserDTO) {
+		tuserDAO.userEdit(tuserDTO);
+	}
+	
+	//관리자-회원 정보 삭제
+	public void userDelete (String id) {
 	}
 }

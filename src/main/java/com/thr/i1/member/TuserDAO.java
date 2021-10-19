@@ -54,4 +54,8 @@ public class TuserDAO {
 	public void userEdit (TuserDTO tuserDTO) {
 		sqlSession.update(NAMESPACE+"userEdit", tuserDTO);
 	}
+	
+	//관리자-회원 정보 삭제
+	public void userDelete (String id) {
+	}
 }
