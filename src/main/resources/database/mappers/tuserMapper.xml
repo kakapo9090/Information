@@ -34,7 +34,30 @@
   	
   	<!-- 관리자-회원 목록 -->
   	<select id="userList" resultType="TuserDTO">
-  	
+  		select
+  			master, id, name, email, phone, address
+  		from tuser
+  		order by id
   	</select>
+  	
+  	<!-- 관리자-회원 상세조회 -->
+  	<select id="userView" resultType="TuserDTO">
+  		select
+  			master, id, name, email, phone, address
+  		from tuser
+  		where id = #{id}
+  	</select>
+  	
+  	<!-- 관리자-회원 정보 수정 -->
+  	<update id="userEdit">
+  		update tuser
+  		set
+  			pw = #{pw}
+  			name = #{name}
+  			email = #{email}
+  			phone = #{phone}
+  			address = #{address}
+  		where id = #{id}
+  	</update>
   
   </mapper>

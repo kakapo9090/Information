@@ -188,7 +188,7 @@ public class TuserController {
 	@RequestMapping("userEdit")
 	public String userEdit (@ModelAttribute TuserDTO tuserDTO) {
 		tuserService.userEdit(tuserDTO);
-		return "link/userList";
+		return "redirect:/link/userList";
 	}
 	
 }
