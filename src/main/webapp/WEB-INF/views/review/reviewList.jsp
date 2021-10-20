@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 	<!-- review list begin -->
-	<table>
+	<table class="review_table">
 	<caption style="display: none;">구매후기 제목</caption>
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
+				<th width="5%">번호</th>
+				<th width="50%">제목</th>
+				<th width="20%">작성자</th>
+				<th width="25%">작성일</th>
 			</tr>
 		</thead>
 		<tbody>

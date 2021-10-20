@@ -13,6 +13,9 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" type="text/css">
@@ -23,6 +26,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/productDetails.css" type="text/css">
 </head>
 <body>
     <!-- Page Preloder -->
@@ -212,49 +216,58 @@
     <!-- Breadcrumb Section End -->
 
 	<!-- Product Details Section Begin -->
-	<section class="product_details spad">
-		<div class="content container">
+	<section class="product_details">
+		<div class="container">
 			<div class="section_view row">
-				<div class="sectionView">
-					<div class="inner_view">
-						<div class="thumb">
-						</div>
-						<p class="product_name">${dto.product_name}</p>
-						<p class="product_price">${dto.price}</p>
-						<div class="product_info">
-							<dl class="list">
-								<c:if test="${not empty dto.etc}">
-									<dt class="tit">원산지</dt>
-									<dd class="desc">${dto.etc}</dd>								
-								</c:if>
-							</dl>
-							<dl>
-								<dt class="tit">간단설명</dt>
-								<dd class="desc">${dto.explain}</dd>
-							</dl>
-						</div>
-					</div>
+				<div class="product_img">
+					<img alt="" src="../resources/img/product/product-7.jpg" id="image">
 				</div>
-				<div class="cartPut">
-					<div class="inner_option">
-						<span class="tit_item">구매수량</span>
-						<div class="option">
-							<span class="count">
-								<button type="button" class="btn down on">-</button>
-								<input type="number" readonly="readonly" onfocus="this.blur()" class="inp">
-								<button type="button" class="btn up on">+</button>
-							</span>
+				<div class="product_contents">
+					<div class="product_info">
+						<p class="txt_type product_name">${dto.product_name}</p>
+						<p class="txt_type price">${dto.price}</p>
+						<p class="txt_type price won">원</p>
+					</div>
+					<div class="product_explain">
+						<table class="list">
+							<tr>
+								<c:if test="${not empty dto.etc}">
+									<td class="tit">원산지</td>
+									<td class="desc">${dto.etc}</td>							
+								</c:if>
+							</tr>
+							<tr>
+								<td class="tit">배송</td>
+								<td class="desc">무료배송</td>
+							</tr>							
+							<tr>
+								<td class="tit">간단설명</td>
+								<td class="desc">${dto.explain}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="cartPut">
+						<div class="inner_option">
+							<span class="tit_item">${dto.product_name}</span>
+							<div class="option">
+								<span class="count">
+									<button type="button" class="btn down on">-</button>
+									<input type="number" readonly="readonly" onfocus="this.blur()" class="inp">
+									<button type="button" class="btn up on">+</button>
+								</span>
+							</div>
+							<span>${dto.price}원</span>
 						</div>
 						<div class="total">
-							<strong class="tit">총 상품금액 : </strong>
+							<span class="tit">총 합계금액  :  </span>
 							<span class="sum">
-								<span class="num"></span>
+								<span class="num">30000</span>
 								<span class="won">원</span>
 							</span>
 						</div>
 						<div class="group_btn">
-							<button type="button" class="txt_type goCart">장바구니 담기</button>
-							<div class="cart_inner">
+							<button type="button" class="btn_txt goCart">장바구니 담기</button>
+<!-- 							<div class="cart_inner">
 								<p class="cart_txt">
 									선택하신 상품이 장바구니에 담겼습니다
 									<br>
@@ -262,8 +275,8 @@
 									<button class="btn_shopping">쇼핑 계속하기</button>
 									<button class="btn_goCart">장바구니 바로가기</button>
 								</p>
-							</div>
-							<button type="button" class="txt_type goBuy">바로구매</button>
+							</div> -->
+							<button type="button" class="btn_txt goBuy">바로구매</button>
 						</div>						
 					</div>
 				</div>
