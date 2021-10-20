@@ -304,25 +304,11 @@
 									</p>
 								</li>
 							</ul>
-							<table>
-								<caption style="display: none;">구매후기 제목</caption>
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>작성자</th>
-										<th>작성일</th>
-										<th>조회</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
+							<div class="review_list" data-product-id="${dto.product_id}">
+							
+							</div>
 							<div>
-								<a href="#">후기작성</a>
+								<a href="../review/reviewInsert?product_id=${dto.product_id}">후기작성</a>
 							</div>
 						</div>
 						<nav>
@@ -420,5 +406,6 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
+    <script type="text/javascript" src="../resources/js/review.js"></script>
 </body>
 </html>

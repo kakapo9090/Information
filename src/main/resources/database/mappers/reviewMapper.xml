@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.review.ReviewDAO">
+	<select id="getReviewList" parameterType="Map" resultType="ReviewDTO">
+  		SELECT * FROM 
+  			(SELECT ROWNUM R, REV.* FROM 
+  				(SELECT * FROM REVIEW WHERE PRODUCT_ID=#{review.product_id} ORDER BY RE_NUM DESC) REV)
+  		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+  	</select>
+
+	<resultMap type="ReviewDTO" id="getReviewResult">
+		<id column="re_num" property="re_num"/>
+		<result column="product_id" property="product_id"/>
+		<result column="re_title" property="re_title"/>
+		<result column="re_contents" property="re_contents"/>
+		<result column="re_writer" property="re_writer"/>
+		<result column="re_date" property="re_date"/>
+		<result column="re_star" property="re_star"/>
+		<collection property="files" javaType="List" ofType="ReviewFilesDTO">
+			<id column="re_fileNum" property="re_fileNum"/>
+			<result column="re_num" property="re_num"/>
+			<result column="re_fileName" property="re_fileName"/>
+			<result column="re_oriName" property="re_oriName"/>
+		</collection>
+	</resultMap>
+	<select id="getReviewSelect" parameterType="ReviewDTO" resultMap="getReviewResult">
+		SELECT * FROM REVIEW R LEFT JOIN REVIEWFILES RF 
+		USING (RE_NUM) WHERE RE_NUM=#{re_num}
+	</select>
+	
+	<select id="getReviewCount" parameterType="ReviewDTO" resultType="Long">
+		SELECT COUNT(RE_NUM) FROM REVIEW WHERE PRODUCT_ID=#{product_id}
+	</select>
+	
+	<insert id="setReviewInsert" parameterType="ReviewDTO">
+		<selectKey order="BEFORE" resultType="Long" keyProperty="re_num">
+			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REVIEW (PRODUCT_ID, RE_NUM, RE_TITLE, RE_CONTENTS, RE_WRITER)
+		VALUES (#{product_id}, #{re_num}, #{re_title}, #{re_contents}, #{re_writer})
+	</insert>
+	
+	<insert id="setReviewFiles" parameterType="ReviewFilesDTO">
+		INSERT INTO REVIEWFILES (RE_NUM, RE_FILENUM, RE_FILENAME, RE_ORINAME) 
+		VALUES (#{re_num}, REVIEWFILES_SEQ.NEXTVAL, #{re_fileName}, #{re_oriName})
+	</insert>
+  
+  </mapper>
