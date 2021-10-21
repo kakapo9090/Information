@@ -35,7 +35,7 @@
   	<!-- 관리자-회원 목록 -->
   	<select id="userList" resultType="TuserDTO">
   		select
-  			master, id, name, email, phone, address
+  			id, name, email, phone, address
   		from tuser
   		order by id
   	</select>

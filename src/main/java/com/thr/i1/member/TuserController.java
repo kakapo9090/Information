@@ -124,7 +124,6 @@ public class TuserController {
 		return mv;
 			
 	}
-	//중목체크
 	@PostMapping("idCheck")
 	public @ResponseBody String icCheck (@RequestBody String paramData) throws Exception{
 		String result = "0";
@@ -150,14 +149,6 @@ public class TuserController {
 		return result;
 	}
 	
-	//마이페이지
-	@GetMapping("mypage")
-	public ModelAndView mypage () throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/mypage");
-		return mv;
-	}
-	
 	//로그아웃
 	@GetMapping("logout")
 	public ModelAndView logout (HttpSession session)throws Exception{
@@ -180,7 +171,8 @@ public class TuserController {
 	@RequestMapping("userView")
 	public String userView (String id, Model model) {
 		model.addAttribute("dto", tuserService.userView(id));
-		logger.info("클릭한 아이디 : " + id);
+		System.out.println("클릭한 아이디 : "+id);
+		logger.info("클릭한 아이디 : "+id);
 		return "link/userView";
 	}
 	
@@ -189,6 +181,16 @@ public class TuserController {
 	public String userEdit (@ModelAttribute TuserDTO tuserDTO) {
 		tuserService.userEdit(tuserDTO);
 		return "redirect:/link/userList";
+	}
+	
+
+	
+	//마이페이지
+	@GetMapping("mypage")
+	public ModelAndView mypage () throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("link/mypage");
+		return mv;
 	}
 	
 }

@@ -47,12 +47,12 @@ public class TuserDAO {
 		
 	//관리자-회원 상세조회
 	public TuserDTO userView(String id) {
-		return sqlSession.selectOne(NAMESPACE+"userView", id);
+		return sqlSession.selectOne(NAMESPACE+".userView", id);
 	}
 	
 	//관리자-회원 정보 수정
 	public void userEdit (TuserDTO tuserDTO) {
-		sqlSession.update(NAMESPACE+"userEdit", tuserDTO);
+		sqlSession.update(NAMESPACE+".userEdit", tuserDTO);
 	}
 	
 	//관리자-회원 정보 삭제

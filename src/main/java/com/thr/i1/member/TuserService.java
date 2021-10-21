@@ -61,4 +61,6 @@ public class TuserService {
 	//관리자-회원 정보 삭제
 	public void userDelete (String id) {
 	}
+	
+	
 }
