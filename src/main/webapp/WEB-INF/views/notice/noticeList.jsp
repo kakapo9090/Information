@@ -43,7 +43,8 @@
     	}
 		.card-h{
 			float: left;
-			margin-left: 200px; 
+			margin-left: 100px; 
+			
 			
 		}
 		
@@ -67,7 +68,9 @@
 			margin-left: 100px;
 			margin-top: 150px;
 		}
-		
+		.notiCon{
+			position: relative;
+		} 
 		
     </style>
     
@@ -257,12 +260,22 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
+		<c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
 		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
 		 <!-- 공지사항 시작 -->
-        <div class="container">
+        <div class="container notiCon">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar" >
@@ -286,7 +299,7 @@
                     </div>
                 </div>
                 <!-- 공지사항 테이블 시작 -->
-                <div class="col-lg-8 col-md-7">
+                <div class="col-lg-8 col-md-7 notiList">
                     <div class="row">
                     	<br>
                     	<br>
@@ -323,7 +336,7 @@
                         </div>
                         <!-- 페이징 처리 끝-->
                     </div>
-                    <c:if test="${not empty tuser and tuser.id eq 'test'}">
+                    <c:if test="${not empty tuser and tuser eq 'test'}">
                     <div>
 						<a href="./insert">insert</a>
 					</div>
@@ -408,8 +421,8 @@
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
 	<script type="text/javascript">
-		$('.one').click(function(){
-			
+		$('.one1').click(function(){
+			alert('로그인이 필요한 서비스입니다.');로
 		})
 	</script>
 

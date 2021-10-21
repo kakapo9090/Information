@@ -26,11 +26,13 @@
 	<style type="text/css">
 	.bt-ho:hover{
 			background-color: #7fad39;
+			
     	}
 		.card-h{
 			float: left;
 			margin-left: 100px; 
 			margin-top: 200px;
+			position: absolute;
 			
 		}
 		
@@ -46,7 +48,13 @@
 		.card-b{
 			padding-left: 10px;
 		}
-
+		.onetable{
+			position: relative;
+		}
+		/* .btn{
+		border: 1px solid #7fad39;
+    		border-radius: 7px;
+		} */
  	</style>    
     
 </head>
@@ -213,10 +221,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>1:1 문의</h2>
+                        <h2>1:1 문의 내역</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>1:1 문의</span>
+                            <span>문의 내역</span>
                         </div>
                     </div>
                 </div>
@@ -234,30 +242,53 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
-		 <div class="col-md-8 mx-auto" style="height: 800px;">
+		 <div class="col-md-8 mx-auto onetable" style="height: 800px;">
 		 <!-- 1:1문의 -->
-		 <div class="container-fluid col-me-8 mx-auto" style="margin-top: 150px;">
+		
+		 <div class="container-fluid col-md-10 mx-auto" style="margin-top: 150px;">
 		 	<table class="table">
 			  <thead>
 			    <tr>
 			      <th scope="col">문의</th>
 			      <th scope="col">문의 제목</th>
 			      <th scope="col">문의일</th>
-			      <th scope="col">답변 방식</th>
+			      <th scope="col">답변 알림</th>
 			    </tr>
 			  </thead>
 			  <tbody>
+			 
 			  <c:forEach items="${one}" var="one">
+
+			   <c:if test="${tuser eq one.one_writer or tuser eq 'test'}">
+			   
 			    <tr>
 			      <th scope="row">${one.one_cate}</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
+			      <td><a href="./one_select?one_num=${one.one_num}">${one.one_title}</a></td>
+			      <td>${one.one_regdate}</td>
+			      <td>${one.one_answer}</td>
 			    </tr>
+			  	
+			    </c:if>
+			 	
+			 	<%-- <c:if test="${one.one_writer ne tuser }">
+			 		<div>문의</div>
+			 	</c:if>  --%>  
+			    
+			    
 			   </c:forEach>
 			  </tbody>
 			</table>

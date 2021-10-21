@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 
 
@@ -41,7 +41,7 @@ public class NoticeDAO {
 		return sqlSession.selectOne(NAMESPACE+"getCount");
 	}
 	
-	public List<NoticeDTO> getList(Pager pager) throws Exception{
+	public List<NoticeDTO> getList(NoticePager pager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	

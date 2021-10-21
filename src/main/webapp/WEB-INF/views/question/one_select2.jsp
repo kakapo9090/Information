@@ -23,47 +23,8 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/oneSelect.css" type="text/css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    
- 	<style type="text/css">
- 	
- 		.search{
- 			margin-top: 60px;
- 			padding-right: 50px;
- 			
- 		}
-  		.accor{
-  			border-bottom: 0.3px gray solid;
-  		}
-  		.blog__pagination:before{
-  			height: 0;
-  		}.bt-ho:hover{
-			background-color: #7fad39;
-    	}
-		.card-h{
-			float: left;
-			margin-left: 100px; 
-			margin-top: 200px;
-			position: relative;
-			
-		}
-		
-		.FAQ{
-			width: 130px;
-			font-size: 18;
-			font-style: sans-serif;
-			font-weight: 700;
-			align-content: center;
-			
-		}
-		.card-b{
-			padding-left: 10px;
-		}
-
- 	</style>
     
 </head>
 
@@ -229,10 +190,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>FAQ</h2>
+                        <h2>1:1 문의 내역</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>FAQ</span>
+                            <span>문의 내역</span>
                         </div>
                     </div>
                 </div>
@@ -240,8 +201,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    
-    <!-- FAQ 시작 -->
+        
         <!-- 공지사항, FAQ -->
 		<div class="card card-h " style="width: 150px;">
 		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
@@ -263,55 +223,80 @@
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
-    <div class="col-md-10 mx-auto" style="height: 900px;">
-    <!-- FAQ search 시작 -->
-    
-    <form action="./FAQ" method="get" id="f">
-    <div class="input-group mb-3 col-md-6 mx-auto search">
-	  <input type="text" class="form-control input-search" placeholder="궁금한 점을 입력하세요." name="search" aria-label="Recipient's username" aria-describedby="button-addon2">
-	  <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2">Search</button>
-	</div>
-    </form>
-    
-    <br>
-    <!-- FAQ search 끝 -->
-    
-    <c:forEach items="${question}" var="q" varStatus="status">
- 		
-    <div class="accordion accordion-flush col-md-7 mx-auto accor" id="accordionFlushExample">
-  		 <div class="accordion-item accor" >
-  	
-		    <h2 class="accordion-header" id="flush-headingOne">
-		      <button id="fa${status.index}" class="fa accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-		        [${q.faq_cate}]     ${q.faq_title}
-		      </button>
-		    </h2>
-		    
-		   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-		      <div id="facon${status.index}" style="display: none; font-size: 10; " class="accordion-body facon">${q.faq_contents}</div>
-		      </div>
-		  </div>
-		 		  
-	</div>
-	</c:forEach>
-	
-	<!-- 페이징 처리 -->
-	  <br>
-      <div class="col-md-7 mx-auto">
-         <div class="product__pagination blog__pagination page">
-               <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="pn">
-                  <a href="./FAQ?pn=${pn}">${pn}</a>
-               </c:forEach>
-                  <a href="./FAQ?pn=${pager.lastNum+1}">&raquo;</a>
-          </div>
-       </div>
-    <!-- 페이징 처리 끝-->
-    
-    
-    <!-- FAQ 끝 -->
-    
-    </div>
-      <!-- Footer Section Begin -->
+		 
+		<!-- 세부 문의 내역 확인 --> 
+		 <input id="num" value="${oneDTO.one_num}" style="display: none;">
+		 <div class="container-lg oneSel">
+		 	<div class="oneTB col-md-10 mx-auto">
+				<table class="table seltb">
+					<colgroup>
+						<col width="16%">
+						<col>
+						<col width="16%">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">제목</th>
+							<td colspan="3">${oneDTO.one_title}</td>
+						</tr>
+						<tr>
+							<th scope="row">문의 카테고리</th>
+							<td>${oneDTO.one_cate}</td>
+							<th scope="row">등록일</th>
+							<td>${oneDTO.one_regdate}</td>
+						</tr>
+						<tr>
+							<th scope="row">작성자</th>
+							<td id="writer">${oneDTO.one_writer}</td>
+							<th scope="row">문의 알림</th>
+							<td>${oneDTO.one_answer}</td>
+						</tr>
+						<tr>
+							<th scope="row">문의 내용</th>
+							<td colspan="3"></td>
+						</tr>
+						
+					</tbody>
+				</table>
+				
+				<div class="oneCon">
+					
+					<div>${oneDTO.one_contents}</div>
+				</div>
+		
+		 		<hr>	
+		 	<!-- 문의글 삭제 하기 -->
+		 	<c:if test="${tuser eq oneDTO.one_writer}">
+		 	<div>
+		 		<button type ="button" class="btn one_delete">삭제하기</button>
+		 	</div>
+		 	</c:if>
+		 <!-- 문의답변 달기 -->
+		<c:if test="${tuser eq 'test'}">
+		 <div >
+		 	<button  class="one_cobtn">답변하기</button>
+			 	<form action="./commentInsert" method="post" id="form" class="one_comment">
+			 	<input style="display: none;" id="one_num" name="one_num" value="${oneDTO.one_num}">
+			 	
+			 	
+			 	</form>
+		 </div>
+		 </c:if>
+		 
+		 <!-- 문의 답변 가져오기 -->
+		 <div class="comment" data-one-num="${oneDTO.one_num}">
+		 
+		 </div>
+		 <br>
+		 <!-- 1:1 문의 끝 -->
+		 	<div class="col-md-6 mx-auto" style="text-align: center;">
+		 		<button type="button" class="btn bt-ho btn1 one_list" style="margin: auto; width: 50%;">1:1문의 목록</button>
+		 	</div>
+			</div>
+		 </div> 
+		 
+		 <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
             <div class="row">
@@ -382,39 +367,190 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
+    <script type="text/javascript" src="../resources/js/one_comment.js"></script>
+</body>
 <script type="text/javascript">
 
-	for(let i=0; i<20; i++){
-		$('#index'+i).click(function(){
-			if($('#faq_con'+i).css('display')== 'none'){
-				
-				$('#faq_con'+i).show();
-			}else{
-				$('#faq_con'+i).hide();
-			}
-		 	
-		 	
-			
-		})
-	}
+//목록으로 돌아가는 버튼 클릭시 문의 내역으로 이동
+$('.one_list').click(function(){
+	location.href="./one_on_one";
+});
 
-
-	for(let i=0; i<100; i++){
-		//let aa = $('#fa+i')
-		$('#fa'+i).click(function(){
-			console.log(i);
-			if($('#facon'+i).css('display')== 'none'){
-				$('#facon'+i).show();
-			}else{
-				$('#facon'+i).hide();
-			}
-			
-		})
-	}
+	let num = $('#num').val();
+	let one_writer = $('#writer').text();
+	console.log(one_writer);
+	//console.log(num);
+	$('.one_delete').click(function(){
+		let delOK= confirm('문의글을 삭제하면 답변이 함께 삭제됩니다. 삭제하시겠습니까?');
+		if(delOK){
+			$.ajax({
+				type:'GET',
+				url: './delete?one_num='+num,
+				data: {
+					one_num: num,
+					one_writer: one_writer
+				},
+				success: function(){
+					alert('삭제성공')
+					location.href="./one_on_one?one_writer="+one_writer;
+				},
+				error: function(){
+					alert('삭제실패')
+				}
+						
+			})
+		}else{
+			 location.href="./one_select?one_num="+num;
+		}
+		
+	});
+//답변 등록을 누르면 답변이 등록되고 답변 폼이 사라짐
 	
+	$('.one_comment').on('click', '#submit', function(){
+		//alert('click');
+		let oneco_contents = $('#oneco_contents').val();
+		console.log(oneco_contents);
+		let one_num = $('#one_num').val();
+		console.log(one_num);
+		$.ajax({
+			type: 'POST',
+			url: './commentInsert',
+			data: {
+				oneco_contents: oneco_contents,
+				one_num: one_num
+			},
+			success:function(result){
+				console.log(result.trim());
+				
+				commentSelect();
+				$('.one_comment').attr('style', 'display:none');
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+		});
+	});
+	
+	
+
+
+	//답변가져오기
+	function commentSelect(){
+		let one_num = $('.comment').attr('data-one-num');
+		$.ajax({
+			type: 'GET',
+			url: './commentSelect',
+			data: {
+				one_num : one_num
+			},
+			success: function(result){
+				result = result.trim();
+				$('.comment').html(result);
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+		})
+	};
+	
+	//답변이 있으면 답변을 없으면 버튼 띄우기
+	let one_num = $('.comment').attr('data-one-num');
+	$.ajax({
+		type: 'POST',
+		url: './commentNum',
+		data: {one_num: one_num},
+		success: function(result){
+			//alert(result);
+			if(result>0){
+				commentSelect();
+				$('.one_cobtn').css('display','none');
+			}else{
+				$('.one_cobtn').css('display','block');
+			}
+		},
+		error : function(){
+			alert('오류');
+		}
+	})
+	
+	//답변 수정하기 - 수정버튼을 클릭하면 답변 내용을 수정가능한 text area로 변경, 수정하기/취소하기 버튼 생성
+	$('.comment').on('click', '#update', function(){
+		let oneco_contents = $('#co_con').val();
+		alert(oneco_contents)
+		$('.textarea').css('display', 'none');
+		
+		let content = '<textarea class="newtext" id="co_con" rows="10" style="width: 880px;">';
+		content = content + oneco_contents.trim()+'</textarea>'
+		content = content + '<button type="button" id="upcontent" class="btn bt-ho">수정하기</button>';
+		content = content+ '<button type="button" id="delcontent" class="btn bt-ho">취소하기</button>'
+		console.log(content);
+		$('.comment_an').append(content);
+	});
+	
+	//답변의 수정하기 버튼을 클릭했을 때
+	$('.comment').on('click', '#upcontent', function(){
+		let contents = $(this).prev().val();
+		console.log(contents);
+		let oneco_num = $('#oneco_num').val();
+		
+		$.ajax({
+			type: 'POST',
+			url: './commentUpdate',
+			data: {
+				oneco_contents : contents,
+				oneco_num : oneco_num
+			},
+			success: function(result){
+				if(result>0){
+					$('.comment_an').children().css('display', 'block');
+					$('.comment_an').children('input').css('display', 'none');
+					$('.comment_an').children('.newtext').remove();
+					$('#co_con').val(contents)
+					//$('.comment_an').children('.textarea').html(contents);
+					$('.textarea').next().next('button').remove();
+					$('.textarea').next().next('button').remove();
+				}else{
+					console.log('실패');
+				}
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+			
+		})
+	});
+	
+	//답변의 취소하기 클릭하면 원래대로 돌아가기
+	$('.comment').on('click', '#delcontent', function(){
+		$('.textarea').css('display', 'block');
+		$('.newtext').remove();
+		$('.textarea').next().next('button').remove();
+		$('.textarea').next().next('button').remove();
+		
+	});
+	//답변 삭제하기
+	$('.comment').on('click', '#delete', function(){
+		let oneco_num = $('#oneco_num').val();
+		//alert(oneco_num);
+		$.ajax({
+			type: 'POST',
+			url: './commentDelete',
+			data: {oneco_num:oneco_num},
+			success: function(result){
+				if(result>0){
+					alert('답변이 삭제되었습니다.');
+					$('.one_cobtn').css('display','block');
+					$('.comment').css('display', 'none');
+					//delcount();
+				}else{
+					alert('삭제를 실패했습니다.');
+				}
+			},
+			error: function(){
+				console.log('오류');
+			}
+		});
+	});
 	
 </script>
-</body>
-
 </html>

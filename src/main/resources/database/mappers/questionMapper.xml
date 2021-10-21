@@ -26,18 +26,46 @@
   
   	<insert id="setOneInsert" parameterType="One_on_oneDTO">
   		insert into one_on_one 
-  		values(one_seq.nextval, #{one_cate}, #{one_title}, #{one_contents}, #{one_writer}, sysdate, #{one_answer}, 0,0,0)
+  		values(one_seq.nextval, #{one_cate}, #{one_title}, #{one_contents}, #{one_writer}, sysdate, #{one_answer})
   	</insert>
   
-  	<select id="getOneList" parameterType="One_on_oneDTO">
+  	<!-- <select id="getOneList" parameterType="One_on_oneDTO" resultType="One_on_oneDTO">
   		select * from one_on_one where one_writer=#{one_writer}
+  	</select> -->
+  
+  	
+ 	 <select id="getOneList"  resultType="One_on_oneDTO">
+  		select * from one_on_one order by one_num desc
   	</select>
   
+  	<select id="getOneSelect" parameterType="One_on_oneDTO" resultType="One_on_oneDTO">
+  		select * from one_on_one where one_num = #{one_num}
+  	</select>
   
+  	<delete id="setOneDelete" parameterType="One_on_oneDTO">
+  		delete one_on_one where one_num=#{one_num}
+  	</delete>
   
+  	<insert id="setCommentInsert" parameterType="One_commentDTO">
+  		insert into one_comment(oneco_num, one_num, oneco_contents) 
+  		values(oneco_seq.nextval, #{one_num}, #{oneco_contents})
+  	</insert>
   
+  	<select id="getComment" parameterType="One_commentDTO" resultType="One_commentDTO"> 
+  		select * from one_comment where one_num = #{one_num}
+  	</select>
   
+  	<update id="setCommentUpdate" parameterType="One_commentDTO">
+  		update one_comment set oneco_contents = #{oneco_contents} where oneco_num = #{oneco_num} 
+  	</update>
   
+  	<delete id="setCommentDelete" parameterType="One_commentDTO">
+  		delete one_comment where oneco_num = #{oneco_num}
+  	</delete>
+  
+  	<select id="getCommentNum" parameterType="One_commentDTO" resultType="Long">
+  		select count(oneco_num) from one_comment where one_num = #{one_num}
+  	</select>
   
   
   </mapper>

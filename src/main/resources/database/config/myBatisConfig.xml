@@ -8,12 +8,12 @@
   	<typeAlias type="com.thr.i1.notice.NoticeDTO" alias="NoticeDTO"/>
   	<typeAlias type="com.thr.i1.notice.NotiFilesDTO" alias="NotiFilesDTO"/>
   
-  	<typeAlias type="com.thr.i1.util.Pager" alias="Pager"/>
+  	<typeAlias type="com.thr.i1.util.NoticePager" alias="Pager"/>
   	<typeAlias type="java.lang.Long" alias="Long"/>
   
   	<typeAlias type="com.thr.i1.question.QuestionDTO" alias="QuestionDTO"/>
   	<typeAlias type="com.thr.i1.question.One_on_oneDTO" alias="One_on_oneDTO"/>
-  	
+  	<typeAlias type="com.thr.i1.question.One_commentDTO" alias="One_commentDTO"/>
   	
   	<typeAlias type="com.thr.i1.member.TuserDTO" alias="TuserDTO"/>
   	<typeAlias type="com.thr.i1.member.TuserDAO" alias="TuserDAO"/>

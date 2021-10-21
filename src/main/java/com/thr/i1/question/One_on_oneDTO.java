@@ -11,9 +11,7 @@ public class One_on_oneDTO {
 	private String one_writer;
 	private Date one_regdate;
 	private String one_answer;
-	private Long step;
-	private Long ref;
-	private Long depth;
+
 	
 	public Long getOne_num() {
 		return one_num;
@@ -57,24 +55,7 @@ public class One_on_oneDTO {
 	public void setOne_answer(String one_answer) {
 		this.one_answer = one_answer;
 	}
-	public Long getStep() {
-		return step;
-	}
-	public void setStep(Long step) {
-		this.step = step;
-	}
-	public Long getRef() {
-		return ref;
-	}
-	public void setRef(Long ref) {
-		this.ref = ref;
-	}
-	public Long getDepth() {
-		return depth;
-	}
-	public void setDepth(Long depth) {
-		this.depth = depth;
-	}
+
 	
 	
 	

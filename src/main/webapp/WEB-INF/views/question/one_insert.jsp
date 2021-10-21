@@ -30,7 +30,7 @@
 	.ph-ema{
 		margin: 0;
 	}
-
+	
 </style>    
     
 </head>
@@ -192,12 +192,10 @@
     
     <!-- 문의내역, 공지사항, FAQ 이동 메뉴바 -->
     <div class="one_menubar">
-    	<div class="one_menu">
-	    	<a href="../notices/list">공지사항</a>
-	    	<a href="./FAQ">FAQ</a>
-	    	<c:if test="${not empty tuser}">
-	    	<a href="./one_on_one">문의내역</a>
-	    	</c:if>
+    	<div class="one_menu mx-auto col-md-7">
+	    	<a href="../notices/list">공지사항 &nbsp &nbsp</a>
+	    	<a href="./FAQ">FAQ &nbsp &nbsp</a>
+	    	<a href="./one_on_one?one_writer=${tuser}">문의내역</a>
     	</div>
     </div>
     <!-- 문의 시작 -->
@@ -217,7 +215,7 @@
 	  <option value="기타">기타 문의</option>
 	</select>
 	</div>
-	<input style="display: none;" name="one_writer" id="tuser_id" value="${tuser.id}">
+	<input style="display: none;" name="one_writer" id="tuser_id" value="${tuser}">
 	<!-- 문의 제목 -->
 	<div class="" style="margin-top: 70px;"> 
 	<div class="mb-3 col-md-8 mx-auto">
@@ -230,10 +228,9 @@
 	  <textarea class="form-control" id="one_contents" name="one_contents" rows="5" placeholder="취소,교환,반품 신청은 주문배송조회에서 직접 신청 가능합니다."></textarea>
 	</div>
 	</div>
-	<br>
-	<br>
+	
 	<!-- 문의자 휴대폰 번호, 이메일 불러오기 -->
-	<div class="col-md-8 mx-auto">
+<%-- 	<div class="col-md-8 mx-auto">
 		<div class="row">
 		  <div class="col-md-6 ph-ema">
 		    <input type="text" readonly="readonly" value="${tuser.phone}" class="form-control"  aria-label="member-phone">
@@ -242,36 +239,36 @@
 		    <input type="email" readonly="readonly"  value="${tuser.email}" class="form-control"  aria-label="member-email">
 		  </div>
 		</div>
-	</div>
+	</div> --%>
 	<br>
 	<br>
 	<!-- 문의 답변 받을 곳 선택 -->
 	<div class="col-md-8 mx-auto">
-	<span>문의 답변 방식을 선택해주세요.</span>
-	<div class="form-check">
+	<span>문의 답변 알림을 선택해주세요.</span><br>
+	<div class="form-check" style="padding-top: 15px; ">
 	  <input class="form-check-input answer" type="radio" name="one_answer" id="sms" value="sms" checked>
 	  <label class="form-check-label" for="sms">
 	    sms
 	  </label>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input answer" type="radio" name="one_answer" id="email">
+	  <input class="form-check-input answer" type="radio" name="one_answer" value="이메일" id="email">
 	  <label class="form-check-label" for="email">
 	    이메일
 	  </label>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input answer" type="radio" name="one_answer" id="one_on">
+	  <input class="form-check-input answer" type="radio" name="one_answer" value="문의내역" id="one_on">
 	  <label class="form-check-label" for="one_on">
-	    문의내역
+	    문의내역 (문의내역은 따로 알림이 가지 않습니다.)
 	  </label>
 	</div>
 	</div>
-	
+	<br>
 		<!-- 문의 등록/취소 버튼 -->
 	<div class="col-md-8 mx-auto" style="padding-left: 250px;">
-		<button type="button" class="btn btn-primary btn-lg cancel" style="width: 150px;">취소</button>
-		<button type="submit" class="btn btn-primary btn-lg confirm" style="width: 150px;">확인</button>
+		<button type="button" class="btn btn-outline-danger btn-lg cancel" style="width: 150px;">취소</button>
+		<button type="submit" class="btn btn-outline-info btn-lg confirm" style="width: 150px;">확인</button>
 	</div>
 	</form>
 	</div>

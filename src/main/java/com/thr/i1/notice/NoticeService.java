@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.thr.i1.util.FileUpload;
-import com.thr.i1.util.Pager;
+import com.thr.i1.util.NoticePager;
 
 
 @Service
@@ -23,7 +23,7 @@ public class NoticeService {
 	@Autowired
 	private FileUpload fileUpload;
 	
-	public List<NoticeDTO> getList(Pager pager)throws Exception{
+	public List<NoticeDTO> getList(NoticePager pager)throws Exception{
 		pager.setPerPage(5L);
 		pager.makeRow();
 		Long totalCount = noticeDAO.getCount();
@@ -50,9 +50,9 @@ public class NoticeService {
 		for(MultipartFile multipartFile: files) {
 			String fileName = fileUpload.fileSave(multipartFile, file);
 			NotiFilesDTO notiFilesDTO = new NotiFilesDTO();
-			notiFilesDTO.setFileName(fileName);
+			notiFilesDTO.setNo_fileName(fileName);
 			notiFilesDTO.setNo_num(noticeDTO.getNo_num());
-			notiFilesDTO.setOriName(multipartFile.getOriginalFilename());
+			notiFilesDTO.setNo_oriName(multipartFile.getOriginalFilename());
 			
 			result = noticeDAO.setFileInsert(notiFilesDTO);
 		}
@@ -76,9 +76,9 @@ public class NoticeService {
 		for(MultipartFile multipartFile: files) {
 			String fileName = fileUpload.fileSave(multipartFile, file);
 			NotiFilesDTO notiFilesDTO = new NotiFilesDTO();
-			notiFilesDTO.setFileName(fileName);
+			notiFilesDTO.setNo_fileName(fileName);
 			notiFilesDTO.setNo_num(noticeDTO.getNo_num());
-			notiFilesDTO.setOriName(multipartFile.getOriginalFilename());
+			notiFilesDTO.setNo_oriName(multipartFile.getOriginalFilename());
 			result = noticeDAO.setFileInsert(notiFilesDTO);
 		}
 		return result;
@@ -92,7 +92,7 @@ public class NoticeService {
 	//첨부파일 지우면 폴더에서도 지우기
 	public int setFileDelete(NotiFilesDTO notiFilesDTO) throws Exception{
 		String realPath = servletContext.getRealPath("/resource/upload/noti/");
-		File file = new File(realPath, notiFilesDTO.getFileName());
+		File file = new File(realPath, notiFilesDTO.getNo_fileName());
 		file.delete();
 		
 		return noticeDAO.setFileDelete(notiFilesDTO);
@@ -104,7 +104,7 @@ public class NoticeService {
 		List<NotiFilesDTO> no = noticeDAO.getFile(noticeDTO);
 		String realPath = servletContext.getRealPath("/resource/upload/noti/");
 		for(NotiFilesDTO noti: no) {
-			File file = new File(realPath, noti.getFileName());
+			File file = new File(realPath, noti.getNo_fileName());
 			file.delete();
 		}
 		return noticeDAO.setDelete(noticeDTO);

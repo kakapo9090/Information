@@ -4,6 +4,7 @@
 <html lang="zxx">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -26,9 +27,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
     
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+   
 
     
     
@@ -39,7 +38,14 @@
     	
     	#no_writer{
 			display: none;
-		}
+		}	
+		.bt-ho:hover{
+			background-color: #7fad39;
+    	}
+    	.btn1{
+    		border: 1px solid #7fad39;
+    		border-radius: 7px;
+    	}
     </style>
        
 </head>
@@ -220,11 +226,11 @@
     	<div class="container-xl ">
 		<!-- 글쓰기 시작 -->
 		<div class="row"  >
-		<div class="col-md-8 mx-auto">
+		<div class="col-md-8 mx-auto" style="height: 800px; width: 1000px;">
 			<br>
 			<br>
 			<br>
-			<form action="./insert" method="post" id="form" enctype="multipart/form-data">
+			<form action="./insert" method="post" id="form" enctype="multipart/form-data" style="margin-top: 50px;">
 				
 				<div>
 					<input name="no_writer" value="admin" id="no_writer">
@@ -239,7 +245,7 @@
 				  <textarea class="form-control" id="no_contents" name="no_contents" rows="3"></textarea>
 				</div>		
 				<div class="fileupload">
-				<button id="fileup" type="button" >file upload</button>
+				<button id="fileup" type="button" class="btn btn1 bt-ho">file upload</button>
 				</div>
 				
 				<div id="file">
