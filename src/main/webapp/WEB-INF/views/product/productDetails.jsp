@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/productDetails.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/reviewInsert.css" type="text/css">
 </head>
 <body>
     <!-- Page Preloder -->
@@ -251,17 +252,22 @@
 							<span class="tit_item">${dto.product_name}</span>
 							<div class="option">
 								<span class="count">
-									<button type="button" class="btn down on">-</button>
-									<input type="number" readonly="readonly" onfocus="this.blur()" class="inp">
-									<button type="button" class="btn up on">+</button>
+									<button type="button" class="count_btn down on">-</button>
+									
+									<input type="number" readonly="readonly" onfocus="this.blur()" value="1" class="inp" data-product-price="${dto.price}">
+								
+									<button type="button" class="count_btn up on">+</button>
 								</span>
 							</div>
-							<span>${dto.price}원</span>
+							<span class="sum">
+								<span class="total_price">${dto.price}</span>
+								<span>원</span>
+							</span>
 						</div>
 						<div class="total">
 							<span class="tit">총 합계금액  :  </span>
 							<span class="sum">
-								<span class="num">30000</span>
+								<span class="total_price">${dto.price}</span>
 								<span class="won">원</span>
 							</span>
 						</div>
@@ -321,7 +327,9 @@
 							
 							</div>
 							<div>
-								<a href="../review/reviewInsert?product_id=${dto.product_id}">후기작성</a>
+
+								<a href="../review/reviewInsert?product_id=${dto.product_id}&product_name=${dto.product_name}">후기작성</a>
+
 							</div>
 						</div>
 						<nav>
@@ -419,6 +427,7 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-    <script type="text/javascript" src="../resources/js/review.js"></script>
+    <script src="../resources/js/productDetails.js"></script>
+    <script src="../resources/js/review.js"></script>
 </body>
 </html>

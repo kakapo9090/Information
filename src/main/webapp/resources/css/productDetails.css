@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
-.container{max-width:1300px; margin:50px auto 0; width:100%;}
+.product_details .container{max-width:1300px; margin:50px auto 0; width:100%;}
 .section_view {width: 1300px; height: 644px; margin-bottom: 150px;}
 .section_view img {width : 500px; margin-right: 38px;}
 .product_contents {border: none;  margin-left: 38px; width: 724px;}
-.product_contents .product_info{height: 120px; margin-bottom: 41px;}
+.product_contents .product_info{height: 120px; margin-bottom: 27px;}
 .product_contents .product_info .txt_type {font-family: 'Noto Sans KR', sans-serif; font-size: 36px; color: black; margin-top: 16px;}
 .product_contents .product_info .price{display: inline-block;}
 .product_contents .product_explain {height: 180px; margin-bottom: 43px;}
-.product_contents .product_explain .list{width: 724px; height: 180px}
+.product_contents .product_explain .list{width: 724px; height: 180px;}
 .product_contents .product_explain .tit {width: 120px; font-family: 'Noto Sans KR', sans-serif; font-size: 20px;}
 .product_contents .product_explain .desc{font-family: 'Noto Sans KR', sans-serif; font-weight: lighter; font-size: 17px;}
 .product_contents .cartPut {height: 260px; margin-top: 23px;}
-.product_contents .cartPut .inner_option {width: 723px; border: solid 1px black;}
+.product_contents .cartPut .inner_option {width: 723px; height:100px; border: solid 1px #777777; border-left: none; border-right: none; background-color: #f2f2f2;}
 .product_contents .cartPut .total {margin-top: 26px; margin-bottom: 33px}
 .product_contents .cartPut .total .tit {
 	display : inline-block; width: 560px; text-align: right;
@@ -21,12 +21,16 @@
 .product_contents .cartPut .total .sum {
 	display:inline-block; width : 150px;
 	font-family: 'Noto Sans KR', sans-serif; font-size: 30px; color: #e44141; text-align: right;
-};
+}
 
+.product_contents .cartPut .tit_item {
+	margin-left:25px; margin-top:26px;
+	font-family: 'Noto Sans KR', sans-serif; font-size: 17px; font-weight: lighter;
+}
+.product_contents .cartPut .inner_option .sum {text-align: right; margin-right: 28px; float: right;}
 
-.product_contents .cartPut .inner_option .tit_item{font-family: 'Noto Sans KR', sans-serif; font-size: 17px; color: yellow;}
-.count .btn {width: 30px; height: 30px; text-align: center;}
-.count .inp {width: 42px; height: 30px;}
+.product_contents .cartPut .count {width: 90px; height: 31px; border: 1px black solid; margin-left: 25px; margin-bottom: 24px;}
+.proudct_contents .cartPut .count .inp {display:inline-block; width: 42px;}
 
 .group_btn .goCart{width: 326px; height: 50px; background-color: #3e3e3e; border: none; margin-right: 14px; margin-left: 29px;}
 .group_btn .goBuy {width: 326px; height: 50px; background-color: #7fad39; border: none;}
