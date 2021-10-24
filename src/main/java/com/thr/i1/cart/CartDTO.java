@@ -3,13 +3,15 @@ package com.thr.i1.cart;
 public class CartDTO {
 	//CART테이블에 실제로 있는 컬럼들
 	private Long cart_Id;	//시퀀스 값, PK
-    private String tuser_Id;	//TUSER테이블의 id컬럼 조인
+    private String id;	//TUSER테이블의 id컬럼 조인
     private int product_Id;	//PRODUCT테이블의 id컬럼 조인 *product테이블의 데이터타입 맞추기
-    private int pf_FileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
+    private int fileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
     private int amount;	//수량
+    private int num;	//18일 num컬럼 추가, tuser테이블 num컬럼 조인
     
     
-    //CART, TUSER, PRODUCT, PRODUCTFILE 테이블을 조인해서 담을 데이터들
+
+	//CART, TUSER, PRODUCT, PRODUCTFILE 테이블을 조인해서 담을 데이터들
     private String name;	//TUSER테이블에서 가져올 회원명
     private String product_Name;	//PRODUCT테이블에서 가져올 상품명
     private String fileName;	//PRODUCTFILE 테이블에서 가져올 이미지파일명
@@ -20,14 +22,22 @@ public class CartDTO {
     
     
   
+    public int getNum() {
+    	return num;
+    }
+    
+    public void setNum(int num) {
+    	this.num = num;
+    }
 
 
-	public int getPf_FileNum() {
-		return pf_FileNum;
+
+	public int getFileNum() {
+		return fileNum;
 	}
 
-	public void setPf_FileNum(int pf_FileNum) {
-		this.pf_FileNum = pf_FileNum;
+	public void setFileNum(int fileNum) {
+		this.fileNum = fileNum;
 	}
 
 	public Long getCart_Id() {
@@ -38,12 +48,14 @@ public class CartDTO {
 		this.cart_Id = cart_Id;
 	}
 
-	public String getTuser_Id() {
-		return tuser_Id;
+
+
+	public String getId() {
+		return id;
 	}
 
-	public void setTuser_Id(String tuser_Id) {
-		this.tuser_Id = tuser_Id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getProduct_Id() {
