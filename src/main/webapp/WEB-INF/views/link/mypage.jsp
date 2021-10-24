@@ -1,261 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 <style type="text/css">
-	body{
-  padding: 0;
-  margin: 0;
-}
-div{
-  box-sizing: border-box;
-}
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+.profile
+{
+    font-family: 'Lato', 'sans-serif';
+    }
+.profile 
+{
+/*    height: 321px;
+    width: 265px;*/
+margin-top: 2px;
+padding:1px;
+    display: inline-block;
+    }
+.divider 
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+    }
+.emphasis 
+{
+    border-top: 1px solid transparent;
+    }
 
-/* alert badge */
-.circle{
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 2.5px;
-  background-color: #ff0000;
-  position: absolute;
-  top: -5px;
-  left: 110%;
-}
-
-/* 녹색 텍스트 */
-.green{
-  color: #24855b;
-}
-
-.wrap{
-  background-color: #F8F8F8;  
-}
-/* 녹색배경 */
-.greenContainer{  
-  height: 132px;
-  background-color: #24855b;    
-  
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
-}
-
-.greenContainer .name{
-   font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-} 
-.greenContainer .modify{
-  margin-left: auto;
-}
-
-/* 단골상점 , 상품후기 , 적립금 박스 */
-.summaryContainer{
-  background-color: white;  
-  display: flex;  
-  padding: 21px 16px;  
-  height: 90px;
-  margin-bottom: 10px;
-}
-/* 단골상점 , 상품후기 , 적립금 */
-.summaryContainer .item{
-  flex-grow: 1
-}
-/* 녹색 숫자 */
-.summaryContainer .number{
-  font-size: 19px;
-  font-weight: bold;
-  color: #24855b;
-}
-/* 텍스트 */
-.summaryContainer .item > div:nth-child(2){
-  font-size: 13px;
-}
-
-/* ================== 주문/배송조회 박스 시작 ==================== */
-.shippingStatusContainer{
-  padding: 21px 16px;
-  background-color: white;
-  margin-bottom: 10px;
-}
-
-/* 주문/배송조회 타이틀 */
-.shippingStatusContainer .title{
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* 장바구니 결제완료 배송중 구매확정 [로우] */
-.shippingStatusContainer .status{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 21px;
-}
-/* 장바구니 결제완료 배송중 구매확정 [아이템]  */
-.shippingStatusContainer .item{
-  display: flex;
-}
-
-.shippingStatusContainer .number{
-  font-size: 31px;
-  font-weight: 500;
-  text-align: center;
-}
-.shippingStatusContainer .text{
-  font-size: 12px;
-  font-weight: normal;
-  color: #c2c2c2;
-  text-align: center;
-}
-.shippingStatusContainer .icon{
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  width: 16px;
-  height: 16px;
-}
-
-
-/*=================== 주문목록 ~ 찜한상품 리스트 ==================*/
-.listContainer{  
-  padding: 0;
-  background-color: #ffffff;
-  margin-bottom: 10px;
-}
-.listContainer .item{  
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  color: black;
-  text-decoration: none;  
-  height: 56px;
-  box-sizing: border-box;
-}
-.listContainer .icon{  
-  margin-right: 14px;
-}
-.listContainer .text{
-  font-size: 16px;
-  position: relative;
-}
-.listContainer .right{
-  margin-left: auto;
-}
-
-/* 공지사항 이용안내 고객센터 */
-.infoContainer{
-  background-color: white; 
-  display: flex;
-  height: 100px;
-  margin-bottom: 10px;    
-}
-
-.infoContainer .item{
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 13px;
-  text-decoration: none;
-  color: black;
-}
-.infoContainer .item > div:first-child{
-  margin-bottom: 2px;
-}
-
-
-
-/*  */
-.listContainer .item:hover{
-/*   background-color: #f8f8f8; */
-}
-.infoContainer .item:hover{
-/*   background-color: #f8f8f8; */
+.emphasis h2
+{
+    margin-bottom:0;
+    }
+span.tags 
+{
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+    }
+.profile strong,span,div{
+    text-transform: initial;
 }
 </style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="wrap">
-  <div class="greenContainer">
-    <div>
-      <div class="name">Jaden</div>
-    </div>    
-    <div class="modify">i</div>    
-  </div>
-  <div class="shippingStatusContainer">
-    <div class="title">
-      주문/배송조회
-    </div>
-    <div class="status">
-      
-      <div class="item">
-        <div>
-          <div class="green number">6</div>
-          <div class="text">장바구니</div>
+<div class="container">
+	<div class="row">
+    	 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 16px;">
+                        <div class="well profile col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <figure>
+                                     <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle" style="width:75px;" id="user-img">
+                                </figure>
+                                <h5 style="text-align:center;"><strong id="user-name"> 이름</strong></h5>
+                                <p style="text-align:center;font-size: smaller;" id="user-frid"> 아이디 </p>
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"> 이메일 </p>
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"> 핸드폰 번호 </p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                <p style="text-align:center;font-size: smaller;"><strong> 주소 </strong></p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                    <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
+                                        <button class="btn btn-success btn-block"> 주문내역확인 </button>
+                                        <button class="btn btn-success btn-block"> 1:1 문의내역 </button>
+                                    </div>
+                                    <div class=" col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
+                                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> 회원 정보 수정 </button>
+                                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> 회원 탈퇴 </button>
+                                    </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
         </div>
-        <div class="icon"> > </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="number">0</div>
-          <div class="text">결제완료</div>
-        </div>
-        <div class="icon"> > </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="green number">1</div>
-          <div class="text">배송중</div>
-        </div>
-        <div class="icon"> > </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="green number">3</div>
-          <div class="text">구매확정</div>
-        </div>
-      </div>     
-      
-    </div>
-    
-  </div>  
-  <div class="listContainer">
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">주문목록<span class="circle"></span></div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">상품후기</div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">상품문의</div>
-        <div class="right"> > </div>
-    </a>
-  </div>
-  <div class="infoContainer">
-    <a href="#" class="item">
-      <div>icon</div>
-      <div>공지사항</div>
-    </a>    
-    <a href="#" class="item">
-      <div>icos</div>
-      <div>이용안내</div>
-    </a>    
-    <a href="#" class="item">
-      <div>icon</div>
-      <div>고객센터</div>
-    </a>
-  </div>
+	</div>
 </div>
 </body>
 </html>
