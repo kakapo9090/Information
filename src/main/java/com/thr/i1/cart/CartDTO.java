@@ -5,11 +5,13 @@ public class CartDTO {
 	private Long cart_Id;	//시퀀스 값, PK
     private String id;	//TUSER테이블의 id컬럼 조인
     private int product_Id;	//PRODUCT테이블의 id컬럼 조인 *product테이블의 데이터타입 맞추기
-    private int pf_FileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
+    private int fileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
     private int amount;	//수량
+    private int num;	//18일 num컬럼 추가, tuser테이블 num컬럼 조인
     
     
-    //CART, TUSER, PRODUCT, PRODUCTFILE 테이블을 조인해서 담을 데이터들
+
+	//CART, TUSER, PRODUCT, PRODUCTFILE 테이블을 조인해서 담을 데이터들
     private String name;	//TUSER테이블에서 가져올 회원명
     private String product_Name;	//PRODUCT테이블에서 가져올 상품명
     private String fileName;	//PRODUCTFILE 테이블에서 가져올 이미지파일명
@@ -20,14 +22,22 @@ public class CartDTO {
     
     
   
+    public int getNum() {
+    	return num;
+    }
+    
+    public void setNum(int num) {
+    	this.num = num;
+    }
 
 
-	public int getPf_FileNum() {
-		return pf_FileNum;
+
+	public int getFileNum() {
+		return fileNum;
 	}
 
-	public void setPf_FileNum(int pf_FileNum) {
-		this.pf_FileNum = pf_FileNum;
+	public void setFileNum(int fileNum) {
+		this.fileNum = fileNum;
 	}
 
 	public Long getCart_Id() {
@@ -37,6 +47,8 @@ public class CartDTO {
 	public void setCart_Id(Long cart_Id) {
 		this.cart_Id = cart_Id;
 	}
+
+
 
 	public String getId() {
 		return id;

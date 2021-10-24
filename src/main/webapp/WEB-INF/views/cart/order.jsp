@@ -141,84 +141,52 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Smaple List</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">과일/야채</a></li>
-                            <li><a href="#">과자</a></li>
-                            <li><a href="#">기타음료</a></li>
-                            <li><a href="#">냉동식품</a></li>
-                            <li><a href="#">라면</a></li>
-                            <li><a href="#">베이커리</a></li>
-                            <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="#">수산물</a></li>
-                            <li><a href="#">식물성음료</a></li>
-                            <li><a href="#">아이스크림</a></li>
-                            <li><a href="#">정육</a></li>
-                            <li><a href="#">주스</a></li>
-                            <li><a href="#">즉석식품</a></li>
-                            <li><a href="#">초콜릿</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="../resources/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>장바구니</h2>
-                        <div class="breadcrumb__option">
-                            <a href="../">Home</a>
-                            <span>Cart</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
 	
-    <!-- 장바구니 Section Begin -->
+    <!-- 주문정보 Section Begin -->
     <section class="product spad">
         <div class="container">
             <div class="row">
                 
-                <div class="col-lg-12 col-md-9">
+                <div class="col-lg-7 col-md-5">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
-                            <h2>장바구니</h2>
+                            <h2>주 문 정 보</h2>
                         </div>
                         
+                        <!-- 회원 정보 입력 -->
+                        <div class="">
+                            <h3>회원정보</h3>
+                        </div>
+                        <br>
+                        
+                        <div><label>주문자명</label></div>
+                        <div>
+						  	<input type="text"  name="name" value="">
+						</div>
+						<div><label>전화번호</label></div>
+                        <div>
+						  	<input type="tel"  name="phone" value="">
+						</div>
+						<div><label>이메일</label></div>
+                        <div>
+						  	<input type="text"  name="email" value="" style="width: 300px;">
+						</div>
+						<div><label>주소</label></div>
+                        <div>
+						  	<input type="text"  name="address" value="" style="width: 500px;">
+						</div>
+						
+						
+                        <div class="section-title product__discount__title">
+                        </div>
+
                         <!-- 장바구니 리스트 작성 begin -->
                         <!-- 소스 시작 -->
+                        	<div class="">
+                           		 <h3>주문상품정보</h3>
+                      		  </div>
+                        <br>
                         <c:choose>
 						    <c:when test="${map.count == 0 }">
 						    <!-- map의 count가 0일때 -->
@@ -226,8 +194,8 @@
 						        장바구니가 비었습니다.
 						    </c:when>
 						    
-						    <c:otherwise>
-						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->		
+						    <c:otherwise>			     
+						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
 							    <div class="row">  
 							    	<form id="form1" name="form1" method="post"
      									   action="${pageContext.request.contextPath}/cart/update.do" style="width: 100%">      
@@ -235,11 +203,10 @@
 										  <thead>
 										    <tr align="center">
 										      <th scope="col" width="15%">이미지</th>
-										      <th scope="col" width="40%">상품명</th>
+										      <th scope="col" width="46%">상품명</th>
 										      <th scope="col" width="10%">가격</th>
 										      <th scope="col" width="14%">수량</th>
 										      <th scope="col" width="15%">소계</th>
-										      <th scope="col" width="6%">삭제</th>
 										    </tr>
 										  </thead>
 										  
@@ -250,16 +217,11 @@
 								                    <td>${row.product_Name}</td>
 								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
 								                    <td>
-								                    	<!-- 수량 입력 -->
-									                    	<input type="number" min="1" name="amount" id="amount" style="width:63px; height: 31px; text-align: center;" 
-	                    									value="<fmt:formatNumber value="${row.amount}"
-	                            								pattern="#,###,###" />" >
-                            							
+									                    ${row.amount}
                             							<!-- name속성 전달 -->
                             								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
                             						</td>
 											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
-                   									<td><a href="${pageContext.request.contextPath}/cart/delete.do?cart_Id=${row.cart_Id}">삭제</a></td>
 								                </tr>
 								            </c:forEach>
 								            	<tr>	
@@ -297,40 +259,35 @@
 									                    </div>									               
 								               		</td>
 								               </tr>	
-								               
-								               <tr>
-								               		<td colspan="9" align="right">
-								               			<button type="submit" id="btnUpdate" class="btn btn-primary" >수량변경</button>
-									           			 <!-- 자바스크립트 -->
-									          			<button type="button" id="btnDelete" class="btn btn-danger">장바구니 비우기</button>
-								               		</td>
-								               </tr>					   
+								               				   
 										  </tbody>
 										</table>
 										
 										
 								            
-				                        <!-- 주문버튼 begin -->
+				                        <!-- 결제 begin -->
 				                        <div class="row" style="display: flex; justify-content: center;">
-				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/order.do">주문하기</button>
+				                        	
+					                        <button type="submit" class="btn btn-secondary btn-lg" formaction="${pageContext.request.contextPath}/cart/list.do">돌아가기</button>
+				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/order.do" style="width: 114px;">결 제</button>
 				                        </div>
-				                        <!-- 주문버튼 end -->
+				                        <!-- 결제 end -->
 									</form>
 		                        </div>
 						       
 						    </c:otherwise>
 						</c:choose>
-                        <!-- 장바구니 리스트 작성 end -->
-                        
-                        
-                    </div>
-                    
-                    
+                        <!-- 장바구니 리스트 작성 end -->            
+                    </div>     
+                </div>
+                <div class="col-lg-5 col-md-3">
+                		
                 </div>
             </div>
         </div>
     </section>
-    <!-- 장바구니 Section End -->
+    <!-- 주문정보 Section End -->
 
 
 
