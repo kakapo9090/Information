@@ -2,6 +2,8 @@ package com.thr.i1.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -58,4 +60,14 @@ public class TuserDAO {
 	//관리자-회원 정보 삭제
 	public void userDelete (String id) {
 	}
+	
+	//관리자-로그아웃
+	public void userLogout (HttpSession session) {
+	}
+	
+	//마이페이지
+	public TuserDTO mypage (TuserDTO tuserDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+".mypage", tuserDTO);
+	}
+	
 }

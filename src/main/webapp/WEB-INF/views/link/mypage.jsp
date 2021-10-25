@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -57,15 +58,25 @@ span.tags
                         <div class="well profile col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                                 <figure>
-                                     <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle" style="width:75px;" id="user-img">
+                                     <img src="../resources/img/pwp.png" alt="" class="img-circle" style="width:75px;" id="user-img">
                                 </figure>
-                                <h5 style="text-align:center;"><strong id="user-name"> 이름</strong></h5>
-                                <p style="text-align:center;font-size: smaller;" id="user-frid"> 아이디 </p>
-                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"> 이메일 </p>
-                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"> 핸드폰 번호 </p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
-                                <p style="text-align:center;font-size: smaller;"><strong> 주소 </strong></p>
+                                
+                                <h5 style="text-align:center;" id="name">이름 : ${tuser.name}</h5>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                
+                                <p style="text-align:center;font-size: smaller;" id="id"> 아이디 : ${tuser.id}</p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="email"> 이메일 : ${tuser.email} </p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="phone"> 핸드폰 번호 ${tuser.phone}</p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                
+                                <p style="text-align:center;font-size: smaller;" id="address"> 주소 : ${tuser.address}</p>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                
                                     <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
                                         <button class="btn btn-success btn-block"> 주문내역확인 </button>
                                         <button class="btn btn-success btn-block"> 1:1 문의내역 </button>
@@ -79,7 +90,7 @@ span.tags
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
 	</div>
 </div>

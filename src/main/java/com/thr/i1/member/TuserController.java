@@ -25,6 +25,7 @@ public class TuserController {
 	
 	@Autowired
 	private TuserService tuserService;
+	private HttpSession session;
 	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(TuserController.class);
 	
 	//로그인 화면
@@ -37,7 +38,6 @@ public class TuserController {
 	
 	//로그인 처리
 	@PostMapping("loginPost")
-//	public String login (@RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session) throws Exception {
 	public @ResponseBody String login (HttpSession session, @RequestBody String paramData) throws Exception {
 		JSONParser parser = new JSONParser();
 		String result = "0";
@@ -56,13 +56,22 @@ public class TuserController {
 		
 		if (tuserDTO != null) {
 			// 로그인 성공!
-			session.setAttribute("tuser", id);
-			result = "1";
+			session.setAttribute("tuser", tuserDTO);
+			System.out.println("Master: " + tuserDTO.getMaster());
+			if(tuserDTO.getMaster() == 0) {
+				result = "2"; // 관리자 여부
+			}
+			else {
+				result = "1"; // 일반 유저
+			}
+			
 			//mv.setViewName("redirect:../");
 		} else {
 			// 로그인 실패 ㅠ
 			result = "0";
 		}
+		
+		System.out.println("Result:" + result);
 		//mv.setViewName("redirect:../");
 		return result;
 	}
@@ -183,14 +192,23 @@ public class TuserController {
 		return "redirect:/link/userList";
 	}
 	
-
+	//관리자-로그아웃
+	@GetMapping("userLogout")
+	public ModelAndView userLogout (HttpSession session)throws Exception{
+		session.invalidate();
+			
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:../");
+		return mv;
+	}
 	
 	//마이페이지
-	@GetMapping("mypage")
-	public ModelAndView mypage () throws Exception{
+	@RequestMapping("mypage")
+	public ModelAndView mypage (HttpSession session) throws Exception {
+		TuserDTO tuserDTO = (TuserDTO) session.getAttribute("user");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("link/mypage");
 		return mv;
 	}
-	
+
 }

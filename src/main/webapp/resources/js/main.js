@@ -220,5 +220,10 @@
         }
         $button.parent().find('input').val(newVal);
     });
+    
+    $("#btnMyPage").click(function(e){
+		console.log("Click!");
+		window.open("../i1/link/mypage", "myPage", "width=500,height=400");
+	});
 
 })(jQuery);

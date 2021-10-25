@@ -19,6 +19,9 @@ public class TuserDTO {
 	//주소
 	private String address;
 	
+	//이미지
+	private String userimg;
+	
 	
 	public Long getNum() {
 		return num;
@@ -68,5 +71,12 @@ public class TuserDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getUserimg() {
+		return userimg;
+	}
+	public void setUserimg(String userimg) {
+		this.userimg = userimg;
+	}
+	
 	
 }

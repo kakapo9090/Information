@@ -50,7 +50,7 @@
             			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
             		</c:if>
             		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
+            			<!-- <a type="button" id="btnMyPage"> mypage></a> -->
             			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
             		</c:if>
             </div>
@@ -96,7 +96,10 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
+                            	<%-- <a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a> --%>
+                            	<!-- <a id="btnMyPage"><i class="fa fa-user"></i> mypage</a> -->
+                            	<!-- <button id="btnMyPage"> mypage</button> -->
+                            	<a type="button" id="btnMyPage"> <i class="fa fa-user"> mypage</i></a>
                             	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
                             </c:if>
                             <c:if test="${empty tuser}">

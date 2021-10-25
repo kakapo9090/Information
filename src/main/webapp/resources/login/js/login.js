@@ -35,9 +35,13 @@ $(document).ready(function(){
 			if(data.responseText == "0"){
 				alert("아이디나 패스워드가 다릅니다.");
 			}
-			else{
+			else if(data.responseText == "1"){
+				//alert("일반");
 				location.href = "../";
-			}	
+			} else {
+				location.href = "../link/userList";
+				
+			}
 	}// 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
 	});
 		

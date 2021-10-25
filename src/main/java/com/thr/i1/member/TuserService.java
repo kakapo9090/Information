@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 public class TuserService {
@@ -62,5 +64,14 @@ public class TuserService {
 	public void userDelete (String id) {
 	}
 	
+	//관리자-로그아웃
+	public void userLogout (HttpSession session) {
+		session.invalidate();
+	}
+	
+	//마이페이지
+	public TuserDTO mypage (TuserDTO tuserDTO) throws Exception {
+		return tuserDAO.mypage(tuserDTO);
+	}
 	
 }
