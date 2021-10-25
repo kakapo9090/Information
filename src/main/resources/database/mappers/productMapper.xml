@@ -60,5 +60,41 @@
 		WHERE PRODUCT_NAME LIKE '%' || #{search} || '%'
 	</select>
 	
+  	<!-- 상품 추가 -->
+  	<insert id="setInsert" parameterType="ProductDTO">
+  		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
+  			select product_seq.nextval from dual
+  		</selectKey>
+  		insert into product
+  		values(#{product_id}, #{category}, #{product_name},#{price}, #{explain}, #{etc})
+  	</insert>
+  
+  	<!-- 상품 관련 이미지파일 저장 -->
+  	<insert id="setFileInsert" parameterType="ProductFilesDTO">
+  		insert into PRODUCTFILES (product_id, fileNum, fileName, oriName)
+  		values(#{product_id}, PRODUCTFILES_SEQ.nextval, #{fileName}, #{oriName})
+  	</insert>
+  	
+  	<!-- 상품 삭제 -->
+  	<delete id="setDelete" parameterType="ProductDTO">
+  		delete product where product_id = #{product_id}
+  	</delete>
+  	
+  	<!-- 상품 관련 이미지파일 삭제 -->
+  	<delete id="setFileDelete" parameterType="ProductFilesDTO">
+  		delete productFiles where fileNum=#{fileNum}
+  	</delete>
+  	
+  	<!-- 상품 관련 이미지파일 가져오기 -->
+  	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
+  		select * from productFiles where product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 상품 수정 -->
+  	<update id="setUpdate" parameterType="ProductDTO">
+  		update product set category = #{category}, product_name=#{product_name}, price=#{price},
+  		explain=#{explain}, etc=#{etc} where product_id = #{product_id}
+  	</update>
+  	
   
   </mapper>

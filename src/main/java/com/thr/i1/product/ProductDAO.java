@@ -41,6 +41,40 @@ public class ProductDAO {
 	public Long getSearchCount(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getSearchCount", pager);
 	}
-	 
+	
+	//상품 추가하기
+	public int setInsert(ProductDTO productDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsert", productDTO);
+	}
+	
+	//상품 이미지 파일 저장하기
+	public int setFileInsert(ProductFilesDTO productFilesDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", productFilesDTO);
+	}
 
+	//상품 삭제하기
+	public int setDelete(ProductDTO productDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", productDTO);
+	}
+	
+	//상품 이미지파일 삭제하기
+	public int setFileDelete(ProductFilesDTO productFilesDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", productFilesDTO);
+	}
+	
+	//상품 이미지 파일 가져오기
+	//public List<ProductFilesDTO> getFile(ProductDTO productDTO) throws Exception{
+		//return sqlSession.selectList(NAMESPACE+"getFile", productDTO);
+	//}
+	
+	//이미지 파일 한개일 때
+	public ProductFilesDTO getFile(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFile", productDTO);
+	}
+	
+	//상품 업데이트하기
+	public int setUpdate(ProductDTO productDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", productDTO);
+	}
+	
 }

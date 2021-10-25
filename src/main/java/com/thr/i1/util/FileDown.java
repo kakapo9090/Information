@@ -31,7 +31,7 @@ public class FileDown extends AbstractView{
 		//realPath 구하기
 		noti = request.getSession().getServletContext().getRealPath("/resource/upload/"+noti);
 		
-		File file = new File(noti, notiFilesDTO.getFileName());
+		File file = new File(noti, notiFilesDTO.getNo_fileName());
 		
 		//한글 처리
 		response.setCharacterEncoding("UTF-8");
@@ -39,7 +39,7 @@ public class FileDown extends AbstractView{
 		response.setContentLength((int)file.length());
 		
 		//다운할 때 파일 이름 인코딩
-		String fileName = notiFilesDTO.getFileName();
+		String fileName = notiFilesDTO.getNo_fileName();
 		String downName = fileName.substring(fileName.lastIndexOf("_")+1);
 		
 		//response header 설정
