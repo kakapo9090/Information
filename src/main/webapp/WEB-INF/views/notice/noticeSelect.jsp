@@ -242,7 +242,7 @@
 		 	<br>
 			 	<c:forEach items="${noti}" var = "no">
 			 		<div>
-			 			<a href="down?fileName=${no.fileName}">${no.oriName}</a>
+			 			<a href="down?fileName=${no.no_fileName}">${no.no_oriName}</a>
 			 		</div>
 			 	</c:forEach>
 		 	
