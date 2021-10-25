@@ -25,14 +25,14 @@ public class CartController {
 	//장바구니에 담기 - 넘겨 받는 파라미터: product_Id, fileNum, amount		세션: id, num
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute CartDTO cartDTO, HttpSession session) throws Exception {
-		String userid=(String)session.getAttribute("member");//키값 미정, id값
+		String userid=(String)session.getAttribute("tuser");//id값
 		int usernum = (Integer)session.getAttribute("member");//키값 미정, num값
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : insert");
 		
 		//테스트용
-		userid="abc";
-		usernum=1;
+		//userid="abc";
+		//usernum=1;
 		
 		//로그인이 안 됐을 경우 로그인 페이지 이동
 		if(userid==null) {
@@ -76,9 +76,9 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : list");
-		String userid=(String)session.getAttribute("member");//키값 미정
+		String userid=(String)session.getAttribute("tuser");//키값 미정
 		//테스트용
-		userid="abc";
+		//userid="abc";
 		
 		//로그인한 상태면 실행
 		if(userid!=null) {
@@ -117,11 +117,11 @@ public class CartController {
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : deleteOne");
 		ModelAndView mv = new ModelAndView();
-		 String userid=(String)session.getAttribute("member");//키값 미정
+		 String userid=(String)session.getAttribute("tuser");//키값 미정
 		 String msg = "DELETE FAILED";
 		 System.out.println("삭제할 cart_Id : "+cartDTO.getCart_Id());
 		 //테스트용
-		 userid="abc";
+		 //userid="abc";
 		 
 		 //로그인 검증
 		 if(userid!=null) {
@@ -150,10 +150,10 @@ public class CartController {
 	//장바구니 전체 삭제 - 세션에서 회원아이디 필요
 	@RequestMapping("deleteAll.do")
 	 public String deleteAll(HttpSession session)throws Exception {
-        String userid=(String)session.getAttribute("member");//키값 미정
+        String userid=(String)session.getAttribute("tuser");//키값 미정
         String msg = "DELETE ALL FAILED";
         //테스트용
-      	userid="abc";
+      	//userid="abc";
         if(userid!=null) {
             int result = cartService.deleteAll(userid);
             if(result>0) {
@@ -172,9 +172,9 @@ public class CartController {
 	@PostMapping("update.do")
 	public String update(@RequestParam int[] amount, @RequestParam Long[] cart_Id, HttpSession session)throws Exception{
 		
-		String userid=(String)session.getAttribute("member");//키값 미정
+		String userid=(String)session.getAttribute("tuser");//키값 미정
 		//테스트용
-		userid="abc";
+		//userid="abc";
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : update");
 		System.out.println("cart_Id배열 길이 : " + cart_Id.length);
@@ -221,9 +221,9 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : order");
-		String userid=(String)session.getAttribute("member");//키값 미정
+		String userid=(String)session.getAttribute("tuser");//키값 미정
 		//테스트용
-		userid="abc";
+		//userid="abc";
 		
 		//로그인한 상태면 실행
 		if(userid!=null) {
