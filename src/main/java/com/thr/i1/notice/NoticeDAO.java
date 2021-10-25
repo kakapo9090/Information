@@ -41,8 +41,8 @@ public class NoticeDAO {
 		return sqlSession.selectOne(NAMESPACE+"getCount");
 	}
 	
-	public List<NoticeDTO> getList(NoticePager noticePager) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList", noticePager);
+	public List<NoticeDTO> getList(NoticePager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception{

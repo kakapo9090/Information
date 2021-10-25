@@ -27,20 +27,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
 
 
-<script type="text/javascript">
-$(function(){
-	 $("#btnDelete").click(function(){
-	        if(confirm("장바구니를 비우시겠습니까?")){
-	            location.href="${pageContext.request.contextPath}/cart/deleteAll.do";//경로명 부정확...
-	            alert("장바구니를 모두 비웠습니다!")
-	        }
-	    });
-});
-</script>
+
 
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -238,46 +230,91 @@ $(function(){
 						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->		
 							    <div class="row">  
 							    	<form id="form1" name="form1" method="post"
-     									   action="${pageContext.request.contextPath}/cart/update.do">      
+     									   action="${pageContext.request.contextPath}/cart/update.do" style="width: 100%">      
 			                            <table class="table">
 										  <thead>
 										    <tr align="center">
-										      <th scope="col" width="20%">이미지</th>
+										      <th scope="col" width="15%">이미지</th>
 										      <th scope="col" width="40%">상품명</th>
-										      <th scope="col" width="12%">가격</th>
-										      <th scope="col" width="7%">수량</th>
+										      <th scope="col" width="10%">가격</th>
+										      <th scope="col" width="14%">수량</th>
 										      <th scope="col" width="15%">소계</th>
 										      <th scope="col" width="6%">삭제</th>
 										    </tr>
 										  </thead>
 										  
 										  <tbody>
-										  	<c:forEach var="row" items="${map.list}">
+										  	<c:forEach var="row" items="${map.list}" varStatus="i">
 								                <tr align="center">
-								                	<td>이미지(미완성)</td>
+								                	<td><img alt="product image" src=""></td>
 								                    <td>${row.product_Name}</td>
 								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
-								                    <td><input type="number" name="amount" style="width:30px;" 
-                    									value="<fmt:formatNumber value="${row.amount}"
-                            								pattern="#,###,###" />">
-                            							<input type="hidden" name="cart_Id" value="${row.cart_Id}"></td>
+								                    <td>
+								                    	<!-- 수량 입력 -->
+									                    	<input type="number" min="1" name="amount" id="amount" style="width:63px; height: 31px; text-align: center;" 
+	                    									value="<fmt:formatNumber value="${row.amount}"
+	                            								pattern="#,###,###" />" >
+                            							
+                            							<!-- name속성 전달 -->
+                            								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
+                            						</td>
 											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
                    									<td><a href="${pageContext.request.contextPath}/cart/delete.do?cart_Id=${row.cart_Id}">삭제</a></td>
 								                </tr>
 								            </c:forEach>
-								             	<tr>
-								                    <td colspan="5" align="right">
-								                        장바구니 금액 합계 : <fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" /><br>
-								                        배송료 : ${map.fee}<br>
-								                        총합계 : <fmt:formatNumber value="${map.sumAll}" pattern="#,###,###" />
-								                    </td>
+								            	<tr>	
+								                    <td colspan="9" align="right">
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			장바구니 금액 합계： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			배송비： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>								                    	
+								                    </td>				                    
+								               </tr>
+								               
+								               <tr>
+								               		<td class="p-3 mb-2 bg-light text-dark" colspan="9" align="center">
+									               		<div style="height: 37px;">
+									               			<span style="font-size: x-large; font-weight: bolder;">
+									                    		총 결제금액
+									               			</span>
+									                    </div>
+									                    <div style="height: 50px;">
+									               			<span style="font-size: xx-large; font-weight: bolder; color: red; text-decoration: underline;">
+									                    	 	￦ &nbsp;<fmt:formatNumber value="${map.sumAll}" pattern="#,###,###" />
+									               			</span>
+									                    </div>									               
+								               		</td>
+								               </tr>	
+								               
+								               <tr>
+								               		<td colspan="9" align="right">
+								               			<button type="submit" id="btnUpdate" class="btn btn-primary" >수량변경</button>
+									           			 <!-- 자바스크립트 -->
+									          			<button type="button" id="btnDelete" class="btn btn-danger">장바구니 비우기</button>
+								               		</td>
 								               </tr>					   
 										  </tbody>
 										</table>
-											<button type="submit" id="btnUpdate" class="btn btn-success">수정</button>
-											<!-- 자바스크립트 처리 -->
-								            <button type="button" id="btnDelete" class="btn btn-danger">장바구니 비우기</button>
+										
+										
 								            
+				                        <!-- 주문버튼 begin -->
+				                        <div class="row" style="display: flex; justify-content: center;">
+				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/order.do">주문하기</button>
+				                        </div>
+				                        <!-- 주문버튼 end -->
 									</form>
 		                        </div>
 						       
@@ -285,11 +322,6 @@ $(function(){
 						</c:choose>
                         <!-- 장바구니 리스트 작성 end -->
                         
-                        <!-- 주문버튼 begin -->
-                        <div class="row" style="display: flex; justify-content: center;">
-                       		 <button type="button" class="btn btn-success" style="width: 170px; height: 90px; font-size: x-large; font-weight: bold;">주문하기</button>
-                        </div>
-                        <!-- 주문버튼 end -->
                         
                     </div>
                     
@@ -379,6 +411,14 @@ $(function(){
     <script src="../resources/js/main.js"></script>
 
 
+
+
+
+
+
+
+<script type="text/javascript" src="../resources/js/cart.js">
+</script>
 
 </body>
 

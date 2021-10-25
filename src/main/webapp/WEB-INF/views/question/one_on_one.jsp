@@ -26,11 +26,13 @@
 	<style type="text/css">
 	.bt-ho:hover{
 			background-color: #7fad39;
+			
     	}
 		.card-h{
 			float: left;
 			margin-left: 100px; 
 			margin-top: 200px;
+			position: absolute;
 			
 		}
 		
@@ -41,11 +43,18 @@
 			font-weight: 700;
 			align-content: center;
 			
+			
 		}
 		.card-b{
 			padding-left: 10px;
 		}
-
+		.onetable{
+			position: relative;
+		}
+		/* .btn{
+		border: 1px solid #7fad39;
+    		border-radius: 7px;
+		} */
  	</style>    
     
 </head>
@@ -68,13 +77,7 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__top__right__auth">
-                <c:if test="${not empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:if>
-            		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
-            		</c:if>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -116,13 +119,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
-                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
-                            </c:if>
-                            <c:if test="${empty tuser}">
-                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
-                            </c:if>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -222,10 +221,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>1:1 문의</h2>
+                        <h2>1:1 문의 내역</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>1:1 문의</span>
+                            <span>문의 내역</span>
                         </div>
                     </div>
                 </div>
@@ -234,6 +233,8 @@
     </section>
     <!-- Breadcrumb Section End -->
     
+    
+   
     <!-- 공지사항, FAQ -->
 		<div class="card card-h " style="width: 150px;">
 		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
@@ -241,15 +242,60 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_on_one" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
-		 
+		 <div class="col-md-8 mx-auto onetable" style="height: 800px;">
 		 <!-- 1:1문의 -->
+		
+		 <div class="container-fluid col-md-10 mx-auto" style="margin-top: 150px;">
+		 	<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">문의</th>
+			      <th scope="col">문의 제목</th>
+			      <th scope="col">문의일</th>
+			      <th scope="col">답변 알림</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			 
+			  <c:forEach items="${one}" var="one">
+
+			   <c:if test="${tuser eq one.one_writer or tuser eq 'test'}">
+			   
+			    <tr>
+			      <th scope="row">${one.one_cate}</th>
+			      <td><a href="./one_select?one_num=${one.one_num}">${one.one_title}</a></td>
+			      <td>${one.one_regdate}</td>
+			      <td>${one.one_answer}</td>
+			    </tr>
+			  	
+			    </c:if>
+			 	
+			 	<%-- <c:if test="${one.one_writer ne tuser }">
+			 		<div>문의</div>
+			 	</c:if>  --%>  
+			    
+			    
+			   </c:forEach>
+			  </tbody>
+			</table>
+					 
+		 </div>
 		 
-		 
-		 
+		  </div>
 		 
 		 <!-- 1:1문의 끝 -->
 	<!-- Footer Section Begin -->

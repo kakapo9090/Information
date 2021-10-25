@@ -4,7 +4,7 @@
  
   
  let file = '<div class="input-group mb-3">';
- file = file +'<input type="file" name="files" class="form-control" id="inputGroupFile02">';
+ file = file +'<input type="file" name="files" class="form-control" id="inputGroupFile02" style="height: 40px;">';
  file = file + '<button class="delete btn btn-light " type="button">X</button>';
  file = file + '</div>';
  
@@ -23,6 +23,13 @@ $('#file').on('click', '.delete', function(){
 	$(this).parent().remove()
 	count--;
 })
+
+function upCount(){
+	count--;
+}
+function setCount(c){
+	count = c;
+}
 
 function upCount(){
 	count--;

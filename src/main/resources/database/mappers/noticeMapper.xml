@@ -10,7 +10,7 @@
 		select count(no_num) from noticei1
 	  </select>
 
-	  <select id="getList" resultType="NoticeDTO" parameterType="NoticePager">
+	  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
 	  	select * from
 	    	(select rownum r, noti.* from 
 	        	(select * from noticei1 
@@ -26,7 +26,7 @@
 	  </select>
 	  
 	  <delete id="setFileDelete" parameterType="NotiFilesDTO">
-	  	delete notiFiles where fileNum = #{fileNum}
+	  	delete notiFiles where no_fileNum = #{no_fileNum}
 	  </delete>
 	  
 	  <select id="getFile" parameterType="NoticeDTO" resultType="NotiFilesDTO">
@@ -34,8 +34,8 @@
 	  </select>
 	  
 	  <insert id="setFileInsert" parameterType="NotiFilesDTO">
-	  	insert into notiFiles(fileNum, no_num, fileName, oriName)
-	  	values(nofile_seq.nextval, #{no_num}, #{fileName}, #{oriName})
+	  	insert into notiFiles(no_fileNum, no_num, no_fileName, no_oriName)
+	  	values(nofile_seq.nextval, #{no_num}, #{no_fileName}, #{no_oriName})
 	  </insert>
      
      <insert id="setInsert" parameterType="NoticeDTO">

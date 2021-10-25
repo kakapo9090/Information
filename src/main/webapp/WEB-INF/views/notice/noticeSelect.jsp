@@ -45,13 +45,7 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__top__right__auth">
-                <c:if test="${not empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:if>
-            		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
-            		</c:if>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -92,14 +86,10 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        div class="header__top__right">
-                            <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
-                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
-                            </c:if>
-                            <c:if test="${empty tuser}">
-                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
-                            </c:if>
+                        <div class="header__top__right">
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,17 +202,27 @@
     <!-- Breadcrumb Section End -->
     <!-- notice 세부 -->
 		<!-- 공지사항, FAQ -->
-		<div class="card card-h " style="width: 200px;">
+		<div class="card card-h " style="width: 150px;">
 		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
 		 <div class="card-body card-b">
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
-		<div class="container">
+		<div class="container-md notiSel">
 		<div class="mx-auto noti noti-bt">
 		 	<hr>
 		 	
@@ -266,11 +266,14 @@
 			  </div>
 			</div>
 			<!-- 모달 -->
-		 	<div class="button3">
+		 	<div class="button3 col-md-5 mx-auto" style="padding-left: 100px;">
+		 	<c:if test="${not empty tuser and tuser eq 'test'}">
 			 	<button type="button" value="${notice.no_num}" class="up btn btn-outline-warning">공지수정</button>
-			 	<button type="button" class=" li btn btn-info">목록으로</button>
 			 	<!-- 관리자에게만 보이기 -->
 			 	<button type="button" value="${notice.no_num}" style="color: black"  class="del btn btn-outline-light">공지삭제</button>
+			 </c:if>	
+			 	<button type="button" class=" li btn btn-info mx-auto  ">목록으로</button>
+
 		 	</div>
 		 	</div>
 		</div>

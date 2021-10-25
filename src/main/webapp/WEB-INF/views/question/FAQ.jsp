@@ -35,11 +35,6 @@
  			padding-right: 50px;
  			
  		}
-
-  		.page{
-  			margin-left: 850px;
-  			padding-left: 100px;
-  		}
   		.accor{
   			border-bottom: 0.3px gray solid;
   		}
@@ -52,6 +47,7 @@
 			float: left;
 			margin-left: 100px; 
 			margin-top: 200px;
+			position: relative;
 			
 		}
 		
@@ -66,7 +62,6 @@
 		.card-b{
 			padding-left: 10px;
 		}
-
  	</style>
     
 </head>
@@ -89,13 +84,7 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__top__right__auth">
-                <c:if test="${not empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:if>
-            		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
-            		</c:if>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -137,13 +126,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
-                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
-                            </c:if>
-                            <c:if test="${empty tuser}">
-                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
-                            </c:if>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -263,7 +248,17 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
+		 <c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
@@ -271,7 +266,7 @@
     <!-- FAQ search 시작 -->
     
     <form action="./FAQ" method="get" id="f">
-    <div class="input-group mb-3 col-md-4 mx-auto search">
+    <div class="input-group mb-3 col-md-6 mx-auto search">
 	  <input type="text" class="form-control input-search" placeholder="궁금한 점을 입력하세요." name="search" aria-label="Recipient's username" aria-describedby="button-addon2">
 	  <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2">Search</button>
 	</div>
@@ -301,7 +296,7 @@
 	
 	<!-- 페이징 처리 -->
 	  <br>
-      <div class="col-lg-12">
+      <div class="col-md-7 mx-auto">
          <div class="product__pagination blog__pagination page">
                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="pn">
                   <a href="./FAQ?pn=${pn}">${pn}</a>
@@ -388,7 +383,6 @@
     <script src="../resources/js/main.js"></script>
 
 <script type="text/javascript">
-
 	for(let i=0; i<20; i++){
 		$('#index'+i).click(function(){
 			if($('#faq_con'+i).css('display')== 'none'){
@@ -402,8 +396,6 @@
 			
 		})
 	}
-
-
 	for(let i=0; i<100; i++){
 		//let aa = $('#fa+i')
 		$('#fa'+i).click(function(){

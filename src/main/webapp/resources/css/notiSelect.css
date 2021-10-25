@@ -28,17 +28,16 @@
 		padding-top: 100px;
 	}
 	.up{
-		float: left;
-		margin-left: 50px;
+		
+		margin-bottom: 50px;
 	}
 	
 	.del{
-		float: right;
-		margin-right: 50px;
+		margin-bottom: 50px;
+		
 	}
 	.li{
-		margin-left: 150px;
-		margin-right: 200px;
+		margin-bottom: 50px;
 	}
 	.contents{
 		height: 500px;
@@ -52,12 +51,13 @@
 	}
 	.card-h{
 		float: left;
-		margin-left: 200px; 
+		margin-left: 100px; 
 		margin-top: 200px;
+		position: absolute;
 			
 	}	
 	.FAQ{
-		width: 180px;
+		width: 130px;
 		font-size: 18;
 		font-style: sans-serif;
 		font-weight: 700;
@@ -71,7 +71,6 @@
     .bt-ho:hover{
 		background-color: #7fad39;
     }
-/* 	.noti-bt{
-		float: right;
-	} */
-	 
+	.notiSel{
+		position: relative;
+	}

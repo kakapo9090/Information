@@ -23,13 +23,13 @@ public class NoticeController {
 	
 	//리스트 가져오기
 	@GetMapping("list")
-	public ModelAndView getList(NoticePager noticePager) throws Exception{
+	public ModelAndView getList(NoticePager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
-		List<NoticeDTO> ar = noticeService.getList(noticePager);
+		List<NoticeDTO> ar = noticeService.getList(pager);
 		//System.out.println(ar.get(0).getNo_num());
 		mv.addObject("list", ar);
-		mv.addObject("pager", noticePager);
+		mv.addObject("pager", pager);
 		mv.setViewName("./notice/noticeList");
 		return mv;
 		

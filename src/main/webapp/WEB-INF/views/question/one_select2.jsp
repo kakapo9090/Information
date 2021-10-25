@@ -4,7 +4,6 @@
 <html lang="zxx">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -12,11 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
 
-	
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" type="text/css">
@@ -26,28 +23,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-    
-   
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/oneSelect.css" type="text/css">
 
     
-    
-    <style type="text/css">
-    	.fileupload{
-    		margin-bottom: 20px;
-    	}
-    	
-    	#no_writer{
-			display: none;
-		}	
-		.bt-ho:hover{
-			background-color: #7fad39;
-    	}
-    	.btn1{
-    		border: 1px solid #7fad39;
-    		border-radius: 7px;
-    	}
-    </style>
-       
 </head>
 
 <body>
@@ -138,7 +116,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>
@@ -212,10 +190,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>공지사항</h2>
+                        <h2>1:1 문의 내역</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>공지사항</span>
+                            <span>문의 내역</span>
                         </div>
                     </div>
                 </div>
@@ -223,65 +201,102 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    	<div class="container-xl ">
-		<!-- 글쓰기 시작 -->
-		<div class="row"  >
-		<div class="col-md-8 mx-auto" style="height: 800px; width: 1000px;">
-			<br>
-			<br>
-			<br>
-			<form action="./insert" method="post" id="form" enctype="multipart/form-data" style="margin-top: 50px;">
+        
+        <!-- 공지사항, FAQ -->
+		<div class="card card-h " style="width: 150px;">
+		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
+		 <div class="card-body card-b">
+		 <!-- <p class="card-text">상담원 연결</p> -->
+		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
+		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
+		 <c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
+    	</div>
+    	</div>
+		 <!-- 공지사항, FAQ 끝 -->
+		 
+		<!-- 세부 문의 내역 확인 --> 
+		 <input id="num" value="${oneDTO.one_num}" style="display: none;">
+		 <div class="container-lg oneSel">
+		 	<div class="oneTB col-md-10 mx-auto">
+				<table class="table seltb">
+					<colgroup>
+						<col width="16%">
+						<col>
+						<col width="16%">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">제목</th>
+							<td colspan="3">${oneDTO.one_title}</td>
+						</tr>
+						<tr>
+							<th scope="row">문의 카테고리</th>
+							<td>${oneDTO.one_cate}</td>
+							<th scope="row">등록일</th>
+							<td>${oneDTO.one_regdate}</td>
+						</tr>
+						<tr>
+							<th scope="row">작성자</th>
+							<td id="writer">${oneDTO.one_writer}</td>
+							<th scope="row">문의 알림</th>
+							<td>${oneDTO.one_answer}</td>
+						</tr>
+						<tr>
+							<th scope="row">문의 내용</th>
+							<td colspan="3"></td>
+						</tr>
+						
+					</tbody>
+				</table>
 				
-				<div>
-					<input name="no_writer" value="admin" id="no_writer">
+				<div class="oneCon">
+					
+					<div>${oneDTO.one_contents}</div>
 				</div>
-				<div class="mb-3">
-				  <label for="no_title" class="form-label">Title</label>
-				  <input type="text" class="form-control" name="no_title" id="no_title" placeholder="제목을 입력하세요.">
-				</div>
-				
-				<div class="mb-3">
-				  <label for="no_contents" class="form-label">Contents</label>
-				  <textarea class="form-control" id="no_contents" name="no_contents" rows="3"></textarea>
-				</div>		
-				<div class="fileupload">
-				<button id="fileup" type="button" class="btn btn1 bt-ho">file upload</button>
-				</div>
-				
-				<div id="file">
-				
-				</div>
-				
-			<button id="add" type="submit"  class="btn btn-outline-primary">등록</button>
-			<button id="cancel" type="button"  class="btn btn-outline-warning">취소</button>
-			</form>
-			<!-- 모달 -->
-		 	<div class="modal" id="insertCancel"  data-keyboard="false" data-backdrop="static" tabindex="-1">
-			  <div class="modal-dialog modal-dialog-centered">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title">등록 취소</h5>
-			        <button type="button" class="insertClose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <p>등록중인 글이 있습니다.</p>
-			        <p>취소하시겠습니까?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary ok" value ="true" data-bs-dismiss="modal">확인</button>
-			        <button type="button" class="btn btn-primary no" value="false">취소</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- 모달 -->
-			
-		</div>
-		</div>
 		
-	</div>
-    
-       <!-- Footer Section Begin -->
+		 		<hr>	
+		 	<!-- 문의글 삭제 하기 -->
+		 	<c:if test="${tuser eq oneDTO.one_writer}">
+		 	<div>
+		 		<button type ="button" class="btn one_delete">삭제하기</button>
+		 	</div>
+		 	</c:if>
+		 <!-- 문의답변 달기 -->
+		<c:if test="${tuser eq 'test'}">
+		 <div >
+		 	<button  class="one_cobtn">답변하기</button>
+			 	<form action="./commentInsert" method="post" id="form" class="one_comment">
+			 	<input style="display: none;" id="one_num" name="one_num" value="${oneDTO.one_num}">
+			 	
+			 	
+			 	</form>
+		 </div>
+		 </c:if>
+		 
+		 <!-- 문의 답변 가져오기 -->
+		 <div class="comment" data-one-num="${oneDTO.one_num}">
+		 
+		 </div>
+		 <br>
+		 <!-- 1:1 문의 끝 -->
+		 	<div class="col-md-6 mx-auto" style="text-align: center;">
+		 		<button type="button" class="btn bt-ho btn1 one_list" style="margin: auto; width: 50%;">1:1문의 목록</button>
+		 	</div>
+			</div>
+		 </div> 
+		 
+		 <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
             <div class="row">
@@ -352,34 +367,186 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-	<script type="text/javascript" src="../resources/js/fileUpload.js"></script>
-	<script type="text/javascript">
- 	$(document).ready(function() {
-		  $('#no_contents').summernote();
-		});	
-		
-		
-	/*	$('#no_contents').summernote({
-			height : 300
-		}); */
-		//취소 버튼 누르면 모달폼 띄우기
-		$('#cancel').click(function(){
-			//console.log('cancel');
-			$('#insertCancel').modal();
-		});
-		//엑스 누르면 모달폼 끄기
-		$('.insertClose').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-		$('.ok').click(function(){
-			location.href="./list"
-		});
-		
-		$('.no').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-	</script>
-
+    <script type="text/javascript" src="../resources/js/one_comment.js"></script>
 </body>
-
+<script type="text/javascript">
+//목록으로 돌아가는 버튼 클릭시 문의 내역으로 이동
+$('.one_list').click(function(){
+	location.href="./one_on_one";
+});
+	let num = $('#num').val();
+	let one_writer = $('#writer').text();
+	console.log(one_writer);
+	//console.log(num);
+	$('.one_delete').click(function(){
+		let delOK= confirm('문의글을 삭제하면 답변이 함께 삭제됩니다. 삭제하시겠습니까?');
+		if(delOK){
+			$.ajax({
+				type:'GET',
+				url: './delete?one_num='+num,
+				data: {
+					one_num: num,
+					one_writer: one_writer
+				},
+				success: function(){
+					alert('삭제성공')
+					location.href="./one_on_one?one_writer="+one_writer;
+				},
+				error: function(){
+					alert('삭제실패')
+				}
+						
+			})
+		}else{
+			 location.href="./one_select?one_num="+num;
+		}
+		
+	});
+//답변 등록을 누르면 답변이 등록되고 답변 폼이 사라짐
+	
+	$('.one_comment').on('click', '#submit', function(){
+		//alert('click');
+		let oneco_contents = $('#oneco_contents').val();
+		console.log(oneco_contents);
+		let one_num = $('#one_num').val();
+		console.log(one_num);
+		$.ajax({
+			type: 'POST',
+			url: './commentInsert',
+			data: {
+				oneco_contents: oneco_contents,
+				one_num: one_num
+			},
+			success:function(result){
+				console.log(result.trim());
+				
+				commentSelect();
+				$('.one_comment').attr('style', 'display:none');
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+		});
+	});
+	
+	
+	//답변가져오기
+	function commentSelect(){
+		let one_num = $('.comment').attr('data-one-num');
+		$.ajax({
+			type: 'GET',
+			url: './commentSelect',
+			data: {
+				one_num : one_num
+			},
+			success: function(result){
+				result = result.trim();
+				$('.comment').html(result);
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+		})
+	};
+	
+	//답변이 있으면 답변을 없으면 버튼 띄우기
+	let one_num = $('.comment').attr('data-one-num');
+	$.ajax({
+		type: 'POST',
+		url: './commentNum',
+		data: {one_num: one_num},
+		success: function(result){
+			//alert(result);
+			if(result>0){
+				commentSelect();
+				$('.one_cobtn').css('display','none');
+			}else{
+				$('.one_cobtn').css('display','block');
+			}
+		},
+		error : function(){
+			alert('오류');
+		}
+	})
+	
+	//답변 수정하기 - 수정버튼을 클릭하면 답변 내용을 수정가능한 text area로 변경, 수정하기/취소하기 버튼 생성
+	$('.comment').on('click', '#update', function(){
+		let oneco_contents = $('#co_con').val();
+		alert(oneco_contents)
+		$('.textarea').css('display', 'none');
+		
+		let content = '<textarea class="newtext" id="co_con" rows="10" style="width: 880px;">';
+		content = content + oneco_contents.trim()+'</textarea>'
+		content = content + '<button type="button" id="upcontent" class="btn bt-ho">수정하기</button>';
+		content = content+ '<button type="button" id="delcontent" class="btn bt-ho">취소하기</button>'
+		console.log(content);
+		$('.comment_an').append(content);
+	});
+	
+	//답변의 수정하기 버튼을 클릭했을 때
+	$('.comment').on('click', '#upcontent', function(){
+		let contents = $(this).prev().val();
+		console.log(contents);
+		let oneco_num = $('#oneco_num').val();
+		
+		$.ajax({
+			type: 'POST',
+			url: './commentUpdate',
+			data: {
+				oneco_contents : contents,
+				oneco_num : oneco_num
+			},
+			success: function(result){
+				if(result>0){
+					$('.comment_an').children().css('display', 'block');
+					$('.comment_an').children('input').css('display', 'none');
+					$('.comment_an').children('.newtext').remove();
+					$('#co_con').val(contents)
+					//$('.comment_an').children('.textarea').html(contents);
+					$('.textarea').next().next('button').remove();
+					$('.textarea').next().next('button').remove();
+				}else{
+					console.log('실패');
+				}
+			},
+			error:function(xhr, status, error){
+				console.log(error);
+			}
+			
+		})
+	});
+	
+	//답변의 취소하기 클릭하면 원래대로 돌아가기
+	$('.comment').on('click', '#delcontent', function(){
+		$('.textarea').css('display', 'block');
+		$('.newtext').remove();
+		$('.textarea').next().next('button').remove();
+		$('.textarea').next().next('button').remove();
+		
+	});
+	//답변 삭제하기
+	$('.comment').on('click', '#delete', function(){
+		let oneco_num = $('#oneco_num').val();
+		//alert(oneco_num);
+		$.ajax({
+			type: 'POST',
+			url: './commentDelete',
+			data: {oneco_num:oneco_num},
+			success: function(result){
+				if(result>0){
+					alert('답변이 삭제되었습니다.');
+					$('.one_cobtn').css('display','block');
+					$('.comment').css('display', 'none');
+					//delcount();
+				}else{
+					alert('삭제를 실패했습니다.');
+				}
+			},
+			error: function(){
+				console.log('오류');
+			}
+		});
+	});
+	
+</script>
 </html>

@@ -43,7 +43,8 @@
     	}
 		.card-h{
 			float: left;
-			margin-left: 200px; 
+			margin-left: 100px; 
+			
 			
 		}
 		
@@ -58,7 +59,6 @@
 		.card-b{
 			padding-left: 10px;
 		}
-
 		.noti-btn{
 			background-color: white;
 			border: 2px solid #7fad39;
@@ -67,7 +67,9 @@
 			margin-left: 100px;
 			margin-top: 150px;
 		}
-		
+		.notiCon{
+			position: relative;
+		} 
 		
     </style>
     
@@ -91,13 +93,7 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__top__right__auth">
-                <c:if test="${not empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:if>
-            		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
-            		</c:if>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -139,13 +135,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
-                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
-                            </c:if>
-                            <c:if test="${empty tuser}">
-                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
-                            </c:if>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,12 +259,22 @@
 		 <!-- <p class="card-text">상담원 연결</p> -->
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
+		<c:choose>
+		<c:when test="${not empty tuser and tuser eq 'test'}">
+		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		<c:when test="${not empty tuser}">
+		 <a href="../question/one_insert" class=" FAQ  one btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 <c:when test="${empty tuser}">
+		 <a href="../link/login" class=" FAQ  one1 btn bt-ho">1:1 문의</a>
+		 </c:when>
+		 </c:choose>
     	</div>
     	</div>
 		 <!-- 공지사항, FAQ 끝 -->
 		 <!-- 공지사항 시작 -->
-        <div class="container">
+        <div class="container notiCon">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar" >
@@ -296,7 +298,7 @@
                     </div>
                 </div>
                 <!-- 공지사항 테이블 시작 -->
-                <div class="col-lg-8 col-md-7">
+                <div class="col-lg-8 col-md-7 notiList">
                     <div class="row">
                     	<br>
                     	<br>
@@ -333,10 +335,11 @@
                         </div>
                         <!-- 페이징 처리 끝-->
                     </div>
-                    
+                    <c:if test="${not empty tuser and tuser eq 'test'}">
                     <div>
 						<a href="./insert">insert</a>
 					</div>
+					</c:if>
                 </div>
                 
             </div>
@@ -416,7 +419,11 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
+	<script type="text/javascript">
+		$('.one1').click(function(){
+			alert('로그인이 필요한 서비스입니다.');로
+		})
+	</script>
 
 </body>
 

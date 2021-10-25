@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -12,11 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
 
-	
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" type="text/css">
@@ -26,31 +25,14 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-    
-   
 
-    
-    
-    <style type="text/css">
-    	.fileupload{
-    		margin-bottom: 20px;
-    	}
-    	
-    	#no_writer{
-			display: none;
-		}	
-		.bt-ho:hover{
-			background-color: #7fad39;
-    	}
-    	.btn1{
-    		border: 1px solid #7fad39;
-    		border-radius: 7px;
-    	}
-    </style>
-       
+
+
+
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -66,7 +48,7 @@
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
+            </ul> 
             <div class="header__top__right__auth">
                 <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
@@ -159,129 +141,167 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Smaple List</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">과일/야채</a></li>
-                            <li><a href="#">과자</a></li>
-                            <li><a href="#">기타음료</a></li>
-                            <li><a href="#">냉동식품</a></li>
-                            <li><a href="#">라면</a></li>
-                            <li><a href="#">베이커리</a></li>
-                            <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="#">수산물</a></li>
-                            <li><a href="#">식물성음료</a></li>
-                            <li><a href="#">아이스크림</a></li>
-                            <li><a href="#">정육</a></li>
-                            <li><a href="#">주스</a></li>
-                            <li><a href="#">즉석식품</a></li>
-                            <li><a href="#">초콜릿</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="../resources/img/breadcrumb.jpg">
+	
+    <!-- 주문정보 Section Begin -->
+    <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>공지사항</h2>
-                        <div class="breadcrumb__option">
-                            <a href="../">Home</a>
-                            <span>공지사항</span>
+                
+                <div class="col-lg-9 col-md-5">
+                    <div class="product__discount">
+                        <div class="section-title product__discount__title">
+                            <h2>주 문 정 보</h2>
                         </div>
-                    </div>
+                        
+                        <!-- 회원 정보 입력 -->
+                        <div class="">
+                            <h3>회원정보</h3>
+                        </div>
+                        <br>
+                        
+                        <div><label>주문자명</label></div>
+                        <div>
+						  	<input type="text"  name="name" value="">
+						</div>
+						<div><label>전화번호</label></div>
+                        <div>
+						  	<input type="tel"  name="phone" value="">
+						</div>
+						<div><label>이메일</label></div>
+                        <div>
+						  	<input type="text"  name="email" value="" style="width: 300px;">
+						</div>
+						<div><label>주소</label></div>
+                        <div>
+						  	<input type="text"  name="address" value="" style="width: 650px;">
+						</div>
+						
+						
+                        <div class="section-title product__discount__title">
+                        </div>
+
+                        <!-- 장바구니 리스트 작성 begin -->
+                        <!-- 소스 시작 -->
+                        	<div class="">
+                           		 <h3>주문상품정보</h3>
+                      		  </div>
+                        <br>
+                        <c:choose>
+						    <c:when test="${map.count == 0 }">
+						    <!-- map의 count가 0일때 -->
+					
+						        장바구니가 비었습니다.
+						    </c:when>
+						    
+						    <c:otherwise>			     
+						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
+							    <div class="row">  
+							    	<form id="form1" name="form1" method="post"
+     									   action="${pageContext.request.contextPath}/cart/update.do" style="width: 100%">      
+			                            <table class="table">
+										  <thead>
+										    <tr align="center">
+										      <th scope="col" width="15%">이미지</th>
+										      <th scope="col" width="46%">상품명</th>
+										      <th scope="col" width="10%">가격</th>
+										      <th scope="col" width="14%">수량</th>
+										      <th scope="col" width="15%">소계</th>
+										    </tr>
+										  </thead>
+										  
+										  <tbody>
+										  	<c:forEach var="row" items="${map.list}" varStatus="i">
+								                <tr align="center">
+								                	<td><img alt="product image" src=""></td>
+								                    <td>${row.product_Name}</td>
+								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
+								                    <td>
+									                    ${row.amount}
+                            							<!-- name속성 전달 -->
+                            								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
+                            						</td>
+											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
+								                </tr>
+								            </c:forEach>
+								            	<tr>	
+								                    <td colspan="9" align="right">
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			장바구니 금액 합계： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			배송비： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>								                    	
+								                    </td>				                    
+								               </tr>
+								               
+								               <tr>
+								               		<td class="p-3 mb-2 bg-light text-dark" colspan="9" align="center">
+									               		<div style="height: 37px;">
+									               			<span style="font-size: x-large; font-weight: bolder;">
+									                    		총 결제금액
+									               			</span>
+									                    </div>
+									                    <div style="height: 50px;">
+									               			<span style="font-size: xx-large; font-weight: bolder; color: red; text-decoration: underline;">
+									                    	 	￦ &nbsp;<fmt:formatNumber value="${map.sumAll}" pattern="#,###,###" />
+									               			</span>
+									                    </div>									               
+								               		</td>
+								               </tr>	
+								               
+								               <tr>
+									               <td colspan="9" align="left">
+									               	<input type="radio" name="payment" checked="checked"><span>&nbsp;무통장입금</span>
+									               </td>
+								               </tr>
+								               				   
+										  </tbody>
+										</table>
+										
+										
+								            
+				                        <!-- 결제 begin -->
+				                        <div class="row" style="display: flex; justify-content: center;">
+				                        	
+					                        <button type="submit" class="btn btn-secondary btn-lg" formaction="${pageContext.request.contextPath}/cart/list.do">돌아가기</button>
+				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/complete.do" style="width: 114px;">결 제</button>
+				                        </div>
+				                        <!-- 결제 end -->
+									</form>
+		                        </div>
+						       
+						    </c:otherwise>
+						</c:choose>
+                        <!-- 장바구니 리스트 작성 end -->            
+                    </div>     
+                </div>
+                <div class="col-lg-5 col-md-3">
+                		
                 </div>
             </div>
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
-    	<div class="container-xl ">
-		<!-- 글쓰기 시작 -->
-		<div class="row"  >
-		<div class="col-md-8 mx-auto" style="height: 800px; width: 1000px;">
-			<br>
-			<br>
-			<br>
-			<form action="./insert" method="post" id="form" enctype="multipart/form-data" style="margin-top: 50px;">
-				
-				<div>
-					<input name="no_writer" value="admin" id="no_writer">
-				</div>
-				<div class="mb-3">
-				  <label for="no_title" class="form-label">Title</label>
-				  <input type="text" class="form-control" name="no_title" id="no_title" placeholder="제목을 입력하세요.">
-				</div>
-				
-				<div class="mb-3">
-				  <label for="no_contents" class="form-label">Contents</label>
-				  <textarea class="form-control" id="no_contents" name="no_contents" rows="3"></textarea>
-				</div>		
-				<div class="fileupload">
-				<button id="fileup" type="button" class="btn btn1 bt-ho">file upload</button>
-				</div>
-				
-				<div id="file">
-				
-				</div>
-				
-			<button id="add" type="submit"  class="btn btn-outline-primary">등록</button>
-			<button id="cancel" type="button"  class="btn btn-outline-warning">취소</button>
-			</form>
-			<!-- 모달 -->
-		 	<div class="modal" id="insertCancel"  data-keyboard="false" data-backdrop="static" tabindex="-1">
-			  <div class="modal-dialog modal-dialog-centered">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title">등록 취소</h5>
-			        <button type="button" class="insertClose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <p>등록중인 글이 있습니다.</p>
-			        <p>취소하시겠습니까?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary ok" value ="true" data-bs-dismiss="modal">확인</button>
-			        <button type="button" class="btn btn-primary no" value="false">취소</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- 모달 -->
-			
-		</div>
-		</div>
-		
-	</div>
-    
-       <!-- Footer Section Begin -->
+    <!-- 주문정보 Section End -->
+
+
+
+
+
+
+
+    <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
             <div class="row">
@@ -352,33 +372,16 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-	<script type="text/javascript" src="../resources/js/fileUpload.js"></script>
-	<script type="text/javascript">
- 	$(document).ready(function() {
-		  $('#no_contents').summernote();
-		});	
-		
-		
-	/*	$('#no_contents').summernote({
-			height : 300
-		}); */
-		//취소 버튼 누르면 모달폼 띄우기
-		$('#cancel').click(function(){
-			//console.log('cancel');
-			$('#insertCancel').modal();
-		});
-		//엑스 누르면 모달폼 끄기
-		$('.insertClose').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-		$('.ok').click(function(){
-			location.href="./list"
-		});
-		
-		$('.no').click(function(){
-			$('#insertCancel').modal('hide');
-		});
-	</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="../resources/js/cart.js">
+</script>
 
 </body>
 
