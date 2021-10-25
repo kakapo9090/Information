@@ -23,6 +23,7 @@ public class ReviewService {
 	@Autowired
 	private FileUpload fileUpload;
 	
+	//리뷰 리스트 가져오기-pager 처리
 	public List<ReviewDTO> getReviewList(ReviewDTO reviewDTO, Pager pager) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("review", reviewDTO);
@@ -35,13 +36,16 @@ public class ReviewService {
 		return reviewDAO.getReviewList(map);
 	}
 	
+	//리뷰 contents, 파일 보여주기
 	public ReviewDTO getReviewSelect(ReviewDTO reviewDTO) throws Exception {
 		return reviewDAO.getReviewSelect(reviewDTO);
 	}
 	
+	//리뷰, 리뷰 파일 추가하기
 	public int setReviewInsert(ReviewDTO reviewDTO, MultipartFile [] files) throws Exception {
 		//파일 저장할 폴더 위치 : /resources/upload/review/
 		String realPath = this.servletContext.getRealPath("/resources/upload/review/");
+		System.out.println("real path : "+realPath);
 		File file = new File(realPath);
 		int result = reviewDAO.setReivewInsert(reviewDTO);
 		for(MultipartFile multipartFile:files) {
@@ -54,6 +58,20 @@ public class ReviewService {
 			result = reviewDAO.setReviewFiles(reviewFilesDTO);
 		}
 		return result;
+	}
+	
+	//리뷰, 리뷰 파일 삭제
+	public int setReviewDelete(ReviewDTO reviewDTO) throws Exception {
+		//삭제할 파일 경로
+		String realPath = servletContext.getRealPath("/resources/upload/review/");
+		//삭제할 파일
+		List<ReviewFilesDTO> ar = reviewDAO.getReviewFiles(reviewDTO);
+		for(ReviewFilesDTO reviewFilesDTO:ar) {
+			File file = new File(realPath, reviewFilesDTO.getRe_fileName());
+			file.delete();
+		}
+		
+		return reviewDAO.setReviewDelete(reviewDTO);
 	}
 
 }

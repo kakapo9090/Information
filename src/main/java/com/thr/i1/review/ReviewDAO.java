@@ -33,5 +33,13 @@ public class ReviewDAO {
 	public int setReviewFiles(ReviewFilesDTO reviewFilesDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setReviewFiles", reviewFilesDTO);
 	}
+	
+	public int setReviewDelete(ReviewDTO reviewDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setReviewDelete", reviewDTO);
+	}
+	
+	public List<ReviewFilesDTO> getReviewFiles(ReviewDTO reviewDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getReviewFiles", reviewDTO);
+	}
 
 }

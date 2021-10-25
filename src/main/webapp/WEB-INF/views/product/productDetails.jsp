@@ -239,7 +239,7 @@
 							</tr>
 							<tr>
 								<td class="tit">배송</td>
-								<td class="desc">무료배송</td>
+								<td class="desc">3만원 이상 구매시 무료배송</td>
 							</tr>							
 							<tr>
 								<td class="tit">간단설명</td>
@@ -272,17 +272,8 @@
 							</span>
 						</div>
 						<div class="group_btn">
-							<button type="button" class="btn_txt goCart">장바구니 담기</button>
-<!-- 							<div class="cart_inner">
-								<p class="cart_txt">
-									선택하신 상품이 장바구니에 담겼습니다
-									<br>
-									<strong>장바구니로 이동하시겠습니까?</strong>
-									<button class="btn_shopping">쇼핑 계속하기</button>
-									<button class="btn_goCart">장바구니 바로가기</button>
-								</p>
-							</div> -->
-							<button type="button" class="btn_txt goBuy">바로구매</button>
+							<button type="button" class="btn_txt goCart" data-tuser-id="${tuser}" data-product-id="${dto.product_id}">장바구니 담기</button>
+							<button type="button" class="btn_txt goBuy" data-tuser-id="${tuser}">바로구매</button>
 						</div>						
 					</div>
 				</div>
@@ -327,9 +318,13 @@
 							
 							</div>
 							<div>
-
-								<a href="../review/reviewInsert?product_id=${dto.product_id}&product_name=${dto.product_name}">후기작성</a>
-
+								<button type="button" class="btn_write" data-product-id="${dto.product_id}" data-product-name="${dto.product_name}">
+									후기 작성
+								</button>
+								<div class="modal">
+									<div class="modal_contents">
+									</div>
+								</div>
 							</div>
 						</div>
 						<nav>
@@ -429,5 +424,6 @@
     <script src="../resources/js/main.js"></script>
     <script src="../resources/js/productDetails.js"></script>
     <script src="../resources/js/review.js"></script>
+    <script src="../resources/js/reviewInsert.js"></script>
 </body>
 </html>

@@ -47,5 +47,13 @@
 		INSERT INTO REVIEWFILES (RE_NUM, RE_FILENUM, RE_FILENAME, RE_ORINAME) 
 		VALUES (#{re_num}, REVIEWFILES_SEQ.NEXTVAL, #{re_fileName}, #{re_oriName})
 	</insert>
+	
+	<delete id="setReviewDelete" parameterType="ReviewDTO">
+		DELETE REVIEW WHERE RE_NUM=#{re_num}
+	</delete>
+	
+	<select id="getReviewFiles" parameterType="ReviewDTO" resultType="ReviewFilesDTO">
+		SELECT * FROM REVIEWFILES WHERE RE_NUM=#{re_num}
+	</select>
   
   </mapper>

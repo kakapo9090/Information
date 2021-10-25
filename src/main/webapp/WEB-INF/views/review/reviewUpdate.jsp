@@ -3,12 +3,13 @@
 
 	<div class="modal_head">
 		<h1>구매후기 작성</h1>
-		<span class="modal_close">&times;</span>
+		<button class="modal_close" type="button">&times;</button>
 	</div>
 	
 	<div class="modal_body">
 		<div class="product_info">
 			<div class="product_name">${param.product_name }</div>
+			<div class="product_count">0개</div>
 		</div>
 		<div class="product_review">
 			<form class="" action="../review/reviewInsert" method="post" enctype="multipart/form-data">
@@ -34,8 +35,8 @@
 					</div>
 					<span>사진은 JPG, PNG 형식으로 최대 5개까지만 등록 가능합니다.</span>
 				</div>
-				<div class="btn_area">
-					<button type="submit" class="btn_insert">등록하기</button>
+				<div>
+					<button type="submit" class="btn_insert">ADD</button>
 				</div>
 			</form>
 		</div>

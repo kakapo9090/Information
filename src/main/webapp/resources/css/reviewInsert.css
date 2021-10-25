@@ -3,14 +3,13 @@
 
 .modal_contents {
 	background-color: #fefefe; margin: 5% auto; padding: 10px; border: 1px solid #888;
-	width: 568px; height: 700px;
+	width: 558px; height: 600px;
 }
 
-.modal_head {width: 514px; height: 50px; margin: 0 auto; border-bottom: 2px solid #777777;}
+.modal_head {width: 514px; height:50px; margin: 0 auto; border-bottom: 2px solid #777777;}
 .modal_head h1{font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 20px; display:inline-block; margin-top: 10px;}
 .modal_head .modal_close{
-	border: none; background-color:white;
-	float: right; font-size: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; margin-top: 10px;
+	float: right; font-size: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; margin-top: 10px; cursor: pointer;
 }
 
 .modal_body {width: 514px; height: 441px; margin: 0 auto;}
@@ -18,10 +17,18 @@
 .modal_body .product_info .product_name{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 15px; margin-left: 7px; margin-top: 3px;}
 .modal_body .product_info .product_count{float: right; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 13px; margin-right: 7px;}
 
-.modal_body .product_review {height: 441px;}
+.modal_body .product_review {height: 441px; width: 100%;}
 
 .modal_body .product_review .star_area{height: 80px; border: 1px solid #e6e6e6; border-collapse: collapse;}
-.modal_body .product_review .star_area #star_txt{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 18px; margin-top:7px; text-align: center;}
+.modal_body .product_review .star_area #star_txt{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 18px; margin:7px 0 7px 0; text-align: center;}
+.modal_body .product_review .star_area .star_box {
+	width: 238px; height: 30px; margin: 11px auto;
+}
+
+.modal_body .product_review .star_area .star {
+	background: url("../img/icon/starOff.png") no-repeat right 0; background-size: auto 100%; width: 30px; height: 30px; display: inline-block; 
+	text-indent: -9999px; cursor: pointer; margin: 0 auto; float: left;
+}
 
 .modal_body .product_review .input_area {height: 197px; border: 1px solid #e6e6e6; border-collapse: collapse;}
 .modal_body .product_review .input_area #re_title {
@@ -31,5 +38,22 @@
 .modal_body .product_review .input_area #re_contents{
 	display:block; margin: 0 auto;
 	width: 490px; height:140px; resize: none;  border: 1px solid #777777;
-	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px; white-space: pre-wrap;
+}
+.modal_body .product_review .photo_area {
+	height: 90px; border: 1px solid #e6e6e6; border-collapse: collapse;
+}
+.modal_body .product_review .photo_area .photo_add {
+	width: 330px; height: 40px; margin: 7px auto;
+}
+.modal_body .product_review .photo_area .photo_icon {
+	background: none; border: none; width:35px; margin : 0 15px 0 15px; float: left; display: flex;
+}
+
+.modal_body .btn_area {
+	height: 100px;
+}
+.modal_body .btn_insert {
+	width: 145px; height: 40px; margin: 30px auto; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 18px; 
+	color: white; background-color: #7fad39; border: none; display: block;
 }

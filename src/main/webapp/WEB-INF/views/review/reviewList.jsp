@@ -33,6 +33,7 @@
 	</table>
 	<!-- review list end -->
 	
+	
 	<!-- review pager begin -->
 	<div class="product__pagination">
 		<nav>
