@@ -84,18 +84,18 @@ public class CartController {
 		if(userid!=null) {
 			List<CartDTO> list = cartService.cartList(userid);//장바구니 목록 출력
 			
-//			int sumMoney=cartService.sumMoney(userid);//금액 합계
-//			
-//			int fee = 3000; //배송비
-//			//3만원 이상 구매시 배송비 무료
-//			if(sumMoney>=30000) {
-//				fee = 0;
-//			}
+			int sumMoney=cartService.sumMoney(userid);//금액 합계
+			
+			int fee = 3000; //배송비
+			//3만원 이상 구매시 배송비 무료
+			if(sumMoney>=30000) {
+				fee = 0;
+			}
 			
 			//haspmap에 장바구니에 넣을 각종 값들을 저장함
-//            map.put("sumMoney", sumMoney);//금액 합계
-//            map.put("fee", fee); //배송비
-//            map.put("sumAll", sumMoney+fee); //전체 금액
+            map.put("sumMoney", sumMoney);//금액 합계
+            map.put("fee", fee); //배송비
+            map.put("sumAll", sumMoney+fee); //전체 금액
             map.put("list", list); //장바구니 목록
             map.put("count", list.size()); //장바구니 크기
 
@@ -231,18 +231,18 @@ public class CartController {
 			
 			
 			
-//			int sumMoney=cartService.sumMoney(userid);//금액 합계
-//			
-//			int fee = 3000; //배송비
-//			//3만원 이상 구매시 배송비 무료
-//			if(sumMoney>=30000) {
-//				fee = 0;
-//			}
+			int sumMoney=cartService.sumMoney(userid);//금액 합계
+			
+			int fee = 3000; //배송비
+			//3만원 이상 구매시 배송비 무료
+			if(sumMoney>=30000) {
+				fee = 0;
+			}
 			
 			//haspmap에 장바구니에 넣을 각종 값들을 저장함
-//            map.put("sumMoney", sumMoney);//금액 합계
-//            map.put("fee", fee); //배송비
-//            map.put("sumAll", sumMoney+fee); //전체 금액
+            map.put("sumMoney", sumMoney);//금액 합계
+            map.put("fee", fee); //배송비
+            map.put("sumAll", sumMoney+fee); //전체 금액
 			
 			
 			

@@ -19,7 +19,7 @@
 	 and 장바구니테이블의 상품id = 상품테이블의 상품id 
 	 and 장바구니테이블의 파일번호 = 파일테이블의 파일번호 
 	 and 장바구니테이블의 회원id = 파라미터로 받은 회원id-->
-	  <select id="cartList1" resultType="CartDTO" parameterType="String">
+	  <select id="cartList" resultType="CartDTO" parameterType="String">
 	  	select cart_Id, product_Id, num, id, name, product_Name
 	  	, amount, price, (price*amount) money, fileName, fileNum
 	  
@@ -39,7 +39,7 @@
 	  </select>
 	  
 	  <!-- 리스트 테스트용 -->
-	  <select id="cartList" resultType="CartDTO" parameterType="String">
+	  <select id="cartList11" resultType="CartDTO" parameterType="String">
 	  	select *
 	  	from cart
 	  	where id=#{userid}

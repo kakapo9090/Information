@@ -148,148 +148,38 @@
         <div class="container">
             <div class="row">
                 
-                <div class="col-lg-9 col-md-5">
+                <div class="col-lg-12 col-md-9">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
                             <h2>주 문 정 보</h2>
                         </div>
                         
-                        <!-- 회원 정보 입력 -->
-                        <div class="">
-                            <h3>회원정보</h3>
-                        </div>
-                        <br>
-                        
-                        <div><label>주문자명</label></div>
-                        <div>
-						  	<input type="text"  name="name" value="">
-						</div>
-						<div><label>전화번호</label></div>
-                        <div>
-						  	<input type="tel"  name="phone" value="">
-						</div>
-						<div><label>이메일</label></div>
-                        <div>
-						  	<input type="text"  name="email" value="" style="width: 300px;">
-						</div>
-						<div><label>주소</label></div>
-                        <div>
-						  	<input type="text"  name="address" value="" style="width: 650px;">
-						</div>
+                       
 						
-						
-                        <div class="section-title product__discount__title">
-                        </div>
+                       
 
-                        <!-- 장바구니 리스트 작성 begin -->
-                        <!-- 소스 시작 -->
-                        	<div class="">
-                           		 <h3>주문상품정보</h3>
-                      		  </div>
-                        <br>
-                        <c:choose>
-						    <c:when test="${map.count == 0 }">
-						    <!-- map의 count가 0일때 -->
-					
-						        장바구니가 비었습니다.
-						    </c:when>
-						    
-						    <c:otherwise>			     
+
+                        
+						    		     
 						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
 							    <div class="row">  
-							    	<form id="form1" name="form1" method="post"
-     									   action="${pageContext.request.contextPath}/cart/update.do" style="width: 100%">      
-			                            <table class="table">
-										  <thead>
-										    <tr align="center">
-										      <th scope="col" width="15%">이미지</th>
-										      <th scope="col" width="46%">상품명</th>
-										      <th scope="col" width="10%">가격</th>
-										      <th scope="col" width="14%">수량</th>
-										      <th scope="col" width="15%">소계</th>
-										    </tr>
-										  </thead>
-										  
-										  <tbody>
-										  	<c:forEach var="row" items="${map.list}" varStatus="i">
-								                <tr align="center">
-								                	<td><img alt="product image" src=""></td>
-								                    <td>${row.product_Name}</td>
-								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
-								                    <td>
-									                    ${row.amount}
-                            							<!-- name속성 전달 -->
-                            								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
-                            						</td>
-											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
-								                </tr>
-								            </c:forEach>
-								            	<tr>	
-								                    <td colspan="9" align="right">
-								                    	<div style="height: 37px;">
-								                    		<span style="font-size: medium; font-weight: bold;">
-								                    			장바구니 금액 합계： &nbsp;
-								                    		</span>				                    	
-								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
-								                    			￦ &nbsp;<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />
-								                    		</span>
-								                    	</div>
-								                    	<div style="height: 37px;">
-								                    		<span style="font-size: medium; font-weight: bold;">
-								                    			배송비： &nbsp;
-								                    		</span>				                    	
-								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
-								                    			￦ &nbsp;<fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
-								                    		</span>
-								                    	</div>								                    	
-								                    </td>				                    
-								               </tr>
-								               
-								               <tr>
-								               		<td class="p-3 mb-2 bg-light text-dark" colspan="9" align="center">
-									               		<div style="height: 37px;">
-									               			<span style="font-size: x-large; font-weight: bolder;">
-									                    		총 결제금액
-									               			</span>
-									                    </div>
-									                    <div style="height: 50px;">
-									               			<span style="font-size: xx-large; font-weight: bolder; color: red; text-decoration: underline;">
-									                    	 	￦ &nbsp;<fmt:formatNumber value="${map.sumAll}" pattern="#,###,###" />
-									               			</span>
-									                    </div>									               
-								               		</td>
-								               </tr>	
-								               
-								               <tr>
-									               <td colspan="9" align="left">
-									               	<input type="radio" name="payment" checked="checked"><span>&nbsp;무통장입금</span>
-									               </td>
-								               </tr>
-								               				   
-										  </tbody>
-										</table>
-										
+									<div class="col-lg-12 col-md-9">
+										<span style="font-size: large;">주문이 완료되었습니다.</span>
+									</div>
+									 <div class="section-title product__discount__title">
+                       				 </div>		
 										
 								            
-				                        <!-- 결제 begin -->
-				                        <div class="row" style="display: flex; justify-content: center;">
-				                        	
-					                        <button type="submit" class="btn btn-secondary btn-lg" formaction="${pageContext.request.contextPath}/cart/list.do">돌아가기</button>
+				                        <div class="col-lg-12 col-md-9" style="display: flex; justify-content: center;">
+					                        <button type="button" class="btn btn-secondary btn-lg btn-main">메인으로</button>
 				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/complete.do" style="width: 114px;">결 제</button>
+				                       		 <button type="button" class="btn btn-success btn-lg btn-mypage">마이페이지</button>
 				                        </div>
-				                        <!-- 결제 end -->
-									</form>
 		                        </div>
-						       
-						    </c:otherwise>
-						</c:choose>
-                        <!-- 장바구니 리스트 작성 end -->            
+        
                     </div>     
                 </div>
-                <div class="col-lg-5 col-md-3">
-                		
-                </div>
+
             </div>
         </div>
     </section>
