@@ -1,6 +1,6 @@
-/**
- * cart.js
- */
+
+
+
  $(function(){
 	
 	//장바구니 전체 삭제
@@ -18,7 +18,10 @@
 			console.log(aaa);
 	 });
 	 
-		
+	//완료페이지
+	$(".btn-main").click(function(){
+		location.href="../"
+	});	
  	
 		 
 		 

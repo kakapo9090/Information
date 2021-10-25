@@ -263,4 +263,13 @@ public class CartController {
 		}
 	}
 	
+	//주문완료 페이지
+	@RequestMapping("complete.do")
+	public ModelAndView complete()throws Exception{
+		System.out.println("----------------------------");
+		System.out.println("호출한 메서드명 : complete");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cart/complete");
+		return mv;
+	}
 }	

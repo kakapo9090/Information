@@ -38,7 +38,7 @@
 	  	order by cart_Id desc
 	  </select>
 	  
-	  <!-- 리스트 테스트용 -->
+	  <!-- 리스트 테스트용. 사용하지 않을 땐 id에 임의번호 붙여서 비활성화 시키기-->
 	  <select id="cartList" resultType="CartDTO" parameterType="String">
 	  	select *
 	  	from cart
