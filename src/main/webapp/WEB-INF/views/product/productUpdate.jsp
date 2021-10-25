@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" type="text/css">
-	<link type="text/css" href="<%=request.getContextPath()%>/resources/css/notiSelect.css" rel="styleSheet">
+
     
 </head>
 
@@ -44,14 +44,10 @@
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
+        </div>
+        <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <c:if test="${not empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
-            		</c:if>
-            		<c:if test="${empty tuser}">
-            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
-            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
-            		</c:if>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -69,6 +65,13 @@
             	<li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
             </ul>
         </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
         <div class="humberger__menu__contact">
             <ul>
                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
@@ -92,14 +95,10 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        div class="header__top__right">
-                            <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
-                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
-                            </c:if>
-                            <c:if test="${empty tuser}">
-                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
-                            </c:if>
+                        <div class="header__top__right">
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,12 +115,12 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="../">Home</a></li>
-                            <li><a href="#">List</a>
+                            <li><a href="${pageContext.request.contextPath}/product/productList">List</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=1000">인스턴트</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=2000">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=3000">신선식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/product/productList?category=4000">간식</a></li>
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
@@ -157,32 +156,35 @@
                             <span>Smaple List</span>
                         </div>
                         <ul>
-                            <li><a href="#">과일/야채</a></li>
-                            <li><a href="#">과자</a></li>
-                            <li><a href="#">기타음료</a></li>
-                            <li><a href="#">냉동식품</a></li>
-                            <li><a href="#">라면</a></li>
-                            <li><a href="#">베이커리</a></li>
-                            <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="#">수산물</a></li>
-                            <li><a href="#">식물성음료</a></li>
-                            <li><a href="#">아이스크림</a></li>
-                            <li><a href="#">정육</a></li>
-                            <li><a href="#">주스</a></li>
-                            <li><a href="#">즉석식품</a></li>
-                            <li><a href="#">초콜릿</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3300">과일/야채</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4100">과자</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2300">기타음료</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1300">냉동식품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1100">라면</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4400">베이커리</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2100">생수/탄산수</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3200">수산물</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4200">시리얼</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2200">식물성음료</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4500">아이스크림</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3100">정육</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2600">주류</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2400">주스</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1200">즉석식품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4300">초콜릿</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2500">탄산/이온/비타민</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="./productSearch" method="get">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="What do yo u need?" name="search">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -199,10 +201,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Blog</h2>
+                        <h2>Organi Shop</h2>
                         <div class="breadcrumb__option">
                             <a href="../">Home</a>
-                            <span>Blog</span>
+                            <span>Shop</span>
                         </div>
                     </div>
                 </div>
@@ -210,71 +212,64 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    <!-- notice 세부 -->
-		<!-- 공지사항, FAQ -->
-		<div class="card card-h " style="width: 200px;">
-		  <img src="../resources/img/blog/center2.png" class="card-img-top" alt="...">
-		 <div class="card-body card-b">
-		 <!-- <p class="card-text">상담원 연결</p> -->
-		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
-		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
-		 <a href="../question/one_insert" class=" FAQ btn bt-ho">1:1 문의</a>
-    	</div>
-    	</div>
-		 <!-- 공지사항, FAQ 끝 -->
-		<div class="container">
-		<div class="mx-auto noti noti-bt">
-		 	<hr>
-		 	
-		 	<div class="con con1">
-		 		<p class="d">${notice.no_num}</p>
-		 		<h4 class="d dp">${notice.no_title}</h4>
-		 		<p class="d">${notice.no_regdate}</p>
-			 	
-		 	</div>
-		 	<hr>
-		 	
-		 	<div class="con contents">
-		 		${notice.no_contents}
-		 	</div>
-		 	
-		 	<hr>
-		 	<br>
-			 	<c:forEach items="${noti}" var = "no">
-			 		<div>
-			 			<a href="down?fileName=${no.no_fileName}">${no.no_oriName}</a>
-			 		</div>
-			 	</c:forEach>
-		 	
-		 	<br>
-		 	<!-- 모달 -->
-		 	<div class="modal" id="closeModal"  data-keyboard="false" data-backdrop="static" tabindex="-1">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title">삭제</h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <p>공지사항을 삭제하시겠습니까?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary delModal" value ="true" data-bs-dismiss="modal">삭제</button>
-			        <button type="button" class="btn btn-primary nodelModal" value="false">삭제 취소</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- 모달 -->
-		 	<div class="button3">
-			 	<button type="button" value="${notice.no_num}" class="up btn btn-outline-warning">공지수정</button>
-			 	<button type="button" class=" li btn btn-info">목록으로</button>
-			 	<!-- 관리자에게만 보이기 -->
-			 	<button type="button" value="${notice.no_num}" style="color: black"  class="del btn btn-outline-light">공지삭제</button>
-		 	</div>
-		 	</div>
-		</div>
-		<!-- notice 세부 끝 -->
+    
+    <!-- 상품 추가 -->
+    <div class="container-fulid" style="height: 900px; margin-top: 100px;">
+    		<form action="./productUpdate" method="post" id="f" enctype="multipart/form-data">
+    			<div class="col-md-6 mx-auto">
+    			<input style="display: none;" value="${dto.product_id}" name="product_id">
+    			<div>
+    				<button type="button" class="btn btn-light" id="instant">인스턴트</button>
+    				<button type="button" class="btn btn-light" id="drink">음료</button>
+    				<button type="button" class="btn btn-light" id="fresh">신선식품</button>
+    				<button type="button" class="btn btn-light" id="snack">간식</button>
+    			</div>
+    			<br>
+    			<!-- 카테고리 선택지 넣기 -->
+    			<div class="categorySelect">
+    			
+    			</div>
+    			<br>
+    			<div>
+				<div class="form-floating mb-3">
+				  <label for="floatingInput">제품명</label>
+				  <input type="text" class="form-control" id="floatingInput" value="${dto.product_name}" name="product_name" placeholder="name@example.com">
+				</div>
+    			
+    			<div class="form-floating mb-3">
+				  <label for="floatingInput">가격</label>
+				  <input type="text" class="form-control" id="floatingInput" value="${dto.price}" name="price">
+				</div>
+    			
+    			<div class="form-floating">
+				  <label for="floatingTextarea2">간단한 상품 설명</label>
+				  <textarea class="form-control" name="explain"  id="floatingTextarea2" style="height: 100px">${dto.explain}</textarea>
+				</div>
+    			
+    			<div class="form-floating">
+				  <label for="floatingInput">기타 사항</label>
+				  <textarea class="form-control" name="etc" id="floatingInput">${dto.etc}</textarea>
+				</div>
+				<br>
+				<div>
+					<div style="border: 1px solid #6B8E23; height: 40px; width: 700px;" data-file-num="${files.fileNum}" data-file-Name="${files.fileName}">${files.oriName}</div>
+					<button class="oriFileDel" type="button">삭제</button>
+				</div>
+				
+					<div class="input-group">
+				  <input type="file" class="form-control" name="files" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+				  <button class="btn btn-outline-secondary fileDel" type="button" id="inputGroupFileAddon04">파일삭제</button>
+				</div>
+				</div>
+    			<br>
+    			
+					<button type="submit" class="btn btn-outline-warning">등록</button>
+					<button type="button" class="btn btn-outline-warning submitDel">등록취소</button>
+		    	</div>
+    		</form>
+    </div>
+    
+    <!-- 상품 추가 끝 -->
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -320,6 +315,12 @@
                             <input type="text" placeholder="Enter your mail">
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,36 +347,48 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
+	<script src="../resources/js/productInsert.js"></script>
 <script type="text/javascript">
-	$('.li').click(function(){
-		location.href="./list";
+
+	//파일 등록 중 삭제하고 다시 등록하기
+	let addFile = '<input type="file" class="form-control file" name="files" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">';
+	$('.fileDel').click(function(){
+		$(this).prev().remove();
+		$(this).before(addFile);
 	});
-	//모달 x누르면 닫기
-	$('.btn-close').click(function(){
-		$('#closeModal').modal('hide');
-	})
 	
-	let num = $('.del').val();
-	//공지삭제 버튼 눌렀을 때 모달폼 띄우기
-	$('.del').click(function(){
-		$('#closeModal').modal();
+	//등록취소 눌렀을 때 리스트로 돌아가기
+	$('.submitDel').click(function(){
+		let check = confirm('수정중인 상품이 있습니다. 정말 취소하시겠습니까?');
+		if(check){
+			location.href="./productList";
+		}
 	});
-	//모달폼 내의 삭제 버튼 누르면 삭제하기
-	$('.delModal').click(function(){
-		location.href="./delete?no_num="+num;
-	});
-	//모달폼 내의 삭제취소 버튼 누르면 모달폼 닫기
-	$('.nodelModal').click(function(){
-		$('#closeModal').modal('hide');
-	});
-	//공지수정 버튼 누르면 업데이트로 이동
-	$('.up').click(function(){
-		location.href="./update?no_num="+num;
+
+	//이미 등록되어있는 파일 지우기
+	$('.oriFileDel').click(function(){
+		let fileNum = $(this).prev().attr('data-file-num');
+		let fileName = $(this).prev().attr('data-file-name');
+		let oriThis = $(this);
+		$.ajax({
+			type: 'POST',
+			url: './fileDelete',
+			data: {fileNum:fileNum, fileName:fileName},
+			success: function(result){
+				if(result>0){
+					oriThis.parent().remove();
+				}else{
+					console.log('실패');
+				}
+			},
+			error: function(){
+				alert('오류');
+			}
+		});
 	});
 	
 </script>
 
 </body>
 
- </html>
+</html>

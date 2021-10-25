@@ -2,16 +2,15 @@ package com.thr.i1.notice;
 
 public class NotiFilesDTO {
 
-	private Long fileNum;
+	private Long no_fileNum;
 	private Long no_num;
-	private String fileName;
-	private String oriName;
-	
-	public Long getFileNum() {
-		return fileNum;
+	private String no_fileName;
+	private String no_oriName;
+	public Long getNo_fileNum() {
+		return no_fileNum;
 	}
-	public void setFileNum(Long fileNum) {
-		this.fileNum = fileNum;
+	public void setNo_fileNum(Long no_fileNum) {
+		this.no_fileNum = no_fileNum;
 	}
 	public Long getNo_num() {
 		return no_num;
@@ -19,18 +18,20 @@ public class NotiFilesDTO {
 	public void setNo_num(Long no_num) {
 		this.no_num = no_num;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getNo_fileName() {
+		return no_fileName;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setNo_fileName(String no_fileName) {
+		this.no_fileName = no_fileName;
 	}
-	public String getOriName() {
-		return oriName;
+	public String getNo_oriName() {
+		return no_oriName;
 	}
-	public void setOriName(String oriName) {
-		this.oriName = oriName;
+	public void setNo_oriName(String no_oriName) {
+		this.no_oriName = no_oriName;
 	}
+	
+	
 	
 	
 	

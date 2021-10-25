@@ -193,7 +193,7 @@
 				<div>
 					<c:forEach items="${file}" var = "file">
 						<div>
-							${file.oriName} <span class="fileDelete" data-file-num="${file.fileNum}" data-file-name="${file.fileName }">x</span>
+							${file.no_oriName} <span class="fileDelete" data-file-num="${file.no_fileNum}" data-file-name="${file.no_fileName }">x</span>
 						</div>
 					</c:forEach>
 				</div>

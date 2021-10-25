@@ -34,8 +34,8 @@
 	  </select>
 	  
 	  <insert id="setFileInsert" parameterType="NotiFilesDTO">
-	  	insert into notiFiles(fileNum, no_num, fileName, oriName)
-	  	values(nofile_seq.nextval, #{no_num}, #{fileName}, #{oriName})
+	  	insert into notiFiles(no_fileNum, no_num, no_fileName, no_oriName)
+	  	values(nofile_seq.nextval, #{no_num}, #{no_fileName}, #{no_oriName})
 	  </insert>
      
      <insert id="setInsert" parameterType="NoticeDTO">

@@ -43,6 +43,9 @@ public class ProductDTO {
 		this.explain = explain;
 	}
 	public String getEtc() {
+		if(this.etc == null) {
+			this.etc = "";
+		}
 		return etc;
 	}
 	public void setEtc(String etc) {
