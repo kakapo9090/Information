@@ -225,12 +225,20 @@
 				</div>
 				<div class="product_contents">
 					<div class="product_info">
+						<p class="product_id">${dto.product_id }</p>
 						<p class="txt_type product_name">${dto.product_name}</p>
 						<p class="txt_type price">${dto.price}</p>
 						<p class="txt_type price won">원</p>
 					</div>
 					<div class="product_explain">
 						<table class="list">
+							<tr>
+								<td class="tit">별점</td>
+								<td class="desc">
+									<div class="review_rating" data-product-id="${dto.product_id}">
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<c:if test="${not empty dto.etc}">
 									<td class="tit">원산지</td>
@@ -288,7 +296,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-										후기
+										후기 (${totalCount })
 										<span class="count_review"></span>
 									</a>
 								</li>

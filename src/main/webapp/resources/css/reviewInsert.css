@@ -22,12 +22,17 @@
 .modal_body .product_review .star_area{height: 80px; border: 1px solid #e6e6e6; border-collapse: collapse;}
 .modal_body .product_review .star_area #star_txt{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 18px; margin:7px 0 7px 0; text-align: center;}
 .modal_body .product_review .star_area .star_box {
-	width: 238px; height: 30px; margin: 11px auto;
+	width:265px; height: 30px; margin: 11px auto;
 }
 
 .modal_body .product_review .star_area .star {
 	background: url("../img/icon/starOff.png") no-repeat right 0; background-size: auto 100%; width: 30px; height: 30px; display: inline-block; 
-	text-indent: -9999px; cursor: pointer; margin: 0 auto; float: left;
+	text-indent: -9999px; cursor: pointer; margin: 0 10px 0 10px;
+}
+
+.modal_body .product_review .star_area .on {
+	background: url("../img/icon/starOn.png") no-repeat right 0; background-size: auto 100%; width: 30px; height: 30px; display: inline-block; 
+	text-indent: -9999px; cursor: pointer; margin: 0 10px 0 10px;
 }
 
 .modal_body .product_review .input_area {height: 197px; border: 1px solid #e6e6e6; border-collapse: collapse;}
@@ -44,16 +49,16 @@
 	height: 90px; border: 1px solid #e6e6e6; border-collapse: collapse;
 }
 .modal_body .product_review .photo_area .photo_add {
-	width: 330px; height: 40px; margin: 7px auto;
+	width: 330px; height: 40px; margin: 9px auto;
 }
-.modal_body .product_review .photo_area .photo_icon {
-	background: none; border: none; width:35px; margin : 0 15px 0 15px; float: left; display: flex;
+.modal_body .product_review .photo_area .photo_btn {
+	background: none; border: none; width:35px; margin : 0 15px 0 15px; float: left; display: flex; display: inline-block;
 }
 
 .modal_body .btn_area {
 	height: 100px;
 }
-.modal_body .btn_insert {
+.modal_body .btn_area button {
 	width: 145px; height: 40px; margin: 30px auto; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 18px; 
 	color: white; background-color: #7fad39; border: none; display: block;
 }

@@ -73,5 +73,13 @@ public class ReviewService {
 		
 		return reviewDAO.setReviewDelete(reviewDTO);
 	}
+	
+	public Long getReviewCount(ReviewDTO reviewDTO) throws Exception{
+		return reviewDAO.getReviewCount(reviewDTO);
+	}
+	
+	public Double getReviewStar(ReviewDTO reviewDTO) throws Exception {
+		return reviewDAO.getReviewStar(reviewDTO);
+	}
 
 }

@@ -8,7 +8,8 @@
 		<thead>
 			<tr>
 				<th width="5%">번호</th>
-				<th width="50%">제목</th>
+				<th width="12%">별점</th>
+				<th width="33%">제목</th>
 				<th width="20%">작성자</th>
 				<th width="25%">작성일</th>
 			</tr>
@@ -17,12 +18,17 @@
 			<c:forEach items="${review}" var="review" varStatus="status">
 				<tr>
 					<td>${review.re_num}</td>
+					<td>
+						<div class="star_rating">
+							<span class="star-wrap"><span class="real" style="width: ${review.re_star/5*100}%"></span></span>
+						</div>
+					</td>
 					<td class="review_detail" data-review-num="${review.re_num}">${review.re_title}</td>
 					<td>${review.re_writer }</td>
 					<td>${review.re_date }</td>
 				</tr>
 				<tr class="review_wrap">
-					<td colspan="4">
+					<td colspan="5">
 						<div id="review_contents${review.re_num}" style="display: none;">
 							
 						</div>

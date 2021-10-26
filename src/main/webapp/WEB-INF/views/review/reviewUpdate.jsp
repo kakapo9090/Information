@@ -12,7 +12,7 @@
 			<div class="product_count">0개</div>
 		</div>
 		<div class="product_review">
-			<form class="" action="../review/reviewInsert" method="post" enctype="multipart/form-data">
+			<form class="" action="../review/reviewUpdate" method="post" enctype="multipart/form-data">
 				<div class="star_area">
 					<h3 id="star_txt">상품에 만족하셨나요?</h3>
 					<div class="star_box">
@@ -25,8 +25,8 @@
 				</div>
 				<div class="input_area">
 					<input type="hidden" class="" name="product_id" id="product_id" value="${param.product_id }" placeholder="Enter Title">
-					<input type="text" class="review_title" name="re_title" id="re_title" placeholder="제목을 입력해주세요">
-					<textarea name="re_contents" id="re_contents" placeholder="후기를 입력해주세요"></textarea>
+					<input type="text" class="review_title" name="re_title" id="re_title" placeholder="제목을 입력해주세요" value="${dto.re_title }">
+					<textarea name="re_contents" id="re_contents" placeholder="후기를 입력해주세요">${dto.re_contents}</textarea>
 					<input type="hidden" class="" name="re_writer" id="re_writer" value="${tuser}" placeholder="Enter Title">
 				</div>
 				<div class="photo_area">
@@ -36,7 +36,7 @@
 					<span>사진은 JPG, PNG 형식으로 최대 5개까지만 등록 가능합니다.</span>
 				</div>
 				<div>
-					<button type="submit" class="btn_insert">ADD</button>
+					<button type="submit" class="btn_update">수정하기</button>
 				</div>
 			</form>
 		</div>

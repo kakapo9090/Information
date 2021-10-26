@@ -5,6 +5,9 @@
  /*후기 list*/
  getReviewList(1);
  
+ /*후기 별점*/
+ getReviewStar();
+ 
 /*후기 list pager*/
 $(".review_list").on("click", ".page", function(){
 	let pn = $(this).attr("data-review-page");
@@ -13,8 +16,26 @@ $(".review_list").on("click", ".page", function(){
 
 /*후기 수정하기*/
 $(document).on("click", ".review_update", function(){
-	let reNum = $(this).attr("data-review_num");
-	console.log("update");
+	let reNum = $(this).attr("data-review-num");
+	let productName = $(".product_name").html();
+	let productId = $(".product_id").html();
+	$.ajax({
+		type : "GET",
+		url : "../review/reviewUpdate",
+		data : {
+			re_num : reNum,
+			product_id : productId,
+			product_name : productName
+		},
+		success : function(result){
+			result = result.trim();
+			$(".modal_contents").html(result);
+			$(".modal").modal('show');
+		},
+		error : function(xhr, status, error){
+				alert("후기가 삭제되지 못했습니다");
+		}	
+	})
 })
 
 /*후기 삭제하기*/
@@ -45,7 +66,6 @@ $(document).on("click", ".review_delete", function(){
 		
 	}		
 });
-
 
 /*후기 상세보기 page*/	
 $(".review_list").on("click", ".review_detail", function(){
@@ -100,6 +120,25 @@ window.onclick = function(event){
 		$(".modal").attr("style.display","none");
 	}
 }*/
+
+
+function getReviewStar(){
+	let id = $(".review_rating").attr("data-product-id");
+	$.ajax({
+		type : "GET",
+		url : "../review/reviewStar",
+		data : {
+			product_id : id
+		},
+		success : function(result){
+			result = result.trim();
+			$(".review_rating").html(result);
+		},
+		error : function (xhr, status, error) {
+			console.log(error);
+		}
+	})
+}
  
 /*후기 list 함수*/    
  function getReviewList(pageNumber) {

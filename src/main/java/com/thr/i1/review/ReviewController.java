@@ -68,5 +68,31 @@ public class ReviewController {
 		
 		return mv;
 	}
+	
+	@GetMapping("reviewUpdate")
+	public ModelAndView setReviewUpdate(ReviewDTO reviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		reviewDTO = reviewService.getReviewSelect(reviewDTO);
+		mv.setViewName("review/reviewUpdate");
+		mv.addObject("dto", reviewDTO);
+		return mv;
+	}
+	
+	@GetMapping("reviewStar")
+	public ModelAndView getReviewStar(ReviewDTO reviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		Long reviewTotal = reviewService.getReviewCount(reviewDTO);
+		int star = 0;
+		if(reviewTotal>0) {
+			Double avgStar = reviewService.getReviewStar(reviewDTO);
+			avgStar = avgStar/5*100;
+			star = (int) Math.round(avgStar);
+		}
+		mv.addObject("star", star);
+		mv.addObject("totalCount", reviewTotal);
+		mv.setViewName("review/reviewStar");
+		 
+		 return mv;
+	}
 
 }

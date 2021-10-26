@@ -39,8 +39,8 @@
 		<selectKey order="BEFORE" resultType="Long" keyProperty="re_num">
 			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO REVIEW (PRODUCT_ID, RE_NUM, RE_TITLE, RE_CONTENTS, RE_WRITER)
-		VALUES (#{product_id}, #{re_num}, #{re_title}, #{re_contents}, #{re_writer})
+		INSERT INTO REVIEW (PRODUCT_ID, RE_NUM, RE_TITLE, RE_CONTENTS, RE_WRITER, RE_STAR)
+		VALUES (#{product_id}, #{re_num}, #{re_title}, #{re_contents}, #{re_writer}, #{re_star})
 	</insert>
 	
 	<insert id="setReviewFiles" parameterType="ReviewFilesDTO">
@@ -54,6 +54,14 @@
 	
 	<select id="getReviewFiles" parameterType="ReviewDTO" resultType="ReviewFilesDTO">
 		SELECT * FROM REVIEWFILES WHERE RE_NUM=#{re_num}
+	</select>
+	
+	<update id="setReviewUpdate" parameterType="ReviewDTO">
+		UPDATE REVIEW SET RE_TITLE=#{re_title}, RE_CONTENTS=#{re_contents} WHERE RE_NUM=#{re_num}
+	</update>
+	
+	<select id="getReviewStar" parameterType="ReviewDTO" resultType="Double">
+		SELECT ROUND(AVG(RE_STAR),1) FROM REVIEW WHERE PRODUCT_ID=#{product_id}
 	</select>
   
   </mapper>

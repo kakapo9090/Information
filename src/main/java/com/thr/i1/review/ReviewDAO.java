@@ -42,4 +42,7 @@ public class ReviewDAO {
 		return sqlSession.selectList(NAMESPACE+"getReviewFiles", reviewDTO);
 	}
 
+	public Double getReviewStar(ReviewDTO reviewDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getReviewStar", reviewDTO);
+	}
 }
