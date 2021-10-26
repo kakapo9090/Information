@@ -260,7 +260,7 @@
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		<c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -335,7 +335,7 @@
                         </div>
                         <!-- 페이징 처리 끝-->
                     </div>
-                    <c:if test="${not empty tuser and tuser eq 'test'}">
+                    <c:if test="${not empty tuser and tuser.id eq 'test'}">
                     <div>
 						<a href="./insert">insert</a>
 					</div>

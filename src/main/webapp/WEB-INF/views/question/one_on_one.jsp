@@ -243,7 +243,7 @@
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -273,7 +273,7 @@
 			 
 			  <c:forEach items="${one}" var="one">
 
-			   <c:if test="${tuser eq one.one_writer or tuser eq 'test'}">
+			   <c:if test="${tuser.id eq one.one_writer or tuser.id eq 'test'}">
 			   
 			    <tr>
 			      <th scope="row">${one.one_cate}</th>

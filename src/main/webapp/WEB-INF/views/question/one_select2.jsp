@@ -210,7 +210,7 @@
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -267,13 +267,13 @@
 		
 		 		<hr>	
 		 	<!-- 문의글 삭제 하기 -->
-		 	<c:if test="${tuser eq oneDTO.one_writer}">
+		 	<c:if test="${tuser.id eq oneDTO.one_writer}">
 		 	<div>
 		 		<button type ="button" class="btn one_delete">삭제하기</button>
 		 	</div>
 		 	</c:if>
 		 <!-- 문의답변 달기 -->
-		<c:if test="${tuser eq 'test'}">
+		<c:if test="${tuser.id eq 'test'}">
 		 <div >
 		 	<button  class="one_cobtn">답변하기</button>
 			 	<form action="./commentInsert" method="post" id="form" class="one_comment">
@@ -367,7 +367,7 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-    <script type="text/javascript" src="../resources/js/one_comment.js"></script>
+    <script src="../resources/js/one_comment.js"></script>
 </body>
 <script type="text/javascript">
 //목록으로 돌아가는 버튼 클릭시 문의 내역으로 이동
@@ -442,6 +442,7 @@ $('.one_list').click(function(){
 			success: function(result){
 				result = result.trim();
 				$('.comment').html(result);
+				console.log($('.comment').html(result));
 			},
 			error:function(xhr, status, error){
 				console.log(error);
@@ -503,8 +504,8 @@ $('.one_list').click(function(){
 					$('.comment_an').children('.newtext').remove();
 					$('#co_con').val(contents)
 					//$('.comment_an').children('.textarea').html(contents);
-					$('.textarea').next().next('button').remove();
-					$('.textarea').next().next('button').remove();
+					$('.textarea').next().next().next('button').remove();
+					$('.textarea').next().next().next('button').remove();
 				}else{
 					console.log('실패');
 				}
@@ -520,8 +521,8 @@ $('.one_list').click(function(){
 	$('.comment').on('click', '#delcontent', function(){
 		$('.textarea').css('display', 'block');
 		$('.newtext').remove();
-		$('.textarea').next().next('button').remove();
-		$('.textarea').next().next('button').remove();
+		$('.textarea').next().next().next('button').remove();
+		$('.textarea').next().next().next('button').remove();
 		
 	});
 	//답변 삭제하기
