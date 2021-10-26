@@ -76,7 +76,10 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : list");
-		String userid=(String)session.getAttribute("tuser");//키값 미정
+		String userid=(String)session.getAttribute("tuser_Id");
+		Long usernum=(Long)session.getAttribute("tuser_Num");
+		System.out.println("세션에서 받은 id : "+userid);
+		System.out.println("세션에서 받은 num : "+usernum);
 		//테스트용
 		//userid="abc";
 		

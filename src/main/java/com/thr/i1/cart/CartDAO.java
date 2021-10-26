@@ -25,7 +25,7 @@ public class CartDAO {
 	 } 
 	 //장바구니 금액 합계
 	 public int sumMoney(String userid) throws Exception{
-	     return sqlSession.selectOne("NAMESPACE"+"sumMoney", userid); 
+	     return sqlSession.selectOne(NAMESPACE+"sumMoney", userid); 
 	 }
 	 //장바구니 1개 삭제
 	 public int deleteOne(CartDTO cartDTO) throws Exception{
