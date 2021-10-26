@@ -5,8 +5,8 @@
 
  
 
-let one_comment ='<div ><label>문의 답변</label><br><textarea rows="10" style="width: 900px;" id="oneco_contents" name="oneco_contents"></textarea>';
-one_comment = one_comment +'<button type="button" id="submit">등록하기</button><button type="button" id="cancel">취소하기</button></div>';
+let one_comment ='<div ><label>문의 답변</label><br><textarea rows="10" style="width: 900px;" id="oneco_contents" name="oneco_contents"></textarea><br>';
+one_comment = one_comment +'<button class="btn btn-info" type="button" id="submit">등록하기</button><button class="btn btn-info" type="button" id="cancel">취소하기</button></div>';
  
  let count = 0;
  //답변하기 버튼을 클릭하면 답변 폼 생성, 답변하기 버튼 안보이게 하기 - 답변은 하나만 등록가능

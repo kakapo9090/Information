@@ -275,7 +275,7 @@
 		 <!-- 문의답변 달기 -->
 		<c:if test="${tuser.id eq 'test'}">
 		 <div >
-		 	<button  class="one_cobtn">답변하기</button>
+		 	<button  class=" btn one_cobtn btn-info">답변하기</button>
 			 	<form action="./commentInsert" method="post" id="form" class="one_comment">
 			 	<input style="display: none;" id="one_num" name="one_num" value="${oneDTO.one_num}">
 			 	

@@ -383,19 +383,7 @@
     <script src="../resources/js/main.js"></script>
 
 <script type="text/javascript">
-	for(let i=0; i<20; i++){
-		$('#index'+i).click(function(){
-			if($('#faq_con'+i).css('display')== 'none'){
-				
-				$('#faq_con'+i).show();
-			}else{
-				$('#faq_con'+i).hide();
-			}
-		 	
-		 	
-			
-		})
-	}
+
 	for(let i=0; i<100; i++){
 		//let aa = $('#fa+i')
 		$('#fa'+i).click(function(){
