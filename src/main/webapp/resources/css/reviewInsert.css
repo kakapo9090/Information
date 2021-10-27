@@ -3,7 +3,7 @@
 
 .modal_contents {
 	background-color: #fefefe; margin: 5% auto; padding: 10px; border: 1px solid #888;
-	width: 558px; height: 600px;
+	width: 558px; height: 740px;
 }
 
 .modal_head {width: 514px; height:50px; margin: 0 auto; border-bottom: 2px solid #777777;}
@@ -13,11 +13,10 @@
 }
 
 .modal_body {width: 514px; height: 441px; margin: 0 auto;}
-.modal_body .product_info {height: 43px; margin-bottom: 11px;}
-.modal_body .product_info .product_name{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 15px; margin-left: 7px; margin-top: 3px;}
-.modal_body .product_info .product_count{float: right; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 13px; margin-right: 7px;}
+.modal_body .product_info {height: 20px; margin-bottom: 11px;}
+.modal_body .product_info .product_name{width:514px; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 15px; margin-left: 7px; margin-top: 3px;}
 
-.modal_body .product_review {height: 441px; width: 100%;}
+.modal_body .product_review {height: 367px; width: 100%;}
 
 .modal_body .product_review .star_area{height: 80px; border: 1px solid #e6e6e6; border-collapse: collapse;}
 .modal_body .product_review .star_area #star_txt{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 18px; margin:7px 0 7px 0; text-align: center;}
@@ -38,27 +37,32 @@
 .modal_body .product_review .input_area {height: 197px; border: 1px solid #e6e6e6; border-collapse: collapse;}
 .modal_body .product_review .input_area #re_title {
 	width: 490px; height: 25px;   border: 1px solid #777777; display: block; margin:8px auto;
-	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px 
+	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 17px 
 }
 .modal_body .product_review .input_area #re_contents{
 	display:block; margin: 0 auto;
 	width: 490px; height:140px; resize: none;  border: 1px solid #777777;
-	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px; white-space: pre-wrap;
+	font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 17px; white-space: pre-wrap;
 }
 .modal_body .product_review .photo_area {
-	height: 90px; border: 1px solid #e6e6e6; border-collapse: collapse;
+	height: 240px; border: 1px solid #e6e6e6; border-collapse: collapse;
 }
-.modal_body .product_review .photo_area .photo_add {
-	width: 330px; height: 40px; margin: 9px auto;
-}
-.modal_body .product_review .photo_area .photo_btn {
-	background: none; border: none; width:35px; margin : 0 15px 0 15px; float: left; display: flex; display: inline-block;
-}
+.modal_body .product_review .photo_area .photo_add {width: 470px;  margin: 9px auto 2px auto;}
+.modal_body .product_review .photo_area .fileAdd {background: none; border: none; width:100px; height:47px; line-height: 47px; display: block; float: left;}
+.modal_body .product_review .photo_area .fileAddUpdate {background: none; border: none; width:100px; height:47px; line-height: 47px; display: block; float: left;}
+.modal_body .product_review .photo_area #fileAddResult {width: 350px; height: 200px; display: inline-block;}
+.modal_body .product_review .photo_area .input-group {margin-top:7px;}
+.modal_body .product_review .photo_area input {height: 32px; border: none; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px}
+.modal_body .product_review .photo_area .inputFiles {height: 32px; border: none; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px; line-height: 32px;}
+input::file-selector-button {background-color:#7fad39; height: 27px; width:70px; margin-right:10px; border: none; color: white;}
+.modal_body .product_review .photo_area div {font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 14px; margin-bottom: 5px;}
+.modal_body .product_review .photo_area .file_del {border: none; background: none; font-size: 8px;}
+.modal_body .product_review .photo_area .file_delete {border: none; background: none; font-size: 8px;}
 
 .modal_body .btn_area {
-	height: 100px;
+	height: 67px; 
 }
 .modal_body .btn_area button {
 	width: 145px; height: 40px; margin: 30px auto; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 18px; 
-	color: white; background-color: #7fad39; border: none; display: block;
+	color: white; background-color: #7fad39; border: none; display: block; 
 }

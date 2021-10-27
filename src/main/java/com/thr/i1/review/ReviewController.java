@@ -69,12 +69,32 @@ public class ReviewController {
 		return mv;
 	}
 	
+	@PostMapping("reFileDelete")
+	public ModelAndView setFileDelete(ReviewFilesDTO reviewFilesDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = reviewService.setFileDelete(reviewFilesDTO);
+		mv.setViewName("result/ajaxResult");
+		mv.addObject("result", result);
+		
+		return mv;
+	}
+	
 	@GetMapping("reviewUpdate")
 	public ModelAndView setReviewUpdate(ReviewDTO reviewDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		reviewDTO = reviewService.getReviewSelect(reviewDTO);
 		mv.setViewName("review/reviewUpdate");
 		mv.addObject("dto", reviewDTO);
+		return mv;
+	}
+	
+	@PostMapping("reviewUpdate")
+	public ModelAndView setReviewUpdate(ReviewDTO reviewDTO, MultipartFile [] re_files) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = reviewService.setReviewUpdate(reviewDTO, re_files);
+		Long productId=reviewDTO.getProduct_id();
+		mv.setViewName("redirect:../product/productDetails?product_id="+productId);
+		
 		return mv;
 	}
 	

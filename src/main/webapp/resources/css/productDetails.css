@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
 .product_details .container{max-width:1300px; margin:50px auto 0; width:100%;}
-.section_view {width: 1300px; height: 644px; margin-bottom: 150px;}
+.section_view {width: 1300px; height: 600px; margin-bottom: 100px;}
 .section_view img {width : 500px; margin-right: 38px;}
 .product_contents {border: none;  margin-left: 38px; width: 724px;}
-.product_contents .product_info{height: 120px; margin-bottom: 27px;}
+.product_contents .product_info{height: 120px; margin-bottom: 17px;}
 .product_contents .product_info .product_id {display: none;}
-.product_contents .product_info .txt_type {font-family: 'Noto Sans KR', sans-serif; font-size: 36px; color: black; margin-top: 16px;}
+.product_contents .product_info .txt_type {font-family: 'Noto Sans KR', sans-serif; font-size: 30px; color: black; margin-top: 16px;}
 .product_contents .product_info .price{display: inline-block;}
-.product_contents .product_explain {height: 180px; margin-bottom: 43px;}
-.product_contents .product_explain .list{width: 724px; height: 180px;}
+.product_contents .product_explain {height: 180px; margin-bottom: 17px;}
+.product_contents .product_explain .list{width: 724px; height: 156px;}
 .product_contents .product_explain .review_rating .star_rating {display: inline-block;}
 .product_contents .product_explain .review_rating .star-wrap {
 	background: url("../img/icon/productRatingBase.png") no-repeat; overflow: hidden; display: inline-block; height: 15px; width:95px;
@@ -27,7 +27,7 @@
 .product_contents .product_explain .desc{font-family: 'Noto Sans KR', sans-serif; font-weight: lighter; font-size: 17px;}
 .product_contents .cartPut {height: 260px; margin-top: 23px;}
 .product_contents .cartPut .inner_option {width: 723px; height:100px; border: solid 1px #777777; border-left: none; border-right: none; background-color: #f2f2f2;}
-.product_contents .cartPut .total {margin-top: 26px; margin-bottom: 33px}
+.product_contents .cartPut .total {margin-top: 12px; margin-bottom: 33px}
 .product_contents .cartPut .total .tit {
 	display : inline-block; width: 560px; text-align: right;
 	font-family: 'Noto Sans KR', sans-serif; font-weight: lighter; font-size: 18px;
@@ -45,26 +45,47 @@
 
 .product_contents .cartPut .count {width: 90px; height: 31px; border: 1px black solid; margin-left: 25px; margin-bottom: 24px;}
 .proudct_contents .cartPut .count .inp {display:inline-block; width: 42px;}
-
-.group_btn .goCart{width: 326px; height: 50px; background-color: #3e3e3e; border: none; margin-right: 14px; margin-left: 29px;}
-.group_btn .goBuy {width: 326px; height: 50px; background-color: #7fad39; border: none;}
+.product_contents .cartPut .group_btn {height: 60px;}
+.group_btn .goCart{width: 326px; height: 50px; background-color: #3e3e3e; border: none;  display: block; margin: 0 auto;}
 .btn_txt {
 	font-size: 18pt; color: white; font-family: 'Noto Sans KR', sans-serif; font-weight: bold;
 	text-align: center;	
 }
-.review_table{
-	width: 870px;
-	border-top: solid;
-	text-align: center;
-	
+.detail_view {width: 1200px; margin: 0 auto;}
+.detail_view .view_tab {
+	width: 1200px; height: 55px; margin: 0 auto; background-color: #fafafa; 
+	position: sticky; z-index: 5; top: 0px; 
+}
+.detail_view .view_tab ul {display: flex; height:52px;}
+.detail_view .view_tab ul li:first-child a {border-left: 1px solid #eeeeee;}
+.detail_view .view_tab ul li {flex: 1; list-style-type: none;}
+.detail_view .view_tab ul li a {
+	display:block; height: 55px; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; 
+	text-align: center; line-height: 55px; text-decoration: none; color: black; 
+	border: solid 1px #eeeeee; border-collapse: collapse; background-color: #fafafa;
+	border-left: none;
+}
+.detail_view .view_tab ul li a.on {
+	border-bottom: none; background-color: white; color: #7fad39;
 }
 
-.review_table td {
-	border: solid;
+.detail_view .product_info {
+	width: 1200px; text-align: left; margin-top: 40px;
 }
-.review_table .re_star{
-	text-indent: -9999px;
+.detail_view .product_info .view_title {
+	font-family: 'Noto Sans KR', sans-serif; font-size: 23px; font-weight: 500; 
+	border-bottom: 2px solid black; width: 1160px; margin: 10px auto; 
 }
+.detail_view .product_info .view_contents {
+	font-family: 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 300;
+	margin:30px auto 10px auto; text-align: center; width: 1120px;
+}
+.detail_view .product_info .review_table{
+	width: 1110px; border-top: solid 2px black; text-align: center; border-bottom: solid 2px black; border-collapse: collapse;
+}
+.detail_view .product_info .review_table .table_th {border-bottom: 1px solid black;}
+.detail_view .product_info .review_table .table_tr { table-layout: inherit; height: 50px; border-collapse: collapse;}
+.detail_view .product_info .review_table .table_wrap {border-bottom: 1px solid black;}
 .review_table .star_rating .star-wrap {
 	background: url("../img/icon/productRatingBase.png") no-repeat; overflow: hidden; display: inline-block; height: 15px; width:95px;
 	margin: 0 auto; text-align: left;
@@ -73,3 +94,30 @@
 	background: url("../img/icon/productRating.png") no-repeat; overflow: hidden; display: inline-block; height: 15px;
 	margin: 0 auto; text-align: left;
 }
+.review_table .review_wrap .contents_area {width: 1070px;  text-align: left;}
+.review_table .review_wrap .re_contents .review_btnGroup {display: block; float: right;}
+.review_table .review_wrap .re_contents .review_btnGroup button {border: none; background-color: white; font-weight: 300; color: #8d8d8d;}
+.product_info .view_contents .btn_div {width: 1110px;  display: block; height: 40px;}
+.product_info .view_contents .btn_write {
+	background-color: #7fad39; font-weight: 400; color: white; border: none; float: right;
+	width: 100px; height: 40px; 
+}
+
+.detail_view .product_info .ship_contents {	text-align: left; width: 1100px; margin: 0 auto;}
+.detail_view .product_info .ship_guide{	font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; margin-bottom: 7px; margin-top: 20px; }
+.detail_view .product_info #shipFee{font-family: 'Noto Sans KR', sans-serif; font-weight: 500; margin: 0;}
+.detail_view .product_info ul {list-style-type: none; margin-bottom: 7px;}
+.detail_view .product_info ul li {font-family: 'Noto Sans KR', sans-serif; font-size: 15px; text-align: left;}
+.detail_view .product_info .list_ico {
+	background-image: url("../img/icon/listicon.png"); height: 3px; width: 3px; display: inline-block;
+	margin:0 6px 4px 6px;
+}
+.detail_view .product_info .turn_back{	width: 1110px; border-bottom: 2px solid black; border-top: 2px solid black; }
+.detail_view .product_info .turn_back tr {border-bottom: 1px solid black;}
+.detail_view .product_info .turn_back .table_name {	text-align: center;}
+.detail_view .product_info .turn_back td p {
+	margin: 4px; font-family: 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 300;
+}
+
+.admin_btn {display: block; float: right;}
+.admin_btn a {border: none; background-color: white; font-weight: 300; color: #8d8d8d;}

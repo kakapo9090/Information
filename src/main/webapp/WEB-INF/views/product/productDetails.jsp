@@ -221,7 +221,7 @@
 		<div class="container">
 			<div class="section_view row">
 				<div class="product_img">
-					<img alt="" src="../resources/img/product/product-7.jpg" id="image">
+					<img alt="" src="../resources/upload/product/${dto.productFilesDTO.fileName}" id="image">
 				</div>
 				<div class="product_contents">
 					<div class="product_info">
@@ -229,6 +229,12 @@
 						<p class="txt_type product_name">${dto.product_name}</p>
 						<p class="txt_type price">${dto.price}</p>
 						<p class="txt_type price won">원</p>
+						<div class="admin_btn">
+							<c:if test="${tuser.id eq 'test' }">
+								<a href="./productUpdate?product_id=${dto.product_id}">수정하기</a>
+								<a href="./productDelete?product_id=${dto.product_id}">삭제하기</a>
+							</c:if>
+						</div>
 					</div>
 					<div class="product_explain">
 						<table class="list">
@@ -247,7 +253,7 @@
 							</tr>
 							<tr>
 								<td class="tit">배송</td>
-								<td class="desc">3만원 이상 구매시 무료배송</td>
+								<td class="desc">3,000원 (3만원 이상 구매시 무료배송)</td>
 							</tr>							
 							<tr>
 								<td class="tit">간단설명</td>
@@ -256,99 +262,162 @@
 						</table>
 					</div>
 					<div class="cartPut">
-						<div class="inner_option">
-							<span class="tit_item">${dto.product_name}</span>
-							<div class="option">
-								<span class="count">
-									<button type="button" class="count_btn down on">-</button>
+						<form action="../cart/insert.do" method="get" enctype="multipart/form-data">
+							<div class="inner_option">
+								<input type="hidden" name="id" id="id" value="${tuser.id}">
+								<input type="hidden" name="product_id" id="product_id" value="${dto.product_id}">
+								<input type="hidden" name="fileNum" id="fileNum" value="${dto.productFilesDTO.fileNum}">
+								<span class="tit_item">${dto.product_name}</span>
+								<div class="option">
+									<span class="count">
+										<button type="button" class="count_btn down on">-</button>
+										
+										<input type="number" readonly="readonly" onfocus="this.blur()" value="1" class="inp" data-product-price="${dto.price}">
 									
-									<input type="number" readonly="readonly" onfocus="this.blur()" value="1" class="inp" data-product-price="${dto.price}">
-								
-									<button type="button" class="count_btn up on">+</button>
+										<button type="button" class="count_btn up on">+</button>
+									</span>
+								</div>
+								<span class="sum">
+									<span class="total_price">${dto.price}</span>
+									<span>원</span>
 								</span>
 							</div>
-							<span class="sum">
-								<span class="total_price">${dto.price}</span>
-								<span>원</span>
-							</span>
-						</div>
-						<div class="total">
-							<span class="tit">총 합계금액  :  </span>
-							<span class="sum">
-								<span class="total_price">${dto.price}</span>
-								<span class="won">원</span>
-							</span>
-						</div>
-						<div class="group_btn">
-							<button type="button" class="btn_txt goCart" data-tuser-id="${tuser}" data-product-id="${dto.product_id}">장바구니 담기</button>
-							<button type="button" class="btn_txt goBuy" data-tuser-id="${tuser}">바로구매</button>
-						</div>						
+							<div class="total">
+								<span class="tit">총 합계금액  :  </span>
+								<span class="sum">
+									<span class="total_price">${dto.price}</span>
+									<span class="won">원</span>
+								</span>
+							</div>
+							<div class="group_btn">
+								<button type="button" class="btn_txt goCart" data-tuser-id="${tuser.id}">장바구니 담기</button>
+							</div>						
+						</form>
 					</div>
 				</div>
 			</div>
             <div class="detail_view">
-                <div >
-                    <div>
-                        <div class="view_tab">
-                            <ul>
-                                <li>
-                                    <a href="#">상품상세정보</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-										후기 (${totalCount })
-										<span class="count_review"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">배송/반품/교환 안내</a>
-								</li>
-							</ul>
-                        </div>
-						<div>
-							상세 설명
+            	<div class="view_tab">
+                	<ul>
+                    	<li>
+                        	<a href="#product-explain" class="tab_link on">상품설명</a>
+						</li>
+						<li>
+							<a href="#product-info" class="tab_link">상품상세정보</a>
+						</li>
+						<li>
+							<a href="#product-review" class="tab_link">후기</a>
+						</li>
+						<li>
+							<a href="#product-shipping" class="tab_link">배송/반품/교환 안내</a>
+						</li>
+					</ul>
+				</div>
+				<div class="product_info" id="product-explain">
+					<div class="view_title">상품 설명</div>
+					<div class="view_contents">
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<img alt="" src="../resources/upload/product/${dto.productFilesDTO.fileName}" id="image">
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>${dto.explain }</p>
+						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						
+					</div>
+				</div>
+				<div class="product_info" id="product-info">
+					<div class="view_title">상품 상세 정보</div>
+					<div class="view_contents">
+						<img alt="" src="../resources/upload/product/${dto.productFilesDTO.fileName}" id="image">
+						<img alt="" src="../resources/upload/product/product_detailinfo.jpg" width="300px;">
+					</div>
+				</div>
+				<div class="product_info" id="product-review">
+					<div class="view_title">제품 후기</div>
+					<div class="view_contents">
+						<ul class="review_alert">
+							<li><span class="list_ico"></span>상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제될 수 있습니다.</li>
+							<li><span class="list_ico"></span>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 1:1 문의에 남겨주세요.</li>
+						</ul>
+						
+						<div class="review_list" data-product-id="${dto.product_id}">
 						</div>
 						<div>
-							PRODUCT REVIEW
-							<ul>
-								<li>
-									<p class="txt">
-										상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제될 수 있습니다.
-									</p>
-								</li>
-								<li>
-									<p class="txt">
-										배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 1:1 문의에 남겨주세요.
-									</p>
-								</li>
-							</ul>
-							<div class="review_list" data-product-id="${dto.product_id}">
-							
-							</div>
-							<div>
+							<div class="btn_div">
 								<button type="button" class="btn_write" data-product-id="${dto.product_id}" data-product-name="${dto.product_name}">
 									후기 작성
 								</button>
-								<div class="modal">
-									<div class="modal_contents">
-									</div>
+							</div>
+							<div class="modal">
+								<div class="modal_contents">
 								</div>
 							</div>
 						</div>
-						<nav>
-
-						</nav>
-						<div>
-							배송 안내
-						</div>
-                    </div>
-					<div>
-						<div>
-
+					</div>
+				</div>
+				<div class="product_info" id="product-shipping">
+					<div class="view_title">배송 안내</div>
+					<div class="view_contents">
+						<div class="ship_contents">
+							<div class="ship_guide">배송안내</div>
+							<p id="shipFee">배송비 3,000원 - 30,000원 이상 구매 시 배송비 무료</p>
+							<ul class="shipping">
+								<li><span class="list_ico"></span>무료배송은 모든 상품의 합계 금액을 기준으로 적용됩니다.</li>
+								<li><span class="list_ico"></span>택배 배송기일은 휴일 포함여부 및 상품 재고상황, 택배사 사정에 의해 지연될 수 있습니다.</li>
+								<li><span class="list_ico"></span>신선식품(정육, 청과, 선어 등)의 경우 수취인 부재 또는 배송지 정보 오류로 인해 반송될 경우 교환/환불이 제한됩니다.</li>
+								<li><span class="list_ico"></span>냉장/냉동 상품은 순차발송되며 자세한 내용은 주문서에서 확인 가능합니다.</li>
+							</ul>
+							<div class="ship_guide">교환 및 반품 안내</div>
+							<table class="turn_back">
+								<tr>
+									<td width="26%" class="table_name">교환/반품 신청기간</td>
+									<td width="74%">
+										<p>단순변심에 관련된 교환/반품 신청은 배송완료 후 7일 이내에 가능합니다.</p>
+										<p>상품의 표기/광고내용과 다르거나 계약내용과 다른 경우 상품을 받으신 날로부터 3개월 이내, </p>
+										<p>또는 사실을 알게된 날부터 30일 이내에 신청 가능합니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td width="26%" class="table_name">교환/반품 회수(배송)비용</td>
+									<td width="74%">
+										<p>상품의 불량/하자 또는 표시광고 및 계약 내용과 다른 경우 해당 상품의 회수(배송)비용은 무료이나,</p>
+										<p>고객님의 단순변심 및 불만에 관련된 교환/반품의 경우 택배비는 고객님 부담입니다.</p>
+										<p>단, 반품/교환비용은 상품 및 반품/교환 사유에 따라 변경될 수 있으므로 1:1문의에서 확인 부탁드립니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td width="26%" class="table_name">교환/반품 불가 안내</td>
+									<td width="74%">
+										<p>전자상거래 등에서 소비자보호에 관한 법률에 따라 다음의 경우 청약철회가 제한될 수 있습니다.</p>
+										<p>고객님이 상품 포장을 개봉하여 사용되어 상품의 가치가 훼손된 경우</p>
+										<p>(단, 내용 확인을 위한 포장 개봉의 경우는 예외)</p>
+										<p>고객님의 단순변심으로 인한 교환/반품 신청이 상품 수령한 날로부터 7일이 경과한 경우</p>
+										<p>신선식품(냉장/냉동 포함)을 단순변심/주문착오로 교환/반품 신청하는 경우</p>
+										<p>고객님의 사용 또는 일부 소비에 의해 상품의 가치가 훼손된 경우</p>
+										<p>시간 경과에 따라 상품 등의 가치가 현저히 감소하여 재판매가 불가능한 경우</p>
+										<p>기타, 상품의 교환, 환불 및 상품 결함 등의 보상은 소비자분쟁해결기준(공정거래위원회 고시)에 의함</p>
+									</td>
+								</tr>
+							</table>
+							<ul>
+								<li>자세한 내용은 1:1 문의로 부탁드립니다.</li>
+								<li>전자상거래 등에서의 소비자 보호에 관한 법률에 의한 반품규정이 판매자가 상품상세 페이지 등에서 개별적으로 고지 또는 지정한 반품조건보다 우선합니다.</li>
+							</ul>
+							<br>
+							<br>
 						</div>
 					</div>
-                </div>
-            </div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<!-- Product Details Section End -->
@@ -432,6 +501,17 @@
     <script src="../resources/js/main.js"></script>
     <script src="../resources/js/productDetails.js"></script>
     <script src="../resources/js/review.js"></script>
-    <script src="../resources/js/reviewInsert.js"></script>
+    <script type="text/javascript">
+    
+	    jQuery(document).ready(function($) {
+	        // <a></a> 태그 중 #으로 링크된 태그에 기능 설정
+	        $("a[href^='#']").click(function(event) {
+	            event.preventDefault();
+	            var target = $(this.hash);
+	            $('html, body').animate({scrollTop: target.offset().top}, 500);
+	        });
+	    });
+    
+    </script>
 </body>
 </html>
