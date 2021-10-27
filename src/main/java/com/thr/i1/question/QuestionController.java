@@ -84,7 +84,15 @@ public class QuestionController {
 		mv.setViewName("/result/ajaxResult");
 		return mv;
 	}
-	
+	//1:1문의 내역 수정하기
+	@PostMapping("update")
+	public ModelAndView setOneUpdate(One_on_oneDTO oneDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = questionService.setOneUpdate(oneDTO);
+		mv.addObject("result", result);
+		mv.setViewName("/result/ajaxResult");
+		return mv;
+	}
 	//1:1문의 답변하기
 	@PostMapping("commentInsert")
 	public ModelAndView setCommentInsert(One_commentDTO one_commentDTO) throws Exception{
