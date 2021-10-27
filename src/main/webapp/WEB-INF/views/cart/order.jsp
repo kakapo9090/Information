@@ -46,13 +46,22 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul> 
+        </div>
+        <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <c:if test="${not empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<!-- <a type="button" id="btnMyPage"> mypage></a> -->
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
             </div>
         </div>
+        
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
             	<li class="active"><a href="../">Home</a></li>
@@ -90,11 +99,16 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	
+                            	<a type="button" id="btnMyPage1" href="${pageContext.request.contextPath}/link/mypage"> <i class="fa fa-user"> mypage</i></a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -129,7 +143,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>${map.count }</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -162,19 +176,19 @@
                         
                         <div><label>주문자명</label></div>
                         <div>
-						  	<input type="text"  name="name" value="">
+						  	<input type="text"  name="name" value="${tuser.name}">
 						</div>
 						<div><label>전화번호</label></div>
                         <div>
-						  	<input type="tel"  name="phone" value="">
+						  	<input type="tel"  name="phone" value="${tuser.phone }">
 						</div>
 						<div><label>이메일</label></div>
                         <div>
-						  	<input type="text"  name="email" value="" style="width: 300px;">
+						  	<input type="text"  name="email" value="${tuser.email }" style="width: 300px;">
 						</div>
 						<div><label>주소</label></div>
                         <div>
-						  	<input type="text"  name="address" value="" style="width: 650px;">
+						  	<input type="text"  name="address" value="${tuser.address }" style="width: 650px;">
 						</div>
 						
 						
@@ -276,7 +290,7 @@
 				                        	
 					                        <button type="submit" class="btn btn-secondary btn-lg" formaction="${pageContext.request.contextPath}/cart/list.do">돌아가기</button>
 				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                       		 <button type="submit" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/complete.do" style="width: 114px;">결 제</button>
+				                       		 <button type="submit" id="btnPay" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/complete.do" style="width: 114px;">결 제</button>
 				                        </div>
 				                        <!-- 결제 end -->
 									</form>

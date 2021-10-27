@@ -7,7 +7,7 @@ public class CartDTO {
     private int product_Id;	//PRODUCT테이블의 id컬럼 조인 *product테이블의 데이터타입 맞추기
     private int fileNum;	//PRODUCTFILE테이블의 FileNum컬럼 조인 *File테이블의 데이터타입 맞추기
     private int amount;	//수량
-    private int num;	//18일 num컬럼 추가, tuser테이블 num컬럼 조인
+    private Long num;	//18일 num컬럼 추가, tuser테이블 num컬럼 조인
     
     
 
@@ -22,11 +22,11 @@ public class CartDTO {
     
     
   
-    public int getNum() {
+    public Long getNum() {
     	return num;
     }
     
-    public void setNum(int num) {
+    public void setNum(Long num) {
     	this.num = num;
     }
 

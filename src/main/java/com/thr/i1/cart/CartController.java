@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.thr.i1.member.TuserDTO;
+
 
 @Controller
 @RequestMapping("/cart/**")
@@ -25,8 +27,8 @@ public class CartController {
 	//장바구니에 담기 - 넘겨 받는 파라미터: product_Id, fileNum, amount		세션: id, num
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute CartDTO cartDTO, HttpSession session) throws Exception {
-		String userid=(String)session.getAttribute("tuser");//id값
-		int usernum = (Integer)session.getAttribute("member");//키값 미정, num값
+		String userid=(String)session.getAttribute("tuser_Id");
+		Long usernum = (Long)session.getAttribute("tuser_Num");
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : insert");
 		
@@ -120,7 +122,7 @@ public class CartController {
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : deleteOne");
 		ModelAndView mv = new ModelAndView();
-		 String userid=(String)session.getAttribute("tuser");//키값 미정
+		 String userid=(String)session.getAttribute("tuser_Id");
 		 String msg = "DELETE FAILED";
 		 System.out.println("삭제할 cart_Id : "+cartDTO.getCart_Id());
 		 //테스트용
@@ -153,7 +155,7 @@ public class CartController {
 	//장바구니 전체 삭제 - 세션에서 회원아이디 필요
 	@RequestMapping("deleteAll.do")
 	 public String deleteAll(HttpSession session)throws Exception {
-        String userid=(String)session.getAttribute("tuser");//키값 미정
+        String userid=(String)session.getAttribute("tuser_Id");
         String msg = "DELETE ALL FAILED";
         //테스트용
       	//userid="abc";
@@ -175,7 +177,7 @@ public class CartController {
 	@PostMapping("update.do")
 	public String update(@RequestParam int[] amount, @RequestParam Long[] cart_Id, HttpSession session)throws Exception{
 		
-		String userid=(String)session.getAttribute("tuser");//키값 미정
+		String userid=(String)session.getAttribute("tuser_Id");
 		//테스트용
 		//userid="abc";
 		System.out.println("----------------------------");
@@ -224,15 +226,21 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("----------------------------");
 		System.out.println("호출한 메서드명 : order");
-		String userid=(String)session.getAttribute("tuser");//키값 미정
+		String userid=(String)session.getAttribute("tuser_Id");
 		//테스트용
 		//userid="abc";
 		
 		//로그인한 상태면 실행
 		if(userid!=null) {
 			List<CartDTO> list = cartService.cartList(userid);//장바구니 목록 출력
-			
-			
+		
+			//주문정보에 넘겨줄 회원정보
+			TuserDTO tuserDTO = new TuserDTO();
+			tuserDTO.setName((String)session.getAttribute("tuser_Name"));
+			tuserDTO.setPhone((String)session.getAttribute("tuser_Phone"));
+			tuserDTO.setEmail((String)session.getAttribute("tuser_Email"));
+			tuserDTO.setAddress((String)session.getAttribute("tuser_Address"));
+			map.put("tuser", tuserDTO);
 			
 			int sumMoney=cartService.sumMoney(userid);//금액 합계
 			
@@ -263,4 +271,16 @@ public class CartController {
 		}
 	}
 	
+	
+	//주문완료 페이지
+		@RequestMapping("complete.do")
+		public ModelAndView complete()throws Exception{
+			System.out.println("----------------------------");
+			System.out.println("호출한 메서드명 : complete");
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("cart/complete");
+			return mv;
+		}
+		
+		
 }	

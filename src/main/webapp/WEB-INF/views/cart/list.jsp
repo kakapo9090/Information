@@ -46,13 +46,22 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul> 
+        </div>
+        <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <c:if test="${not empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<!-- <a type="button" id="btnMyPage"> mypage></a> -->
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
             </div>
         </div>
+        
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
             	<li class="active"><a href="../">Home</a></li>
@@ -90,11 +99,16 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	
+                            	<a type="button" id="btnMyPage1" href="${pageContext.request.contextPath}/link/mypage"> <i class="fa fa-user"> mypage</i></a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -129,7 +143,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>${map.count }</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -152,20 +166,23 @@
                             <span>Smaple List</span>
                         </div>
                         <ul>
-                            <li><a href="#">과일/야채</a></li>
-                            <li><a href="#">과자</a></li>
-                            <li><a href="#">기타음료</a></li>
-                            <li><a href="#">냉동식품</a></li>
-                            <li><a href="#">라면</a></li>
-                            <li><a href="#">베이커리</a></li>
-                            <li><a href="#">생수/탄산수</a></li>
-                            <li><a href="#">수산물</a></li>
-                            <li><a href="#">식물성음료</a></li>
-                            <li><a href="#">아이스크림</a></li>
-                            <li><a href="#">정육</a></li>
-                            <li><a href="#">주스</a></li>
-                            <li><a href="#">즉석식품</a></li>
-                            <li><a href="#">초콜릿</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3300">과일/야채</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4100">과자</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2300">기타음료</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1300">냉동식품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1100">라면</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4400">베이커리</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2100">생수/탄산수</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3200">수산물</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4200">시리얼</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2200">식물성음료</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4500">아이스크림</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=3100">정육</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2600">주류</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2400">주스</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=1200">즉석식품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=4300">초콜릿</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/productList?category=2500">탄산/이온/비타민</a></li>
                         </ul>
                     </div>
                 </div>
@@ -274,7 +291,7 @@
 								                    	</div>
 								                    	<div style="height: 37px;">
 								                    		<span style="font-size: medium; font-weight: bold;">
-								                    			배송비： &nbsp;
+								                    			배송비(3만원 이상 구매시 무료)： &nbsp;
 								                    		</span>				                    	
 								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
 								                    			￦ &nbsp;<fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
