@@ -522,8 +522,10 @@ $('.one_list').click(function(){
 			if(result>0){
 				commentSelect();
 				$('.one_cobtn').css('display','none');
+				$('.one_update').css('display', 'none');
 			}else{
 				$('.one_cobtn').css('display','block');
+				
 			}
 		},
 		error : function(){
