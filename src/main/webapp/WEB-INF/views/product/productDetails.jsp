@@ -353,9 +353,11 @@
 						</div>
 						<div>
 							<div class="btn_div">
-								<button type="button" class="btn_write" data-product-id="${dto.product_id}" data-product-name="${dto.product_name}">
-									후기 작성
-								</button>
+								<c:if test="${not empty tuser.id }">
+									<button type="button" class="btn_write" data-product-id="${dto.product_id}" data-product-name="${dto.product_name}">
+										후기 작성
+									</button>
+								</c:if>
 							</div>
 							<div class="modal">
 								<div class="modal_contents">
