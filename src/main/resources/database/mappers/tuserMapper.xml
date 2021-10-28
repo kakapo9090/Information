@@ -6,7 +6,7 @@
   <mapper namespace="com.thr.i1.member.TuserDAO">
   	<!-- 로그인 체크 -->
   	<select id="login" resultType="TuserDTO">
-  		SELECT id, master FROM tuser
+  		SELECT id, master, num, phone, name, address, email FROM tuser
   		WHERE id = #{id} AND pw = #{pw}
   	</select>
   	

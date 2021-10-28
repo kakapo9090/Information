@@ -59,6 +59,19 @@ public class TuserController {
 		if (tuserDTO != null) {
 			// 로그인 성공!
 			session.setAttribute("tuser", tuserDTO);
+			
+			session.setAttribute("tuser_Id", tuserDTO.getId());
+			session.setAttribute("tuser_Num", tuserDTO.getNum());
+			session.setAttribute("tuser_Name", tuserDTO.getName());
+			session.setAttribute("tuser_Email", tuserDTO.getEmail());
+			session.setAttribute("tuser_Phone", tuserDTO.getPhone());
+			session.setAttribute("tuser_Address", tuserDTO.getAddress());
+			System.out.println("num확인용 : "+tuserDTO.getNum());
+			System.out.println("name확인용 : "+tuserDTO.getName());
+			System.out.println("email확인용 : "+tuserDTO.getEmail());
+			System.out.println("phone확인용 : "+tuserDTO.getPhone());
+			System.out.println("address확인용 : "+tuserDTO.getAddress());
+			
 			System.out.println("Master: " + tuserDTO.getMaster());
 			if(tuserDTO.getMaster() == 0) {
 				result = "2"; // 관리자 여부
