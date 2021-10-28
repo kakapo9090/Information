@@ -84,7 +84,8 @@
 	<select id="getSearch" parameterType="Pager" resultMap="getSearchResult">
 		SELECT * FROM 
 			(SELECT ROWNUM R, SEARCH.* FROM
-				(SELECT * FROM PRODUCT 
+				(SELECT * FROM PRODUCT P INNER JOIN PRODUCTFILES PF 
+				ON P.PRODUCT_ID = PF.PRODUCT_ID 
 				WHERE PRODUCT_NAME LIKE '%' || #{search} || '%') SEARCH) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
