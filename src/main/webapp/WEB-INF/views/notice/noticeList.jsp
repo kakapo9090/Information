@@ -135,9 +135,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	<a type="button" id="btnMyPage"> <i class="fa fa-user"> mypage</i></a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
