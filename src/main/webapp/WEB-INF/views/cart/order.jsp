@@ -227,15 +227,15 @@
 										  <tbody>
 										  	<c:forEach var="row" items="${map.list}" varStatus="i">
 								                <tr align="center">
-								                	<td><img alt="product image" src=""></td>
-								                    <td>${row.product_Name}</td>
-								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
-								                    <td>
+								                	<td style="vertical-align: middle;"><img alt="product image" src="../resources/upload/product/${row.fileName}" style="width: 100px; height: 80px;"></td>
+								                    <td style="vertical-align: middle;">${row.product_Name}</td>
+								                    <td style="vertical-align: middle;"><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
+								                    <td style="vertical-align: middle;">
 									                    ${row.amount}
                             							<!-- name속성 전달 -->
                             								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
                             						</td>
-											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
+											        <td style="vertical-align: middle;"><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
 								                </tr>
 								            </c:forEach>
 								            	<tr>	

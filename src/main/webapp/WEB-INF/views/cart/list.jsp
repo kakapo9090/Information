@@ -263,10 +263,10 @@
 										  <tbody>
 										  	<c:forEach var="row" items="${map.list}" varStatus="i">
 								                <tr align="center">
-								                	<td><img alt="product image" src=""></td>
-								                    <td>${row.product_Name}</td>
-								                    <td><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
-								                    <td>
+								                	<td style="vertical-align: middle;"><img alt="product image" src="../resources/upload/product/${row.fileName}" style="width: 120px; height: 110px;"></td>
+								                    <td style="vertical-align: middle;">${row.product_Name}</td>
+								                    <td style="vertical-align: middle;"><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
+								                    <td style="vertical-align: middle;">
 								                    	<!-- 수량 입력 -->
 									                    	<input type="number" min="1" name="amount" id="amount" style="width:63px; height: 31px; text-align: center;" 
 	                    									value="<fmt:formatNumber value="${row.amount}"
@@ -275,8 +275,8 @@
                             							<!-- name속성 전달 -->
                             								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
                             						</td>
-											        <td><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
-                   									<td><a href="${pageContext.request.contextPath}/cart/delete.do?cart_Id=${row.cart_Id}">삭제</a></td>
+											        <td style="vertical-align: middle;"><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
+                   									<td style="vertical-align: middle;"><a href="${pageContext.request.contextPath}/cart/delete.do?cart_Id=${row.cart_Id}">삭제</a></td>
 								                </tr>
 								            </c:forEach>
 								            	<tr>	
