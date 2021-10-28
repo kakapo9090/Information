@@ -34,6 +34,7 @@
   	<typeAlias type="java.util.List" alias="List"/>
   	<typeAlias type="com.thr.i1.review.ReviewDTO" alias="ReviewDTO"/>
   	<typeAlias type="com.thr.i1.review.ReviewFilesDTO" alias="ReviewFilesDTO"/>
+  	<typeAlias type="java.lang.Double" alias="Double"/>
   
   	</typeAliases>
   
