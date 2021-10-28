@@ -52,19 +52,45 @@
   	<update id="userEdit">
   		update tuser
   		set
-  			pw = #{pw}
-  			name = #{name}
-  			email = #{email}
-  			phone = #{phone}
+  			master = #{master},
+  			pw = #{pw},
+  			name = #{name},
+  			email = #{email},
+  			phone = #{phone},
   			address = #{address}
   		where id = #{id}
   	</update>
+  	
+  	<!-- 관리자-회원 정보 삭제 -->
+  	<delete id="userDelete">
+  		delete from tuser
+  		where id = #{id}	
+  	</delete>
   	
   	<!-- 마이페이지 -->
   	<select id="mypage" resultType="TuserDTO">
   		SELECT 
   			name, id, email, phone, address
+  		from tuser
   		where id = #{id}
   	</select>
+  	
+  	<!-- 마이페이지-회원정보 수정 -->
+  	<update id="mypageEdit">
+  		update tuser
+  		set
+  			pw = #{pw},
+  			name = #{name},
+  			email = #{email},
+  			phone = #{phone},
+  			address = #{address}
+  		where id = #{id}
+  	</update>
+  	
+  	<!-- 마이페이지-회원 탈퇴 -->
+  	<delete id="mypageDelete">
+  		delete from tuser
+  		where id = #{id}	
+  	</delete>
   
   </mapper>

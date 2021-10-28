@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -53,12 +55,13 @@ public class TuserDAO {
 	}
 	
 	//관리자-회원 정보 수정
-	public void userEdit (TuserDTO tuserDTO) {
-		sqlSession.update(NAMESPACE+".userEdit", tuserDTO);
+	public int userEdit (TuserDTO tuserDTO) {
+		return sqlSession.update(NAMESPACE+".userEdit", tuserDTO);
 	}
 	
 	//관리자-회원 정보 삭제
-	public void userDelete (String id) {
+	public int userDelete (TuserDTO tuserDTO) {
+		return sqlSession.delete(NAMESPACE+".userDelete", tuserDTO);
 	}
 	
 	//관리자-로그아웃
@@ -66,8 +69,12 @@ public class TuserDAO {
 	}
 	
 	//마이페이지
-	public TuserDTO mypage (TuserDTO tuserDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+".mypage", tuserDTO);
+	public TuserDTO mypage (String id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+".mypage", id);
 	}
 	
+	//마이페이지-회원 탈퇴
+	public int mypageDelete (TuserDTO tuserDTO) {
+		return sqlSession.delete(NAMESPACE+".mypageDelete", tuserDTO);
+	}
 }

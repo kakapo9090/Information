@@ -56,12 +56,13 @@ public class TuserService {
 	}
 	
 	//관리자-회원 정보 수정
-	public void userEdit (TuserDTO tuserDTO) {
-		tuserDAO.userEdit(tuserDTO);
+	public int userEdit (TuserDTO tuserDTO) {
+		return tuserDAO.userEdit(tuserDTO);
 	}
 	
 	//관리자-회원 정보 삭제
-	public void userDelete (String id) {
+	public int userDelete (TuserDTO tuserDTO) {
+		return tuserDAO.userDelete(tuserDTO);
 	}
 	
 	//관리자-로그아웃
@@ -70,8 +71,12 @@ public class TuserService {
 	}
 	
 	//마이페이지
-	public TuserDTO mypage (TuserDTO tuserDTO) throws Exception {
-		return tuserDAO.mypage(tuserDTO);
+	public TuserDTO mypage (String id) throws Exception {
+		return tuserDAO.mypage(id);
 	}
 	
+	//마이페이지-회원 탈퇴
+	public int mypageDelete (TuserDTO tuserDTO) throws Exception {
+		return tuserDAO.mypageDelete(tuserDTO);
+	}
 }

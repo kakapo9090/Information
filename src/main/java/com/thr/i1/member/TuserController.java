@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.mybatis.logging.LoggerFactory;
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/link/*")
+@RequestMapping("/link/**")
 public class TuserController {
 	
 	@Autowired
@@ -170,7 +172,8 @@ public class TuserController {
 	
 	//관리자-회원 목록
 	@RequestMapping("userList")
-	public String userList (Model model) {
+	public String userList (Model model, HttpSession session) {
+		TuserDTO tuserDTO = (TuserDTO) session.getAttribute("tuser");
 		List<TuserDTO> list = tuserService.userList();
 		model.addAttribute("list", list);
 		return "link/userList";
@@ -178,25 +181,47 @@ public class TuserController {
 		
 	//관리자-회원 상세조회
 	@RequestMapping("userView")
-	public String userView (String id, Model model) {
+	public String userView (@RequestParam String id, Model model) {
 		model.addAttribute("dto", tuserService.userView(id));
-		System.out.println("클릭한 아이디 : "+id);
 		logger.info("클릭한 아이디 : "+id);
 		return "link/userView";
 	}
 	
 	//관리자-회원 정보 수정
-	@RequestMapping("userEdit")
-	public String userEdit (@ModelAttribute TuserDTO tuserDTO) {
-		tuserService.userEdit(tuserDTO);
-		return "redirect:/link/userList";
+	@GetMapping("userEdit")
+	public ModelAndView userEdit (String id) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto", tuserService.userView(id));
+		mv.setViewName("link/userEdit");
+		return mv;
+	}
+	
+	@PostMapping("userEdit")
+	public ModelAndView userEdit (TuserDTO tuserDTO, HttpSession session) throws Exception {
+		TuserDTO sessionDTO = (TuserDTO) session.getAttribute("dto");
+		tuserDTO.setId(sessionDTO.getId());
+		int result = tuserService.userEdit(tuserDTO);
+		tuserDTO.setName(sessionDTO.getName());
+		session.setAttribute("dto", tuserDTO);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:../link/userList");
+		return mv;
+	}
+	
+	//관리자-회원 정보 삭제
+	@GetMapping("userDelete")
+	public ModelAndView userDelete (HttpSession session) {
+		TuserDTO tuserDTO = (TuserDTO) session.getAttribute("dto");
+		int result = tuserService.userDelete(tuserDTO);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:../link/userList");
+		return mv;
 	}
 	
 	//관리자-로그아웃
 	@GetMapping("userLogout")
 	public ModelAndView userLogout (HttpSession session)throws Exception{
 		session.invalidate();
-			
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:../");
 		return mv;
@@ -204,11 +229,20 @@ public class TuserController {
 	
 	//마이페이지
 	@RequestMapping("mypage")
-	public ModelAndView mypage (HttpSession session) throws Exception {
-		TuserDTO tuserDTO = (TuserDTO) session.getAttribute("user");
+	public String mypage (Model model, HttpSession session) throws Exception {
+		TuserDTO tuserDTO = (TuserDTO)session.getAttribute("tuser");
+		tuserDTO = tuserService.mypage(tuserDTO.getId());
+		model.addAttribute("user", tuserDTO);
+		return "link/mypage";
+	}
+	
+	//마이페이지-회원 탈퇴
+	@GetMapping("mypageDelete")
+	public ModelAndView mypageDelete (HttpSession session) {
+		TuserDTO tuserDTO = (TuserDTO) session.getAttribute("dto");
+		int result = tuserService.userDelete(tuserDTO);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("link/mypage");
+		mv.setViewName("redirect:/link/mypage");
 		return mv;
 	}
-
 }

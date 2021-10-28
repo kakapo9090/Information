@@ -60,29 +60,28 @@ span.tags
                                 <figure>
                                      <img src="../resources/img/pwp.png" alt="" class="img-circle" style="width:75px;" id="user-img">
                                 </figure>
+                                
+                                <form name="mypage" method="post">
+                                <h5 style="text-align:center;" id="name">이름 : ${user.name}</h5>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 
-                                <h5 style="text-align:center;" id="name">이름 : ${tuser.name}</h5>
+                                <p style="text-align:center;font-size: smaller;"> 아이디 : ${user.id}</p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 
-                                <p style="text-align:center;font-size: smaller;" id="id"> 아이디 : ${tuser.id}</p>
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="email"> 이메일 : ${user.email} </p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 
-                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="email"> 이메일 : ${tuser.email} </p>
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="phone"> 핸드폰 번호 ${user.phone}</p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 
-                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="phone"> 핸드폰 번호 ${tuser.phone}</p>
+                                <p style="text-align:center;font-size: smaller;" id="address"> 주소 : ${user.address}</p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
-                                
-                                <p style="text-align:center;font-size: smaller;" id="address"> 주소 : ${tuser.address}</p>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
-                                
+                                </form>
                                     <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
-                                        <button class="btn btn-success btn-block"> 주문내역확인 </button>
-                                        <button class="btn btn-success btn-block"> 1:1 문의내역 </button>
+                                        <a href=""></a><button class="btn btn-success btn-block"> 주문내역확인 </button>
+                                        <a href=""><button class="btn btn-success btn-block"> 1:1 문의내역 </button>
                                     </div>
                                     <div class=" col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
-                                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> 회원 정보 수정 </button>
                                         <button class="btn btn-info btn-block"><span class="fa fa-user"></span> 회원 탈퇴 </button>
                                     </div>
                               </div>

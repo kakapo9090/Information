@@ -4,6 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 	<div style="text-align: center;">
 		<a href="${path}/link/userList">회원관리</a>
-		<a href="${pageContext.request.contextPath}/link/userLogout">Logout</a>
+		<a href="${pageContext.request.contextPath}/link/userLogout">로그아웃</a>
+		<a href="../">메인 페이지</a>
 	</div>
 	<hr>

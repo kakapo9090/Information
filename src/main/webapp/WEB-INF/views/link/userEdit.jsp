@@ -10,39 +10,35 @@
 <body>
 <%@ include file="../temp/userMenu.jsp" %>
 	<h2>회원 상세 정보</h2>
-	<form name="userView" method="post">
+	<form name="form1" action="userList" method="post">
 		<table border="1" width="400px">
 			<tr>
 				<td>관리자</td>
-				<td><input name="master" value="${dto.master}"></td>
-			</tr>
-			<tr>
-				<td>아이디</td>
-				<td><input name="id" value="${dto.id}" readonly="readonly"></td>
+				<td><input name="master" value="${dto.master}" class="put"></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input name="name" value="${dto.name}" readonly="readonly"></td>
+				<td><input name="name" value="${dto.name}" class="put"></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input name="email" value="${dto.email}" readonly="readonly"></td>
+				<td><input name="email" value="${dto.email}" class="put"></td>
 			</tr>
 			<tr>
 				<td>핸드폰 번호</td>
-				<td><input name="phone" value="${dto.phone}" readonly="readonly"></td>
+				<td><input name="phone" value="${dto.phone}" class="put"></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input name="address" value="${dto.address}" readonly="readonly"></td>
+				<td><input name="address" value="${dto.address}" class="put"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<a href="../link/userEdit?id=${dto.id}">수정</a>
-					<a href="#" id="del">탈퇴</a>
+					<button id="btnu" type="submit">수정</button>
 				</td>
 			</tr>
 		</table>
 	</form>
+	<script type="text/javascript" src="../resources/login/js/user.js"></script>
 </body>
 </html>
