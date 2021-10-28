@@ -43,7 +43,13 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <c:if test="${not empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -57,7 +63,7 @@
 	            		<li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
             		</ul>
             	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-            	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+            	<li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
             </ul>
         </nav>
@@ -85,9 +91,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -113,7 +123,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>

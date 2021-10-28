@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zxx">
 
 <head>
@@ -45,7 +46,13 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <c:if test="${not empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> mypage</a>
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -59,7 +66,7 @@
 	            		<li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
             		</ul>
             	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-            	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+            	<li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
             </ul>
         </nav>
@@ -87,9 +94,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -115,7 +126,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>
@@ -241,10 +252,11 @@
 
     <!-- Map Begin -->
     <div class="map">
-        <iframe
+         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49116.39176087041!2d-86.41867791216099!3d39.69977417971648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886ca48c841038a1%3A0x70cfba96bf847f0!2sPlainfield%2C%20IN%2C%20USA!5e0!3m2!1sen!2sbd!4v1586106673811!5m2!1sen!2sbd"
             height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        <div class="map-inside">
+                    <div class="map-inside">
+        37.622098, 126.916427
             <i class="icon_pin"></i>
             <div class="inside-widget">
                 <h4>New York</h4>
