@@ -59,7 +59,7 @@
                         <li><a href="${pageContext.request.contextPath}/product/productList?category=4000">간식</a></li>
             		</ul>
             	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-            	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+            	<li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
             </ul>
         </nav>
@@ -126,7 +126,7 @@
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
-                            <li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notices/list">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/link/center">Center</a></li>
                         </ul>
                     </nav>
