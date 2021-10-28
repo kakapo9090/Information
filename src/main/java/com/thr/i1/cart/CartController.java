@@ -273,6 +273,8 @@ public class CartController {
 		}
 	}
 	
+	
+	
 	//주문완료
 	@PostMapping("order.do")
 	public ModelAndView order(ModelAndView mv, @ModelAttribute TuserDTO tuserDTO, HttpSession session
@@ -302,25 +304,49 @@ public class CartController {
 			
 			//CART_ORDER테이블에 DB저장	
 			int result = cartService.insertOrder(tuserDTO, pName, sumMoney, fee, sumAll);
+			//DB저장 성공시 CART_STORAGE테이블에 DB저장
 			if(result>0) {
+				//ORDER_NUM의 최대값을 가져와서 CART_STORAGE테이블에 전달
+				System.out.println("MAX(ORDER_NUM) : " +cartService.orderNum(userid));
+				Long ordernum = cartService.orderNum(userid);
 				
-			}
-			
-			
-			//CART_STORAGE테이블에 DB저장 - 미완성 if문안에 넣기
-			for(int i=0; i<cart_Id.length; i++){
-				CartDTO cartDTO = new CartDTO();
+				//파라미터로 받은 배열변수들 반복문으로 담기
+				for(int i=0; i<cart_Id.length; i++){
+					CartDTO cartDTO = new CartDTO();
+					cartDTO.setOrder_Num(ordernum);
+					cartDTO.setCart_Id(cart_Id[i]);
+					cartDTO.setId(userid);
+					cartDTO.setNum(usernum);
+					cartDTO.setProduct_id(product_id[i]);
+					cartDTO.setProduct_Name(product_Name[i]);
+					cartDTO.setFileNum(fileNum[i]);
+					cartDTO.setFileName(fileName[i]);
+					cartDTO.setPrice(price[i]);
+					cartDTO.setAmount(amount[i]);
+					cartDTO.setMoney(money[i]);
+					
+					int result2 = cartService.insertStorage(cartDTO);
+					if(result2>0) {
+						System.out.println("카트번호 "+cart_Id[i]+" insertStorage 성공");
+					}else {
+						System.out.println("카트번호 "+cart_Id[i]+" insertStorage 실패");
+					}
+				}//반복문 종료
 				
+				//주문완료 및 장바구니 삭제
+				int result3 = cartService.deleteAll(userid);
+				if(result3>0) {
+					System.out.println("주문완료 및 장바구니 삭제 성공");
+				}else {
+					System.out.println("주문완료 및 장바구니 삭제 실패");
+				}
 			}
-
-		
-			
-			//CART테이블 ID조건 DB 전부 삭제
-
-            mv.setViewName("redirect:/cart/complete.do");
-
+			mv.setViewName("redirect:/cart/complete.do");
 			System.out.println("주문완료");
             return mv;
+            
+            
+            
 		}else {	//로그인이 안 된 경우
 			System.out.println("로그인 필요!");
 			mv.setViewName("redirect:/link/login");
@@ -348,12 +374,14 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		ModelAndView mv = new ModelAndView();
 		String userid=(String)session.getAttribute("tuser_Id");
-		
+		String username=(String)session.getAttribute("tuser_Name");
 		if(userid!=null) {
 			List<OrderDTO> list = cartService.orderList(userid);
-			map.put("list", list);
-			map.put("count", list.size());
+			map.put("orderList", list);
+			map.put("orderCount", list.size());
+			map.put("username", username);
 			
+	
 			mv.addObject("map", map);
 			mv.setViewName("cart/orderList");
 			
@@ -363,5 +391,45 @@ public class CartController {
 		return mv;
 	}
 		
+	
+	//주문내역 상세보기
+	@RequestMapping("orderSelect.do")
+	public ModelAndView orderSelect(@RequestParam Long order_Num, HttpSession session)throws Exception{
+		System.out.println("----------------------------");
+		System.out.println("호출한 메서드명 : orderSelect");
+		Map<String, Object> map = new HashMap<String, Object>();
+		ModelAndView mv = new ModelAndView();
+		String userid=(String)session.getAttribute("tuser_Id");
 		
-}	
+		if(userid!=null) {
+			List<CartDTO> list= cartService.orderSelect(order_Num, userid);
+			
+			int sumMoney=cartService.sumMoneyOrder(order_Num, userid);
+			int fee = 3000; //배송비
+			//3만원 이상 구매시 배송비 무료
+			if(sumMoney>=30000) {
+				fee = 0;
+			}
+			
+			map.put("order_Num", order_Num);
+			map.put("sumMoney", sumMoney);//금액 합계
+	        map.put("fee", fee); //배송비
+	        map.put("sumAll", sumMoney+fee); //전체 금액
+			map.put("list", list);
+			map.put("count", list.size());
+			
+			
+			
+			
+			mv.addObject("map", map);
+			mv.setViewName("cart/orderSelect");
+			
+		}else {
+			mv.setViewName("redirect:/link/login");
+		}
+		return mv;
+		
+	}	
+	
+	
+}//클래스 끝

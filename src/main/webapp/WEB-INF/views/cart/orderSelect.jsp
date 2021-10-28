@@ -162,69 +162,112 @@
         <div class="container">
             <div class="row">
                 
-                <div class="col-lg-10 col-md-6">
+                <div class="col-lg-9 col-md-5">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
                             <h2>주 문 내 역</h2>
                         </div>
                         
-						<div class="">
-				          <h3>${map.username} 님의 주문내역</h3>
-				         </div>
-				          <br>
-                        <!-- 주문내역 begin -->
+
+                        <!-- 주문내역 리스트 begin -->
                     
                         <c:choose>
-						    <c:when test="${map.orderCount == 0 }">
+						    <c:when test="${map.count == 0 }">
 						    <!-- map의 count가 0일때 -->
 					
-						        주문내역이 없습니다.
+						        주문상품이 없습니다.
 						    </c:when>
 						    
 						    <c:otherwise>			     
 						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
 							    <div class="row">  
-
 										<!-- 테이블 begin -->
 										    <!-- 소스 시작 -->
-				                        	
+				                        	<div class="">
+				                           		 <h3>주문번호 ${map.order_Num}</h3>
+				                      		  </div>
+				                        <br>
+				                        <div class="section-title product__discount__title"></div>
+				                        
+                          
 			                            <table class="table">
 										  <thead>
 										    <tr align="center">
-										      <th scope="col" width="15%">주문번호</th>
-										      <th scope="col" width="15%">주문일</th>
-										      <th scope="col" width="40%">상품명</th>
-										      <th scope="col" width="17%">결제금액</th>
-										      <th scope="col" width="14%">상태</th>
+										      <th scope="col" width="15%">이미지</th>
+										      <th scope="col" width="46%">상품명</th>
+										      <th scope="col" width="10%">가격</th>
+										      <th scope="col" width="14%">수량</th>
+										      <th scope="col" width="15%">소계</th>
 										    </tr>
 										  </thead>
 										  
 										  <tbody>
-										  	<c:forEach var="row" items="${map.orderList}" varStatus="i">
-								                <tr align="center">	
-								                    <td style="vertical-align: middle;">${row.order_Num}</td>
-								                    <td style="vertical-align: middle;">
-								                    <fmt:formatDate value="${row.order_Date }" pattern="yyyy.MM.dd"/>
-								         				
-								                    </td>
-								                    <td style="vertical-align: middle;"><a href="${pageContext.request.contextPath}/cart/orderSelect.do?order_Num=${row.order_Num}">${row.product_Name}</a></td>
-								                    <td style="vertical-align: middle;">￦ <fmt:formatNumber value="${row.sumAll}" pattern="#,###,###" /></td>
-								                    <td style="vertical-align: middle;">
-								                    	<c:choose>
-								                    		<c:when test="${row.payCheck == 0}">
-								                    			<span>결제대기</span>
-								                    		</c:when>
-								                    		<c:when test="${row.payCheck == 1}">
-								                    			<span>결제완료</span>
-								                    		</c:when>
-								                    	</c:choose>
-                            						</td>
+										  	<c:forEach var="row" items="${map.list}" varStatus="i">
+								                <tr align="center">
+								                	<td style="vertical-align: middle;"><img alt="product image" src="../resources/upload/product/${row.fileName}" style="width: 100px; height: 80px;"></td>
+								                    <td style="vertical-align: middle;">${row.product_Name}</td>
+								                    <td style="vertical-align: middle;"><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
+								                    <td style="vertical-align: middle;">${row.amount}</td>
+											        <td style="vertical-align: middle;"><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
 								                </tr>
 								            </c:forEach>
-           				   
+								            	<tr>	
+								                    <td colspan="9" align="right">
+								                    
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			장바구니 금액 합계： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>
+								                    	<div style="height: 37px;">
+								                    		<span style="font-size: medium; font-weight: bold;">
+								                    			배송비： &nbsp;
+								                    		</span>				                    	
+								                    		<span style="font-size: medium; color: red; text-decoration: underline;">
+								                    			￦ &nbsp;<fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
+								                    		</span>
+								                    	</div>								                    	
+								                    </td>				                    
+								               </tr>
+								               
+								               <tr>
+								               		<td class="p-3 mb-2 bg-light text-dark" colspan="9" align="center">
+									               		<div style="height: 37px;">
+									               			<span style="font-size: x-large; font-weight: bolder;">
+									                    		총 결제금액
+									               			</span>
+									                    </div>
+									                    <div style="height: 50px;">
+									               			<span style="font-size: xx-large; font-weight: bolder; color: red; text-decoration: underline;">
+									                    	 	￦ &nbsp;<fmt:formatNumber value="${map.sumAll}" pattern="#,###,###" />
+									               			</span>
+									                    </div>									               
+								               		</td>
+								               </tr>	
+								               
+								               <tr>
+									               <td colspan="9" align="left">
+									               	<input type="radio" name="payment" checked="checked"><span>&nbsp;무통장입금</span>
+									               </td>
+								               </tr>
+								               	
+								             	   
 										  </tbody>
 										</table>
-
+										
+										
+								            
+				                        <!-- 돌아가기 begin -->
+				                        <div class="row" style="justify-content: center;" >
+				                        	
+					                        <button type="button" id="btnBackOrder" class="btn btn-secondary btn-lg">돌아가기</button>
+				                        
+				                        </div>
+				                        <!-- 결제 end -->
+								
 		                        </div>
 						       
 						    </c:otherwise>

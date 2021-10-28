@@ -22,9 +22,21 @@ public class CartDTO {
     private int sumMoney;
     private int fee;
     private int sumAll;
+    private Long order_Num;
+    
     
   
-    public int getSumMoney() {
+    
+
+	public Long getOrder_Num() {
+		return order_Num;
+	}
+
+	public void setOrder_Num(Long order_Num) {
+		this.order_Num = order_Num;
+	}
+
+	public int getSumMoney() {
 		return sumMoney;
 	}
 

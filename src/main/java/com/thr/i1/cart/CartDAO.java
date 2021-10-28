@@ -70,13 +70,37 @@ public class CartDAO {
 	 }
 	 
 	 //주문내역 조회
-	 public List<OrderDTO> orderList(String userid)throws Exception{
-		 
+	 public List<OrderDTO> orderList(String userid)throws Exception{	 
 		 return sqlSession.selectList(NAMESPACE+"orderList", userid);
 	 }
 	 
+	 //주문번호 출력
+	 public Long orderNum(String userid)throws Exception{
+		 return sqlSession.selectOne(NAMESPACE+"orderNum", userid);
+	 }
+	 
+	 //상세주문내역 담기
+	 public int insertStorage(CartDTO cartDTO)throws Exception{
+		 return sqlSession.insert(NAMESPACE+"insertStorage", cartDTO);
+	 }
+	 
+	 //주문내역 상세보기
+	 public List<CartDTO> orderSelect(Long order_Num, String userid)throws Exception{
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("order_Num", order_Num);
+		 map.put("id", userid);
+		 return sqlSession.selectList(NAMESPACE+"orderSelect", map);
+	 }
+	 
+	 //주문내역 상세보기 금액 합계
+	 public int sumMoneyOrder(Long order_Num, String userid)throws Exception{
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("order_Num", order_Num);
+		 map.put("id", userid);
+		 return sqlSession.selectOne(NAMESPACE+"sumMoneyOrder", map);
+	 }
+
 	 
 	 
 	 
 }
-

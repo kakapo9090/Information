@@ -23,7 +23,11 @@ $(function(){
 	 $("#btnBack").click(function(){
 		location.href="./list.do";
 	});
-	 
+	
+	 //주문내역 상세보기-돌아가기
+	 $("#btnBackOrder").click(function(){
+		location.href="./orderList.do";
+	});
 	 
 	//완료페이지
 	$(".btn-main").click(function(){
