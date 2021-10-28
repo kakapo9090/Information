@@ -40,9 +40,9 @@ public class CartDAO {
 		 return sqlSession.update(NAMESPACE+"update", cartDTO);
 	 }
 	 //장바구니 상품 중복 확인
-	 public int countCart(int product_Id, String userid) throws Exception{
+	 public int countCart(int product_id, String userid) throws Exception{
 		 Map<String, Object> map = new HashMap<String, Object>();
-		 map.put("product_Id", product_Id);
+		 map.put("product_id", product_id);
 		 map.put("user_Id", userid);
 		 return sqlSession.selectOne(NAMESPACE+"countCart", map);
 	 }

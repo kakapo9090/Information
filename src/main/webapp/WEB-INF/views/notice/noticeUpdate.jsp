@@ -75,10 +75,10 @@
             	<li class="active"><a href="../">Home</a></li>
             	<li><a href="#">List</a>
             		<ul class="header__menu__dropdown">
-	            		<li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
-	            		<li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/product/productList?category=1000">인스턴트</a></li>
+                        <li><a href="${pageContext.request.contextPath}/product/productList?category=2000">음료</a></li>
+                        <li><a href="${pageContext.request.contextPath}/product/productList?category=3000">신선식품</a></li>
+                        <li><a href="${pageContext.request.contextPath}/product/productList?category=4000">간식</a></li>
             		</ul>
             	</li><li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>
             	<li><a href="${pageContext.request.contextPath}/link/notices">공지사항</a></li>
@@ -134,10 +134,10 @@
                             <li class="active"><a href="../">Home</a></li>
                             <li><a href="#">List</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/link/instant">인스턴트</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/drink">음료</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/fresh">신선식품</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/link/snack">간식</a></li>
+			                    	<li><a href="${pageContext.request.contextPath}/product/productList?category=1000">인스턴트</a></li>
+			                        <li><a href="${pageContext.request.contextPath}/product/productList?category=2000">음료</a></li>
+			                        <li><a href="${pageContext.request.contextPath}/product/productList?category=3000">신선식품</a></li>
+			                        <li><a href="${pageContext.request.contextPath}/product/productList?category=4000">간식</a></li>
                                 </ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/link/eventx">이벤트</a></li>

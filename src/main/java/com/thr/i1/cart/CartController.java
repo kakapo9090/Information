@@ -52,7 +52,7 @@ public class CartController {
 		cartDTO.setNum(usernum);	
 		
 		//장바구니에 담은 동일한 상품이 있는지 select문 호출. 
-		int count = cartService.countCart(cartDTO.getProduct_Id(), cartDTO.getId());
+		int count = cartService.countCart(cartDTO.getProduct_id(), cartDTO.getId());
 		if(count==0) {
 			//count 값이 0인 경우: CART테이블에 DB저장
 			int result = cartService.cartInsert(cartDTO);

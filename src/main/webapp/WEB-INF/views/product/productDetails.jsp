@@ -264,7 +264,8 @@
 					<div class="cartPut">
 						<form action="../cart/insert.do" method="get" enctype="multipart/form-data">
 							<div class="inner_option">
-								<input type="hidden" name="id" id="id" value="${tuser.id}">
+								<input type="hidden" name="id" id="id" value="${tuser_Id}">
+								<input type="hidden" name="num" id="num" value="${tuser_Num }">
 								<input type="hidden" name="product_id" id="product_id" value="${dto.product_id}">
 								<input type="hidden" name="fileNum" id="fileNum" value="${dto.productFilesDTO.fileNum}">
 								<span class="tit_item">${dto.product_name}</span>
@@ -272,7 +273,7 @@
 									<span class="count">
 										<button type="button" class="count_btn down on">-</button>
 										
-										<input type="number" readonly="readonly" onfocus="this.blur()" value="1" class="inp" data-product-price="${dto.price}">
+										<input type="number" readonly="readonly" onfocus="this.blur()" name="amount" value="1" class="inp" data-product-price="${dto.price}">
 									
 										<button type="button" class="count_btn up on">+</button>
 									</span>

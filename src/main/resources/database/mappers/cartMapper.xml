@@ -6,9 +6,9 @@
   <mapper namespace="com.thr.i1.cart.CartDAO">
 	<!-- 장바구니에 담기 -->
    	 <insert id="cartInsert" parameterType="CartDTO">
-        insert into cart (cart_Id, id, num, product_Id, fileNum, Amount)
+        insert into cart (cart_Id, id, num, product_id, fileNum, Amount)
         values 
-          (cart_seq.nextval, #{id}, #{num} #{product_Id}, #{FileNum}, #{amount} )
+          (cart_seq.nextval, #{id}, #{num}, #{product_id}, #{fileNum}, #{amount} )
         
 	  </insert>
 	  
@@ -29,7 +29,7 @@
         INNER JOIN tuser t
         ON(c.num=t.num)
 	  	INNER JOIN product p
-	  	ON(c.product_Id=p.product_Id)
+	  	ON(c.product_id=p.product_id)
 	  	INNER JOIN productFiles f
 	  	USING(FILENUM)
 	  	
@@ -82,7 +82,7 @@
         SELECT COUNT(*)
         FROM cart
         WHERE id= #{user_Id} 
-        AND product_id = #{product_Id}
+        AND product_id = #{product_id}
  	   </select>
  	   
  	  <!-- 장바구니 상품 중복 시 수량 추가 -->
@@ -90,7 +90,7 @@
  	   	UPDATE cart
  	   	SET amount=amount + #{amount}
  	   	WHERE id=#{id}
- 	   	AND product_Id=#{product_Id}
+ 	   	AND product_Id=#{product_id}
  	   </update>
  	   
   </mapper>

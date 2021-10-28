@@ -35,8 +35,8 @@ public class CartService {
 		return cartDAO.update(cartDTO);
 	}
 	//장바구니 상품 중복 확인	
-	public int countCart(int product_Id, String userid) throws Exception {
-		return cartDAO.countCart(product_Id, userid);
+	public int countCart(int product_id, String userid) throws Exception {
+		return cartDAO.countCart(product_id, userid);
 	}
 	//장바구니 상품 중복 시 수량 추가
 	public int addAmount(CartDTO cartDTO)throws Exception{
