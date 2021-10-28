@@ -93,4 +93,25 @@
  	   	AND product_Id=#{product_id}
  	   </update>
  	   
+ 	   
+ 	   
+ 	   
+ 	   <!-- 주문서에 담기 -->
+ 	   <insert id="insertOrder">
+ 	   	INSERT INTO CART_ORDER
+ 	   	(ORDER_NUM, ID, NUM, PRODUCT_NAME, SUMALL, SUMMONEY, FEE, NAME, EMAIL, PHONE, ADDRESS)
+ 	   	VALUES
+ 	   	(order_seq.nextval, #{id}, #{num}, #{pName}
+ 	   	, #{sumAll}, #{sumMoney}, #{fee}, #{name}, #{email}, #{phone}, #{address})
+ 	   </insert>
+ 	   
+ 	   
+ 	   <!-- 주문내역 조회 -->
+ 	   <select id="orderList" resultType="OrderDTO">
+ 	   	SELECT *
+ 	   	FROM CART_ORDER
+ 	   	WHERE ID=#{id}
+ 	   
+ 	   </select>
+ 	   
   </mapper>

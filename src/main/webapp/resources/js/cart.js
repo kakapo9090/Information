@@ -13,7 +13,16 @@ $(function(){
 		 	alert('수량이 변경되었습니다!');
 	 });
 	 
-	 //결제페이지-결제버튼
+	 
+	 //장바구니-주문버튼
+	 $("#btnOrder").click(function(){
+		location.href="./order.do";
+	});
+	 
+	 //주문페이지-돌아가기
+	 $("#btnBack").click(function(){
+		location.href="./list.do";
+	});
 	 
 	 
 	//완료페이지
@@ -21,6 +30,10 @@ $(function(){
 		location.href="../"
 	});	
  	
+ 	//
+ 	$("#btnPay").click(function(){
+	
+	});
 		 
 		 
 });//자바스크립트 종료

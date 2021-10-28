@@ -168,39 +168,9 @@
                             <h2>주 문 정 보</h2>
                         </div>
                         
-                        <!-- 회원 정보 입력 -->
-                        <div class="">
-                            <h3>회원정보</h3>
-                        </div>
-                        <br>
-                        
-                        <div><label>주문자명</label></div>
-                        <div>
-						  	<input type="text"  name="name" value="${tuser.name}">
-						</div>
-						<div><label>전화번호</label></div>
-                        <div>
-						  	<input type="tel"  name="phone" value="${tuser.phone }">
-						</div>
-						<div><label>이메일</label></div>
-                        <div>
-						  	<input type="text"  name="email" value="${tuser.email }" style="width: 300px;">
-						</div>
-						<div><label>주소</label></div>
-                        <div>
-						  	<input type="text"  name="address" value="${tuser.address }" style="width: 650px;">
-						</div>
-						
-						
-                        <div class="section-title product__discount__title">
-                        </div>
 
                         <!-- 장바구니 리스트 작성 begin -->
-                        <!-- 소스 시작 -->
-                        	<div class="">
-                           		 <h3>주문상품정보</h3>
-                      		  </div>
-                        <br>
+                    
                         <c:choose>
 						    <c:when test="${map.count == 0 }">
 						    <!-- map의 count가 0일때 -->
@@ -212,7 +182,38 @@
 						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
 							    <div class="row">  
 							    	<form id="form1" name="form1" method="post"
-     									   action="${pageContext.request.contextPath}/cart/update.do" style="width: 100%">      
+     									   action="${pageContext.request.contextPath}/cart/order.do" style="width: 100%"> 
+     									   <!-- 회원 정보 입력 -->
+				                        <div class="">
+				                            <h3>회원정보</h3>
+				                        </div>
+				                        <br>
+				                        
+				                        <div><label>주문자명</label></div>
+				                        <div>
+										  	<input type="text"  name="name" value="${tuser.name}">
+										</div>
+										<div><label>전화번호</label></div>
+				                        <div>
+										  	<input type="tel"  name="phone" value="${tuser.phone }">
+										</div>
+										<div><label>이메일</label></div>
+				                        <div>
+										  	<input type="text"  name="email" value="${tuser.email }" style="width: 300px;">
+										</div>
+										<div><label>주소</label></div>
+				                        <div>
+										  	<input type="text"  name="address" value="${tuser.address }" style="width: 650px;">
+										</div>
+										    <div class="section-title product__discount__title">
+                     				   </div>
+										<!-- 회원정보 입력 end -->     
+										<!-- 테이블 begin -->
+										    <!-- 소스 시작 -->
+				                        	<div class="">
+				                           		 <h3>주문상품정보</h3>
+				                      		  </div>
+				                        <br>
 			                            <table class="table">
 										  <thead>
 										    <tr align="center">
@@ -232,14 +233,26 @@
 								                    <td style="vertical-align: middle;"><fmt:formatNumber value="${row.price}" pattern="#,###,###" /></td>
 								                    <td style="vertical-align: middle;">
 									                    ${row.amount}
-                            							<!-- name속성 전달 -->
+                            							<!-- hidden속성 전달 -->
                             								<input type="hidden" name="cart_Id" value="${row.cart_Id}">
+                            								<input type="hidden" name="product_id" value="${row.product_id}">
+                            								<input type="hidden" name="fileNum" value="${row.fileNum}">
+                            								<input type="hidden" name="amount" value="${row.amount}">
+                            								<input type="hidden" name="product_Name" value="${row.product_Name}">
+                            								<input type="hidden" name="fileName" value="${row.fileName}">
+                            								<input type="hidden" name="price" value="${row.price}">
+                            								<input type="hidden" name="money" value="${row.money}">
+                            								
                             						</td>
 											        <td style="vertical-align: middle;"><fmt:formatNumber value="${row.money}" pattern="#,###,###" /></td>
 								                </tr>
 								            </c:forEach>
 								            	<tr>	
 								                    <td colspan="9" align="right">
+								                    <!-- hidden 속성 전달 -->
+								                    <input type="hidden" name="sumMoney" value="${map.sumMoney}">
+								                    <input type="hidden" name="fee" value="${map.fee}">
+								                    <input type="hidden" name="sumAll" value="${map.sumAll}">
 								                    	<div style="height: 37px;">
 								                    		<span style="font-size: medium; font-weight: bold;">
 								                    			장바구니 금액 합계： &nbsp;
@@ -288,9 +301,9 @@
 				                        <!-- 결제 begin -->
 				                        <div class="row" style="display: flex; justify-content: center;">
 				                        	
-					                        <button type="submit" class="btn btn-secondary btn-lg" formaction="${pageContext.request.contextPath}/cart/list.do">돌아가기</button>
+					                        <button type="button" id="btnBack" class="btn btn-secondary btn-lg">돌아가기</button>
 				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                       		 <button type="submit" id="btnPay" class="btn btn-success btn-lg" formaction="${pageContext.request.contextPath}/cart/complete.do" style="width: 114px;">결 제</button>
+				                       		 <button type="submit" id="btnPay" class="btn btn-success btn-lg" style="width: 114px;">결 제</button>
 				                        </div>
 				                        <!-- 결제 end -->
 									</form>

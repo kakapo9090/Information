@@ -19,10 +19,36 @@ public class CartDTO {
     private int money;	//가격*수량 값 
 
     
-    
+    private int sumMoney;
+    private int fee;
+    private int sumAll;
     
   
-    public Long getNum() {
+    public int getSumMoney() {
+		return sumMoney;
+	}
+
+	public void setSumMoney(int sumMoney) {
+		this.sumMoney = sumMoney;
+	}
+
+	public int getFee() {
+		return fee;
+	}
+
+	public void setFee(int fee) {
+		this.fee = fee;
+	}
+
+	public int getSumAll() {
+		return sumAll;
+	}
+
+	public void setSumAll(int sumAll) {
+		this.sumAll = sumAll;
+	}
+
+	public Long getNum() {
     	return num;
     }
     
