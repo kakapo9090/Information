@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.product.ProductDAO">
+  	<!-- Product List 카테고리별로 구분, 검색(전체) -->
+  	<resultMap type="ProductDTO" id="getListResult">
+  		<id column="product_id" property="product_id"/>
+  		<result column="category" property="category"/>
+  		<result column="product_name" property="product_name"/>
+  		<result column="price" property="price"/>
+  		<result column="explain" property="explain"/>
+  		<result column="etc" property="etc"/>
+  		<association property="productCategoryDTO" javaType="ProductCategoryDTO">
+  			<id column="category" property="category"/>
+  			<result column="cateName" property="cateName"/>
+  			<result column="cateRef1" property="cateRef1"/>
+  			<result column="cateRef2" property="cateRef2"/>
+  		</association>
+  	</resultMap>
+	<select id="getList" parameterType="Map" resultMap="getListResult">
+		SELECT * FROM 
+			(SELECT ROWNUM R, PRO.* FROM 
+				(SELECT * FROM PRODUCT P INNER JOIN PRODUCT_CATEGORY PC 
+				ON P.CATEGORY = PC.CATEGORY 
+				<if test="product.category!=null">
+				WHERE P.CATEGORY=#{product.category} OR PC.CATEREF1=#{product.category} OR PC.CATEREF2=#{product.category}
+				</if>
+				) PRO) 
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	</select>
+	
+ 	<!-- 카테고리별 게시물 수 -->
+ 	<select id="getCount" parameterType="ProductDTO" resultType="Long">
+		SELECT COUNT(PRODUCT_ID) FROM PRODUCT P INNER JOIN PRODUCT_CATEGORY PC 
+		ON P.CATEGORY = PC.CATEGORY 
+		<if test="category!=null">
+		WHERE P.CATEGORY=#{category} OR PC.CATEREF1=#{category} OR PC.CATEREF2=#{category}
+		</if>
+	</select>
+	
+	<!-- 상품 상세 페이지 보기 -->
+	<select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#{product_id}
+	</select>
+	
+	<!-- 상품 검색 -->
+	<select id="getSearch" parameterType="Pager" resultType="ProductDTO">
+		SELECT * FROM 
+			(SELECT ROWNUM R, SEARCH.* FROM
+				(SELECT * FROM PRODUCT 
+				WHERE PRODUCT_NAME LIKE '%' || #{search} || '%') SEARCH) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<!-- 검색된 상품의 수 -->
+	<select id="getSearchCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(PRODUCT_ID) FROM PRODUCT 
+		WHERE PRODUCT_NAME LIKE '%' || #{search} || '%'
+	</select>
+	
+  	<!-- 상품 추가 -->
+  	<insert id="setInsert" parameterType="ProductDTO">
+  		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
+  			select product_seq.nextval from dual
+  		</selectKey>
+  		insert into product
+  		values(#{product_id}, #{category}, #{product_name},#{price}, #{explain}, #{etc})
+  	</insert>
+  
+  	<!-- 상품 관련 이미지파일 저장 -->
+  	<insert id="setFileInsert" parameterType="ProductFilesDTO">
+  		insert into PRODUCTFILES (product_id, fileNum, fileName, oriName)
+  		values(#{product_id}, PRODUCTFILES_SEQ.nextval, #{fileName}, #{oriName})
+  	</insert>
+  	
+  	<!-- 상품 삭제 -->
+  	<delete id="setDelete" parameterType="ProductDTO">
+  		delete product where product_id = #{product_id}
+  	</delete>
+  	
+  	<!-- 상품 관련 이미지파일 삭제 -->
+  	<delete id="setFileDelete" parameterType="ProductFilesDTO">
+  		delete productFiles where fileNum=#{fileNum}
+  	</delete>
+  	
+  	<!-- 상품 관련 이미지파일 가져오기 -->
+  	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
+  		select * from productFiles where product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 상품 수정 -->
+  	<update id="setUpdate" parameterType="ProductDTO">
+  		update product set category = #{category}, product_name=#{product_name}, price=#{price},
+  		explain=#{explain}, etc=#{etc} where product_id = #{product_id}
+  	</update>
+  	
+  
+  </mapper>

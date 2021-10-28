@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.bt-ho:hover{
+			background-color: #7fad39;
+    	}
+		.card-h{
+			float: left;
+			margin-left: 100px; 
+			margin-top: 200px;
+			position: absolute;
+			
+		}
+		
+		.FAQ{
+			width: 130px;
+			font-size: 18;
+			font-style: sans-serif;
+			font-weight: 700;
+			align-content: center;
+			
+			
+		}
+		.card-b{
+			padding-left: 10px;
+		}
+		.title{
+			margin-left: 150px;
+			width: 800px;
+		}
+		.oneTB{
+			width: 1200px;
+			height: 900px;
+			
+		}
+		.oneCon{
+			border: 1px solid #D3D3D3;
+			height: 250px;	
+		}
+		.oneSel{
+			position: relative;
+			height: 1000px;
+		}
+		.seltb{
+			border: 2px solid #6B8E23;
+			margin-top: 50px;
+		}
+		
+  		#co_writer{
+    		font-size: 17px;
+			margin-bottom: 10px;
+    	}
+    	 #co_label{
+    		font-size: 17px;
+    		padding-bottom: 10px;
+    	}
+		#co_con{
+			padding: 0px;
+			border: 0.5px solid #D3D3D3;
+		} 
+		.comment_an{
+			border: 2px solid #6B8E23;
+			padding: 5px;
+		}
+		.btn1{
+			border: 1px solid #7fad39;
+    		border-radius: 7px;
+		}

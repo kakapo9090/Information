@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.thr.i1.member.TuserDAO">
+  	<!-- 로그인 체크 -->
+  	<select id="login" resultType="TuserDTO">
+  		SELECT id, master FROM tuser
+  		WHERE id = #{id} AND pw = #{pw}
+  	</select>
+  	
+  	<select id="idCheck" resultType="TuserDTO">
+  		SELECT id FROM tuser
+  		WHERE id = #{id}
+  	</select>
+  	
+  	<!-- 로그인 정보 -->
+  	<select id="memberView" resultType="TuserDTO">
+  		SELECT
+  		id, name, email, phone, address
+  		FROM tuser
+  		WHERE id = #{id} AND pw = {pw}
+  	</select>
+  
+  
+  	<!-- 회원 생성 -->
+  	<insert id="setNew" parameterType="TuserDTO">
+  		INSERT INTO Tuser
+  		(num, id, pw, name, email, phone, address)
+  		VALUES
+  		(Tuser_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, #{phone}, #{address})
+  	</insert>
+  	
+  	<!-- 관리자-회원 목록 -->
+  	<select id="userList" resultType="TuserDTO">
+  		select
+  			id, name, email, phone, address
+  		from tuser
+  		order by id
+  	</select>
+  	
+  	<!-- 관리자-회원 상세조회 -->
+  	<select id="userView" resultType="TuserDTO">
+  		select
+  			master, id, name, email, phone, address
+  		from tuser
+  		where id = #{id}
+  	</select>
+  	
+  	<!-- 관리자-회원 정보 수정 -->
+  	<update id="userEdit">
+  		update tuser
+  		set
+  			pw = #{pw}
+  			name = #{name}
+  			email = #{email}
+  			phone = #{phone}
+  			address = #{address}
+  		where id = #{id}
+  	</update>
+  	
+  	<!-- 마이페이지 -->
+  	<select id="mypage" resultType="TuserDTO">
+  		SELECT 
+  			name, id, email, phone, address
+  		where id = #{id}
+  	</select>
+  
+  </mapper>
