@@ -14,17 +14,14 @@ public class CartService {
 	public int cartInsert(CartDTO cartDTO) throws Exception {
 		return cartDAO.cartInsert(cartDTO);
 	}
-	
 	//장바구니 리스트
 	public List<CartDTO> cartList(String userid)throws Exception{
 		return cartDAO.cartList(userid);
 	}
-	
 	//장바구니 금액 합계
 	public int sumMoney(String userid)throws Exception{
 		return cartDAO.sumMoney(userid);
 	}
-	
 	//장바구니 1개 삭제
 	public int deleteOne(CartDTO cartDTO)throws Exception{
 		return cartDAO.deleteOne(cartDTO);
@@ -37,5 +34,12 @@ public class CartService {
 	public int update(CartDTO cartDTO) throws Exception{
 		return cartDAO.update(cartDTO);
 	}
-		
+	//장바구니 상품 중복 확인	
+	public int countCart(int product_Id, String userid) throws Exception {
+		return cartDAO.countCart(product_Id, userid);
+	}
+	//장바구니 상품 중복 시 수량 추가
+	public int addAmount(CartDTO cartDTO)throws Exception{
+		return cartDAO.addAmount(cartDTO);
+	}
 }

@@ -20,16 +20,16 @@
 	 and 장바구니테이블의 파일번호 = 파일테이블의 파일번호 
 	 and 장바구니테이블의 회원id = 파라미터로 받은 회원id-->
 	  <select id="cartList" resultType="CartDTO" parameterType="String">
-	  	select cart_Id, product_Id, num, id, name, product_Name
-	  	, amount, price, (price*amount) money, fileName, fileNum
-	  
+	  	select cart_Id, c.num, c.id, t.name, c.product_Id, product_Name
+    , amount, price, (price*amount) money, filenum, filename
+    
 	  	from cart c
 	  	INNER JOIN tuser t
-	  	USING(ID)
-	  	INNER JOIN tuser t
-	  	USING(NUM)
+	  	ON(c.id=t.id)
+        INNER JOIN tuser t
+        ON(c.num=t.num)
 	  	INNER JOIN product p
-	  	USING(PRODUCT_ID)
+	  	ON(c.product_Id=p.product_Id)
 	  	INNER JOIN productFiles f
 	  	USING(FILENUM)
 	  	
@@ -38,8 +38,8 @@
 	  	order by cart_Id desc
 	  </select>
 	  
-	  <!-- 리스트 테스트용 -->
-	  <select id="cartList11" resultType="CartDTO" parameterType="String">
+	  <!-- 리스트 테스트용. id에 붙은 숫자 1은 그냥 비활성화하려고 만든 용도-->
+	  <select id="cartList1" resultType="CartDTO" parameterType="String">
 	  	select *
 	  	from cart
 	  	where id=#{userid}
