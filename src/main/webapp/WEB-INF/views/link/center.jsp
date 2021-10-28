@@ -95,7 +95,7 @@
                     <div class="col-lg-6">
                         <div class="header__top__right">
                             <c:if test="${not empty tuser }">
-                            	<a href="${pageContext.request.contextPath}/link/mypage"><i class="fa fa-user"></i> Mypage</a>
+                            	<a type="button" id="btnMyPage"> <i class="fa fa-user"> mypage</i></a>
                             	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
                             </c:if>
                             <c:if test="${empty tuser}">
