@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+  <!-- 리뷰 리스트 -->
   <mapper namespace="com.thr.i1.review.ReviewDAO">
 	<select id="getReviewList" parameterType="Map" resultType="ReviewDTO">
   		SELECT * FROM 
@@ -11,6 +12,7 @@
   		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   	</select>
 
+	<!-- 리뷰 1개 내용 보기 -->
 	<resultMap type="ReviewDTO" id="getReviewResult">
 		<id column="re_num" property="re_num"/>
 		<result column="product_id" property="product_id"/>
@@ -31,29 +33,49 @@
 		USING (RE_NUM) WHERE RE_NUM=#{re_num}
 	</select>
 	
+	<!-- 한 상품에 대한 리뷰 개수 -->
 	<select id="getReviewCount" parameterType="ReviewDTO" resultType="Long">
 		SELECT COUNT(RE_NUM) FROM REVIEW WHERE PRODUCT_ID=#{product_id}
 	</select>
 	
+	<!-- 리뷰 작성하기 -->
 	<insert id="setReviewInsert" parameterType="ReviewDTO">
 		<selectKey order="BEFORE" resultType="Long" keyProperty="re_num">
 			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO REVIEW (PRODUCT_ID, RE_NUM, RE_TITLE, RE_CONTENTS, RE_WRITER)
-		VALUES (#{product_id}, #{re_num}, #{re_title}, #{re_contents}, #{re_writer})
+		INSERT INTO REVIEW (PRODUCT_ID, RE_NUM, RE_TITLE, RE_CONTENTS, RE_WRITER, RE_STAR)
+		VALUES (#{product_id}, #{re_num}, #{re_title}, #{re_contents}, #{re_writer}, #{re_star})
 	</insert>
 	
+	<!-- 리뷰 작성 시 파일 추가 -->
 	<insert id="setReviewFiles" parameterType="ReviewFilesDTO">
 		INSERT INTO REVIEWFILES (RE_NUM, RE_FILENUM, RE_FILENAME, RE_ORINAME) 
 		VALUES (#{re_num}, REVIEWFILES_SEQ.NEXTVAL, #{re_fileName}, #{re_oriName})
 	</insert>
 	
+	<!-- 리뷰 삭제 -->
 	<delete id="setReviewDelete" parameterType="ReviewDTO">
 		DELETE REVIEW WHERE RE_NUM=#{re_num}
 	</delete>
 	
+	<!-- 해당 리뷰의 파일 가져오기 -->
 	<select id="getReviewFiles" parameterType="ReviewDTO" resultType="ReviewFilesDTO">
 		SELECT * FROM REVIEWFILES WHERE RE_NUM=#{re_num}
 	</select>
+	
+	<!-- 리뷰 수정 -->
+	<update id="setReviewUpdate" parameterType="ReviewDTO">
+		UPDATE REVIEW SET RE_TITLE=#{re_title}, RE_CONTENTS=#{re_contents}, RE_STAR=#{re_star} WHERE RE_NUM=#{re_num}
+	</update>
+	
+	<!-- 한 상품에 대한 별점 평균 소수점 첫째자리까지 -->
+	<select id="getReviewStar" parameterType="ReviewDTO" resultType="Double">
+		SELECT ROUND(AVG(RE_STAR),1) FROM REVIEW WHERE PRODUCT_ID=#{product_id}
+	</select>
+	
+	<!-- 리뷰 파일 삭제 -->
+	<delete id="setFileDelete" parameterType="ReviewFilesDTO">
+		DELETE REVIEWFILES WHERE RE_FILENUM=#{re_fileNum}
+	</delete>
   
   </mapper>

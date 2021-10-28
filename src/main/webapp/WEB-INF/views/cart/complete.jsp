@@ -38,7 +38,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Humberger Begin -->
+     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
@@ -46,13 +46,22 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul> 
+        </div>
+        <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <c:if test="${not empty tuser}">
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> Login</a>
+            		</c:if>
+            		<c:if test="${empty tuser}">
+            			<!-- <a type="button" id="btnMyPage"> mypage></a> -->
+            			<a href="${pageContext.request.contextPath}/link/login"><i class="fa fa-user"></i> logout</a>
+            		</c:if>
             </div>
         </div>
+        
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
             	<li class="active"><a href="../">Home</a></li>
@@ -90,11 +99,16 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${not empty tuser }">
+                            	
+                            	<a type="button" id="btnMyPage1" href="${pageContext.request.contextPath}/link/mypage"> <i class="fa fa-user"> mypage</i></a>
+                            	<a href="${pageContext.request.contextPath}/link/logout"><i class="fa fa-user"></i> Logout</a>
+                            </c:if>
+                            <c:if test="${empty tuser}">
+                            	<a href="${pageContext.request.contextPath}/link/login" style="display:inline-block"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -129,7 +143,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart/list.do"><i class="fa fa-shopping-bag"></i> <span>${map.count }</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,14 +168,7 @@
                             <h2>주 문 정 보</h2>
                         </div>
                         
-                       
-						
-                       
-
-
-                        
-						    		     
-						    <!-- map.count가 0이 아닐 때(장바구니에 상품이 있을 때) -->						    	
+						    	
 							    <div class="row">  
 									<div class="col-lg-12 col-md-9">
 										<span style="font-size: large;">주문이 완료되었습니다.</span>
@@ -172,8 +179,7 @@
 								            
 				                        <div class="col-lg-12 col-md-9" style="display: flex; justify-content: center;">
 					                        <button type="button" class="btn btn-secondary btn-lg btn-main">메인으로</button>
-				                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                       		 <button type="button" class="btn btn-success btn-lg btn-mypage">마이페이지</button>
+				                 
 				                        </div>
 		                        </div>
         

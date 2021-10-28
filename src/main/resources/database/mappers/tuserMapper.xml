@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.thr.i1.member.TuserDAO">
-  	<!-- 로그인 체크 -->
+  	<!-- 로그인 체크 --><!-- 10-27일 SELECT 컬럼 추가 -->
   	<select id="login" resultType="TuserDTO">
   		SELECT id, master, num, phone, name, address, email FROM tuser
   		WHERE id = #{id} AND pw = #{pw}

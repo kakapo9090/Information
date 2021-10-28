@@ -254,9 +254,10 @@
 				<div>
 					<div style="border: 1px solid #6B8E23; height: 40px; width: 700px;" data-file-num="${files.fileNum}" data-file-Name="${files.fileName}">${files.oriName}</div>
 					<button class="oriFileDel" type="button">삭제</button>
-				</div>
+				</div><br>
 				
-					<div class="input-group">
+				  <label>이미 등록된 파일은 지우고 새로운 파일을 등록해주세요.</label><br>
+				<div class="input-group ">
 				  <input type="file" class="form-control" name="files" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
 				  <button class="btn btn-outline-secondary fileDel" type="button" id="inputGroupFileAddon04">파일삭제</button>
 				</div>
@@ -349,6 +350,8 @@
     <script src="../resources/js/main.js"></script>
 	<script src="../resources/js/productInsert.js"></script>
 <script type="text/javascript">
+	
+
 	//파일 등록 중 삭제하고 다시 등록하기
 	let addFile = '<input type="file" class="form-control file" name="files" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">';
 	$('.fileDel').click(function(){
@@ -375,6 +378,7 @@
 			success: function(result){
 				if(result>0){
 					oriThis.parent().remove();
+					
 				}else{
 					console.log('실패');
 				}

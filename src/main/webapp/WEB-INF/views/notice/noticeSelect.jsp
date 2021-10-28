@@ -209,7 +209,7 @@
 		 <a href="./list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -235,14 +235,14 @@
 		 	<hr>
 		 	
 		 	<div class="con contents">
-		 		${notice.no_contents}
+		 		<pre>${notice.no_contents}</pre>
 		 	</div>
 		 	
 		 	<hr>
 		 	<br>
 			 	<c:forEach items="${noti}" var = "no">
 			 		<div>
-			 			<a href="down?fileName=${no.no_fileName}">${no.no_oriName}</a>
+			 			<a href="./down?no_fileName=${no.no_fileName}">${no.no_oriName}</a>
 			 		</div>
 			 	</c:forEach>
 		 	
@@ -267,7 +267,7 @@
 			</div>
 			<!-- 모달 -->
 		 	<div class="button3 col-md-5 mx-auto" style="padding-left: 100px;">
-		 	<c:if test="${not empty tuser and tuser eq 'test'}">
+		 	<c:if test="${not empty tuser and tuser.id eq 'test'}">
 			 	<button type="button" value="${notice.no_num}" class="up btn btn-outline-warning">공지수정</button>
 			 	<!-- 관리자에게만 보이기 -->
 			 	<button type="button" value="${notice.no_num}" style="color: black"  class="del btn btn-outline-light">공지삭제</button>

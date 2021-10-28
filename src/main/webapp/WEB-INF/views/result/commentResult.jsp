@@ -10,7 +10,7 @@
 	<div class="textarea"  style="width: 880px; height:240px; border: 1px solid  #D3D3D3;">
 	<textarea readonly ="readonly" id="co_con" rows="10" style="width: 880px;">${comment.oneco_contents}</textarea>
 	</div><br>
-	<c:if test="${tuser eq 'test' }">
+	<c:if test="${tuser.id eq 'test' }">
 		<div>
 			<button type="button" id="update" class="btn btn1 bt-ho">수정하기</button>
 			<button type="button" id="delete" class="btn btn1 bt-ho">삭제하기</button>

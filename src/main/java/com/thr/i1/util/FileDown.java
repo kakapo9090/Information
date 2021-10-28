@@ -30,9 +30,9 @@ public class FileDown extends AbstractView{
 		NotiFilesDTO notiFilesDTO = (NotiFilesDTO)model.get("file");
 		//realPath 구하기
 		noti = request.getSession().getServletContext().getRealPath("/resource/upload/"+noti);
-		
+		System.out.println("파일다운 에러");
 		File file = new File(noti, notiFilesDTO.getNo_fileName());
-		
+		System.out.println("파일다운:"+notiFilesDTO.getNo_fileName());
 		//한글 처리
 		response.setCharacterEncoding("UTF-8");
 		//파일크기

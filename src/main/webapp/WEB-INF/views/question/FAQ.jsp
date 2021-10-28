@@ -249,7 +249,7 @@
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -383,19 +383,7 @@
     <script src="../resources/js/main.js"></script>
 
 <script type="text/javascript">
-	for(let i=0; i<20; i++){
-		$('#index'+i).click(function(){
-			if($('#faq_con'+i).css('display')== 'none'){
-				
-				$('#faq_con'+i).show();
-			}else{
-				$('#faq_con'+i).hide();
-			}
-		 	
-		 	
-			
-		})
-	}
+
 	for(let i=0; i<100; i++){
 		//let aa = $('#fa+i')
 		$('#fa'+i).click(function(){

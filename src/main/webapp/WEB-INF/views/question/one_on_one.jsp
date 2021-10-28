@@ -243,7 +243,7 @@
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -260,33 +260,36 @@
 		 <!-- 1:1문의 -->
 		
 		 <div class="container-fluid col-md-10 mx-auto" style="margin-top: 150px;">
-		 	<table class="table">
+		 	<table class="table" id="oneTable">
 			  <thead>
 			    <tr>
 			      <th scope="col">문의</th>
 			      <th scope="col">문의 제목</th>
 			      <th scope="col">문의일</th>
 			      <th scope="col">답변 알림</th>
+			      <th scope="col">답변 상태</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			 
-			  <c:forEach items="${one}" var="one">
+			  <c:forEach items="${one}" var="one" varStatus="v">
 
-			   <c:if test="${tuser eq one.one_writer or tuser eq 'test'}">
-			   
+			   <c:if test="${tuser.id eq one.one_writer or tuser.id eq 'test'}">
+			   <c:if test="${one eq null}">
+			   		<div>문의내역이 없습니다</div>
+			   </c:if>
 			    <tr>
 			      <th scope="row">${one.one_cate}</th>
 			      <td><a href="./one_select?one_num=${one.one_num}">${one.one_title}</a></td>
 			      <td>${one.one_regdate}</td>
 			      <td>${one.one_answer}</td>
+			      <td class="answer${v.index}" data-one-num="${one.one_num}">답변 대기</td>
 			    </tr>
 			  	
 			    </c:if>
 			 	
-			 	<%-- <c:if test="${one.one_writer ne tuser }">
-			 		<div>문의</div>
-			 	</c:if>  --%>  
+			 	
+			 	  
 			    
 			    
 			   </c:forEach>
@@ -369,6 +372,34 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
+    <script type="text/javascript">
+    
+   let trCount = $('#oneTable >tbody tr').length;
+    console.log(trCount)
+    
+    let one_num = 0;
+	for(let i=0; i<trCount; i++){
+		 one_num = $('.answer'+i).attr('data-one-num');
+		console.log(one_num);
+	
+    	
+	$.ajax({
+    	type:'POST',
+    	url: './commentNum',
+    	data:{one_num:one_num},
+    	success: function(result){
+    		if(result>0){
+    			$('.answer'+i).html('답변완료');
+    		}else{
+    			console.log('실패');
+    		}
+    	},
+    	error:function(){
+    		alert('오류');
+    	}
+    }) 
+    }
+    </script>
 </body>
 
 </html>

@@ -210,7 +210,7 @@
 		 <a href="../notices/list" class=" FAQ btn bt-ho">공지사항</a>
 		 <a href="../question/FAQ" class=" FAQ btn bt-ho">FAQ</a>
 		 <c:choose>
-		<c:when test="${not empty tuser and tuser eq 'test'}">
+		<c:when test="${not empty tuser and tuser.id eq 'test'}">
 		 <a href="../question/one_on_one" class=" FAQ  one btn bt-ho">1:1 문의</a>
 		 </c:when>
 		<c:when test="${not empty tuser}">
@@ -262,20 +262,21 @@
 				
 				<div class="oneCon">
 					
-					<div>${oneDTO.one_contents}</div>
+					<div class="contents">${oneDTO.one_contents}</div>
 				</div>
 		
 		 		<hr>	
-		 	<!-- 문의글 삭제 하기 -->
-		 	<c:if test="${tuser eq oneDTO.one_writer}">
-		 	<div>
+		 	<!-- 문의글 수정,삭제 하기 -->
+		 	<c:if test="${tuser.id eq oneDTO.one_writer}">
+		 	<div class="one_controlButton">
+		 		<button type="button" class="btn one_update">수정하기</button>
 		 		<button type ="button" class="btn one_delete">삭제하기</button>
 		 	</div>
 		 	</c:if>
 		 <!-- 문의답변 달기 -->
-		<c:if test="${tuser eq 'test'}">
+		<c:if test="${tuser.id eq 'test'}">
 		 <div >
-		 	<button  class="one_cobtn">답변하기</button>
+		 	<button  class=" btn one_cobtn btn-info">답변하기</button>
 			 	<form action="./commentInsert" method="post" id="form" class="one_comment">
 			 	<input style="display: none;" id="one_num" name="one_num" value="${oneDTO.one_num}">
 			 	
@@ -367,7 +368,7 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-    <script type="text/javascript" src="../resources/js/one_comment.js"></script>
+    <script src="../resources/js/one_comment.js"></script>
 </body>
 <script type="text/javascript">
 //목록으로 돌아가는 버튼 클릭시 문의 내역으로 이동
@@ -402,6 +403,66 @@ $('.one_list').click(function(){
 		}
 		
 	});
+	
+	//문의 내역 수정하기 버튼 클릭
+	$('.one_update').click(function(){
+		let contents = $('.contents').html();
+		$('.contents').css('display', 'none');
+		$('.one_controlButton').css('display','none');
+		
+		let newContents = '<textarea class="newtext" id="one_contents" name="one_contents" style="height:248px; width:893px;" >';
+		newContents = newContents+contents+'</textarea><br><br>';
+		newContents = newContents+'<button type="button" class="btn update_ok">수정등록</button>';
+		newContents = newContents+'<button type ="button" class="btn update_cancel">수정취소</button>';
+		console.log(newContents);
+		$('.oneCon').append(newContents);
+	})
+	
+	//문의 내역 수정등록 버튼 클릭시
+	
+	$('.oneCon').on('click', '.update_ok', function(){
+		let updateContents = $(this).prev().prev().prev().val();
+		console.log("수정된 텍스트"+updateContents);
+		
+		$.ajax({
+			type:'POST',
+			url:'./update',
+			data:{
+				one_contents:updateContents,
+				one_num:num
+				},
+			success: function(result){
+				if(result>0){
+					$('.oneCon').children().css('display','block');
+					$('.oneCon').children('.newtext').remove();
+					$('.oneCon').children('.update_ok').remove();
+					$('.oneCon').children('.update_cancel').remove();
+					$('.oneCon').children().html(updateContents);
+					$('.one_controlButton').css('display','block');
+					
+				}else{
+					console.log('문의 내역 수정 result가 0일때');
+				}
+			},
+			error: function(){
+				alert('문의내역 수정 오류');
+			}
+			
+		})
+		
+	});
+	
+	//문의 내역 수정취소 버튼 클릭시
+	$('.oneCon').on('click', '.update_cancel', function(){
+		$('.one_controlButton').css('display','block');
+		$('.oneCon').children().css('display','block');
+		$('.oneCon').children('.newtext').remove();
+		$('.oneCon').children('.update_ok').remove();
+		$('.oneCon').children('.update_cancel').remove();
+		
+	});
+	
+	
 //답변 등록을 누르면 답변이 등록되고 답변 폼이 사라짐
 	
 	$('.one_comment').on('click', '#submit', function(){
@@ -442,6 +503,7 @@ $('.one_list').click(function(){
 			success: function(result){
 				result = result.trim();
 				$('.comment').html(result);
+				console.log($('.comment').html(result));
 			},
 			error:function(xhr, status, error){
 				console.log(error);
@@ -503,8 +565,8 @@ $('.one_list').click(function(){
 					$('.comment_an').children('.newtext').remove();
 					$('#co_con').val(contents)
 					//$('.comment_an').children('.textarea').html(contents);
-					$('.textarea').next().next('button').remove();
-					$('.textarea').next().next('button').remove();
+					$('.textarea').next().next().next('button').remove();
+					$('.textarea').next().next().next('button').remove();
 				}else{
 					console.log('실패');
 				}
@@ -520,8 +582,8 @@ $('.one_list').click(function(){
 	$('.comment').on('click', '#delcontent', function(){
 		$('.textarea').css('display', 'block');
 		$('.newtext').remove();
-		$('.textarea').next().next('button').remove();
-		$('.textarea').next().next('button').remove();
+		$('.textarea').next().next().next('button').remove();
+		$('.textarea').next().next().next('button').remove();
 		
 	});
 	//답변 삭제하기

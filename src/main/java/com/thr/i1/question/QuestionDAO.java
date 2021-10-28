@@ -50,6 +50,11 @@ public class QuestionDAO {
 		return sqlSession.delete(NAMESPACE+"setOneDelete", oneDTO);
 	}
 	
+	//1:1문의 내용 수정하기
+	public int setOneUpdate(One_on_oneDTO oneDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setOneUpdate", oneDTO);
+	}
+	
 	//1:1문의 답변하기
 	public int setCommentInsert(One_commentDTO one_commentDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCommentInsert", one_commentDTO);

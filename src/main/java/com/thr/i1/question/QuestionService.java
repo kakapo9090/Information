@@ -28,10 +28,6 @@ public class QuestionService {
 	}
 	
 	
-//	public List<One_on_oneDTO> getOneList(One_on_oneDTO oneDTO) throws Exception{
-//		System.out.println(oneDTO.getOne_writer());
-//		return questionDAO.getOneList(oneDTO);
-//	}
 	//1:1문의 내역 가져오기
 	public List<One_on_oneDTO> getOneList() throws Exception{
 		return questionDAO.getOneList();
@@ -48,6 +44,12 @@ public class QuestionService {
 		return questionDAO.setOneDelete(oneDTO);
 	}
 
+	//1:1문의 내용 수정하기
+	public int setOneUpdate(One_on_oneDTO oneDTO) throws Exception{
+		return questionDAO.setOneUpdate(oneDTO);
+	}
+	
+	
 	//1:1문의 답변하기
 	public int setCommentInsert(One_commentDTO one_commentDTO) throws Exception{
 		return questionDAO.setCommentInsert(one_commentDTO);

@@ -195,7 +195,7 @@
     	<div class="one_menu mx-auto col-md-7">
 	    	<a href="../notices/list">공지사항 &nbsp &nbsp</a>
 	    	<a href="./FAQ">FAQ &nbsp &nbsp</a>
-	    	<a href="./one_on_one?one_writer=${tuser}">문의내역</a>
+	    	<a href="./one_on_one?one_writer=${tuser.id}">문의내역</a>
     	</div>
     </div>
     <!-- 문의 시작 -->
@@ -215,7 +215,7 @@
 	  <option value="기타">기타 문의</option>
 	</select>
 	</div>
-	<input style="display: none;" name="one_writer" id="tuser_id" value="${tuser}">
+	<input style="display: none;" name="one_writer" id="tuser_id" value="${tuser.id}">
 	<!-- 문의 제목 -->
 	<div class="" style="margin-top: 70px;"> 
 	<div class="mb-3 col-md-8 mx-auto">
