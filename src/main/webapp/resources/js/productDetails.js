@@ -1,7 +1,14 @@
 /**
  * 
  */
- 
+
+
+/*li의 a 태그 선택 시 해당 태그에 클래스 on 추가*/
+$(".tab_link").click(function(){
+	$(this).parents("ul").find("a").removeClass("on");
+	$(this).addClass("on");
+})
+
  /*+버튼 클릭 시 카운트, 총 합계비용 증가*/
 $(".up").click(function(){
 let amount = $(".inp").val();
@@ -34,19 +41,9 @@ $(".down").click(function(){
 
 /*장바구니 버튼 클릭 시 로그인 여부 확인 후 로그인이 되어 있다면 장바구니 페이지로*/
 $(".goCart").click(function(){
-	let userId=$(this).attr("data-tuser-id");
-	let productId=$(this).attr("data-product-id");
-	let amount = $(".inp").val();
+	let userId=$("#id").val();
 	if(userId != ""){
-		$.ajax({
-			type : "GET",
-			url : "../cart/insert.do",
-			data : {
-				id : userId,
-				product_id : productId,
-				amount : amount
-			}
-		})
+		$(this).attr("type", "submit");
 	}else {
 		alert("해당 상품을 장바구니에 넣으려면 로그인이 필요합니다.")
 		location.href="../link/login";

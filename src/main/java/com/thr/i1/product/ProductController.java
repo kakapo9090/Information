@@ -18,6 +18,7 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+
 	
 	//제품 list 사이트 이동
 	@GetMapping("productList")

@@ -29,6 +29,7 @@ public class ReviewService {
 		map.put("review", reviewDTO);
 		map.put("pager", pager);
 		Long totalCount = reviewDAO.getReviewCount(reviewDTO);
+		pager.setPerPage(10L);
 		pager.setTotalCount(totalCount);
 		pager.makeRow();
 		pager.makeNum();
@@ -72,6 +73,41 @@ public class ReviewService {
 		}
 		
 		return reviewDAO.setReviewDelete(reviewDTO);
+	}
+	//한 상품에 대한 리뷰 개수
+	public Long getReviewCount(ReviewDTO reviewDTO) throws Exception{
+		return reviewDAO.getReviewCount(reviewDTO);
+	}
+	
+	//한 상품에 대한 별점 평균
+	public Double getReviewStar(ReviewDTO reviewDTO) throws Exception {
+		return reviewDAO.getReviewStar(reviewDTO);
+	}
+	
+	//리뷰 수정하기
+	public int setReviewUpdate(ReviewDTO reviewDTO, MultipartFile [] re_files) throws Exception {
+		String realPath = servletContext.getRealPath("/resources/upload/review/");
+		File file = new File(realPath);
+		int result = reviewDAO.setReviewUpdate(reviewDTO);
+		
+		for(MultipartFile multipartFile : re_files) {
+			String fileName = fileUpload.fileSave(multipartFile, file);
+			ReviewFilesDTO reviewFilesDTO = new ReviewFilesDTO();
+			reviewFilesDTO.setRe_num(reviewDTO.getRe_num());
+			reviewFilesDTO.setRe_fileName(fileName);
+			reviewFilesDTO.setRe_oriName(multipartFile.getOriginalFilename());
+			
+			result = reviewDAO.setReviewFiles(reviewFilesDTO);
+		}
+		return result;
+	}
+	
+	public int setFileDelete(ReviewFilesDTO reviewFilesDTO) throws Exception {
+		String realPath = servletContext.getRealPath("/resources/upload/review/");
+		File file = new File(realPath, reviewFilesDTO.getRe_fileName());
+		file.delete();
+		
+		return reviewDAO.setFileDelete(reviewFilesDTO);
 	}
 
 }

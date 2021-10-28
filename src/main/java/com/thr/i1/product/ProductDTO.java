@@ -9,6 +9,7 @@ public class ProductDTO {
 	private String explain;
 	private String etc;
 	private ProductCategoryDTO productCategoryDTO;
+	private ProductFilesDTO productFilesDTO;
 	
 		
 	public Long getProduct_id() {
@@ -53,6 +54,12 @@ public class ProductDTO {
 	}
 	public void setProductCategoryDTO(ProductCategoryDTO productCategoryDTO) {
 		this.productCategoryDTO = productCategoryDTO;
+	}
+	public ProductFilesDTO getProductFilesDTO() {
+		return productFilesDTO;
+	}
+	public void setProductFilesDTO(ProductFilesDTO productFilesDTO) {
+		this.productFilesDTO = productFilesDTO;
 	}
 	
 	

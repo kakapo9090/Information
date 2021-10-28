@@ -3,11 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 리뷰 상세 페이지 -->
-<div>
-	<br>
-	<div>
+<div class="re_contents">
+	<pre class="contents_area">
 		${dto.re_contents}
-	</div>
+	</pre>
 	<c:forEach items="${dto.files}" var="files">
 		<c:if test="${not empty files.re_oriName}">
 			<div>
@@ -16,9 +15,12 @@
 			</div>		
 		</c:if>
 	</c:forEach>
-	<c:if test="${not empty tuser and tuser eq dto.re_writer}">
-		<br>
-		<button class="review_update" data-review-num="${dto.re_num}">수정하기</button>
-		<button class="review_delete" data-review-num="${dto.re_num}">삭제하기</button>
-	</c:if>
+	<div class="review_btnGroup">
+		<c:if test="${not empty tuser.id and tuser.id eq dto.re_writer}">
+			<button class="review_update" data-review-num="${dto.re_num}">수정하기</button>
+		</c:if>
+		<c:if test="${not empty tuser.id and tuser.id eq dto.re_writer or tuser.id eq 'test' }">
+			<button class="review_delete" data-review-num="${dto.re_num}">삭제하기</button>
+		</c:if>
+	</div>
 </div>
