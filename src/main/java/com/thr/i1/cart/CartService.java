@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.thr.i1.member.TuserDTO;
+
 @Service
 public class CartService {
 	@Autowired
@@ -42,4 +44,34 @@ public class CartService {
 	public int addAmount(CartDTO cartDTO)throws Exception{
 		return cartDAO.addAmount(cartDTO);
 	}
+	
+	//주문서에 상품 추가
+	public int insertOrder(TuserDTO tuserDTO, String pName, int sumMoney, int fee, int sumAll)throws Exception {
+		return cartDAO.insertOrder(tuserDTO, pName, sumMoney, fee, sumAll);
+	}
+	
+	//주문내역 조회
+	public List<OrderDTO> orderList(String userid)throws Exception{
+		return cartDAO.orderList(userid);
+	}
+	
+	//주문번호 출력
+	public Long orderNum(String userid)throws Exception{
+		return cartDAO.orderNum(userid);
+	}
+	
+	//상세주문내역 담기
+	public int insertStorage(CartDTO cartDTO)throws Exception{
+		return cartDAO.insertStorage(cartDTO);
+	}
+	
+	 //주문내역 상세보기
+	 public List<CartDTO> orderSelect(Long order_Num, String userid)throws Exception{
+		 return cartDAO.orderSelect(order_Num, userid);
+	 }
+	
+	 //주문내역 상세보기 총액
+	 public int sumMoneyOrder(Long order_Num, String userid)throws Exception{
+		 return cartDAO.sumMoneyOrder(order_Num, userid);	 
+	 }
 }

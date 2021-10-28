@@ -93,4 +93,57 @@
  	   	AND product_Id=#{product_id}
  	   </update>
  	   
+ 	   
+ 	   
+ 	   
+ 	   <!-- 주문서에 담기 -->
+ 	   <insert id="insertOrder">
+ 	   	INSERT INTO CART_ORDER
+ 	   	(ORDER_NUM, ID, NUM, PRODUCT_NAME, SUMALL, SUMMONEY, FEE, NAME, EMAIL, PHONE, ADDRESS)
+ 	   	VALUES
+ 	   	(order_seq.nextval, #{id}, #{num}, #{pName}
+ 	   	, #{sumAll}, #{sumMoney}, #{fee}, #{name}, #{email}, #{phone}, #{address})
+ 	   </insert>
+ 	   
+ 	   
+ 	   <!-- 주문내역 조회 -->
+ 	   <select id="orderList" resultType="OrderDTO">
+ 	   	SELECT *
+ 	   	FROM CART_ORDER
+ 	   	WHERE ID=#{id}
+ 	   	ORDER BY ORDER_NUM DESC
+ 	   </select>
+ 	   
+ 	   <!-- 주문번호 출력 -->
+ 	   <select id="orderNum" resultType="_long">
+ 	   	SELECT MAX(ORDER_NUM) 
+ 	   	FROM cart_order
+		WHERE ID=#{id}
+ 	   </select>
+ 	   
+ 	   
+ 	   <!-- 상세주문내역 담기 -->
+ 	   <insert id="insertStorage" parameterType="CartDTO">
+ 	   	INSERT INTO CART_STORAGE
+ 	   	VALUES(#{order_Num}, #{cart_Id}, #{id}, #{num}, #{product_id}
+ 	   	, #{product_Name}, #{fileNum}, #{fileName}, #{price}, #{amount}, #{money})	   	
+ 	   </insert>
+ 	   
+ 	   <!-- 주문내역 상세보기 -->
+ 	   <select id="orderSelect" resultType="CartDTO">
+ 	   	SELECT *
+ 	   	FROM CART_STORAGE
+ 	   	WHERE ID=#{id} AND ORDER_NUM=#{order_Num}
+ 	   	ORDER BY CART_ID DESC 
+ 	   </select>
+ 	   
+ 	   <!-- 주문내역 상세보기 금액 합계 -->
+	  <select id="sumMoneyOrder" resultType="_int">
+	  	select nvl(sum(price*amount),0)
+		from CART_ORDER O
+		INNER JOIN CART_STORAGE S
+		ON(O.ORDER_NUM=S.ORDER_NUM)
+		where O.ID=#{id} AND O.ORDER_NUM=#{order_Num}
+	  </select>
+ 	   
   </mapper>
