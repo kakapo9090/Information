@@ -67,7 +67,21 @@
 	</select>
 	
 	<!-- 상품 검색 -->
-	<select id="getSearch" parameterType="Pager" resultType="ProductDTO">
+		<resultMap type="ProductDTO" id="getSearchResult">
+		<id column="product_id" property="product_id"/>
+  		<result column="category" property="category"/>
+  		<result column="product_name" property="product_name"/>
+  		<result column="price" property="price"/>
+  		<result column="explain" property="explain"/>
+  		<result column="etc" property="etc"/>
+  		<association property="productFilesDTO" javaType="ProductFilesDTO">
+  			<id column="fileNum" property="fileNum"/>
+  			<result column="product_id" property="product_id"/>
+  			<result column="fileName" property="fileName"/>
+  			<result column="oriName" property="oriName"/>
+  		</association>
+	</resultMap>
+	<select id="getSearch" parameterType="Pager" resultMap="getSearchResult">
 		SELECT * FROM 
 			(SELECT ROWNUM R, SEARCH.* FROM
 				(SELECT * FROM PRODUCT 
