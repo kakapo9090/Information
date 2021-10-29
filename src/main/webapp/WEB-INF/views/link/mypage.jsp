@@ -78,7 +78,7 @@ span.tags
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 </form>
                                     <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
-                                        <a href=""></a><button class="btn btn-success btn-block"> 주문내역확인 </button>
+                                        <a href="../cart/orderList?id=${dto.id}"></a><button class="btn btn-success btn-block"> 주문내역확인 </button>
                                         <a href="../question/one_on_one?id=${dto.id}"><button class="btn btn-success btn-block"> 1:1 문의내역 </button>
                                     </div>
                                     <div class=" col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
