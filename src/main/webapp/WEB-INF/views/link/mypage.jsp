@@ -78,8 +78,8 @@ span.tags
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 </form>
                                     <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
-                                        <a href="../cart/orderList?id=${dto.id}"></a><button class="btn btn-success btn-block"> 주문내역확인 </button>
-                                        <a href="../question/one_on_one?id=${dto.id}"><button class="btn btn-success btn-block"> 1:1 문의내역 </button>
+                                        <a href="../cart/orderList.do?id=${dto.id}"><button class="btn btn-success btn-block"> 주문내역확인 </button></a>
+                                        <a href="../question/one_on_one?id=${dto.id}"><button class="btn btn-success btn-block"> 1:1 문의내역 </button></a>
                                     </div>
                                     <div class=" col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
                                         <button class="btn btn-info btn-block"><span class="fa fa-user"></span> 회원 탈퇴 </button>
