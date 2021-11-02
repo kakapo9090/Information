@@ -320,29 +320,25 @@
 				<div class="product_info" id="product-explain">
 					<div class="view_title">상품 설명</div>
 					<div class="view_contents">
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<img alt="" src="../resources/upload/product/${dto.productFilesDTO.fileName}" id="image">
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
-						<p>${dto.explain }</p>
-						<p>상품에 대한 설명을 쓰는 곳입니다.</p>
+						<p>달콤한 향미 가득 연둣빛 포도</p>
+						<p style="font-family: font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: bold;">
+							향기 가득 샤인머스켓
+						</p>
+						<img alt="" src="../resources/upload/product/gv20000226080_1.jpg" style="width: 500px;">
+						<hr>
+						<p>달달한 향이 은은하게 풍기는 샤인 머스캣은 망고 맛이 난다고 하여</p>
+						<p>망고 포도라고 불릴 만큼 달콤한 맛이 특징이에요.</p>
+						<p>연둣빛의 예쁜 색감과 달콤함까지 갖춰 아주 매력적인 과일이랍니다.</p>
+						<p>샤인 머스캣을 한 송이씩 신문지로 잘 감싼 후 냉장보관하시면 아삭한 맛을 더욱 오래 즐길 수 있을 거예요.</p>
+						<p>초록에서 노란빛으로 후숙이 되면 당도가 올라가 더욱 맛있어진답니다.</p>
+						<p>남녀노소 맛있게 즐길 수 있는 샤인 머스캣을 만나보세요.</p>
 						
 					</div>
 				</div>
 				<div class="product_info" id="product-info">
 					<div class="view_title">상품 상세 정보</div>
 					<div class="view_contents">
-						<img alt="" src="../resources/upload/product/${dto.productFilesDTO.fileName}" id="image">
-						<img alt="" src="../resources/upload/product/product_detailinfo.jpg" width="300px;">
+						<img alt="" src="../resources/upload/product/product_info.jpg">
 					</div>
 				</div>
 				<div class="product_info" id="product-review">

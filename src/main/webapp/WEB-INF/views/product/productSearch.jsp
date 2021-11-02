@@ -239,7 +239,7 @@
                             
                         </div>
                     </div>
-                    <!-- Product List Begin -->
+                    <!-- Product Search Begin -->
                     <c:if test="${pager.totalCount eq 0}">해당 상품이 없습니다</c:if>
                     <div class="row">
                     	<c:forEach items="${list}" var="dto">
@@ -260,7 +260,7 @@
 	                        </div>
 	                    </c:forEach>
                     </div>
-                    <!-- Product List End -->
+                    <!-- Product Search End -->
                     
                     <!-- Product Pagination Begin -->
                     <div class="product__pagination">

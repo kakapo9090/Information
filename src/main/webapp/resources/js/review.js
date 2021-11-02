@@ -9,7 +9,7 @@
  getReviewStar();
  
  let count=0;
- let update_count=0;
+ 
 /*후기 list pager*/
 $(".review_list").on("click", ".re_page", function(){
 	let pn = $(this).attr("data-review-page");
@@ -25,7 +25,7 @@ $(".review_list").on("click", ".re_page", function(){
 $(document).on("click", ".modal_close", function(){
 	$(".modal").modal('hide');
 	count=0;
-	update_count=0;
+	
 })
 
 
@@ -52,6 +52,7 @@ $(document).on("click", ".file_delete", function(){
 
 /*버튼 클릭 시 파일 추가 input 생성*/
 $(document).on("click", ".fileAddUpdate", function(){
+	 let update_count=0;
 	let fileSize =  $(document).find(".file_delete").attr("data-files-size");
 	let totalCount = 5-fileSize;
 	console.log(fileSize);
@@ -101,7 +102,7 @@ $(document).on("click", ".review_update", function(){
 			 reviewUpdate();
 		},
 		error : function(xhr, status, error){
-				alert("후기가 삭제되지 못했습니다");
+				alert("후기가 수정되지 못했습니다");
 		}	
 	})
 })

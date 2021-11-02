@@ -5,6 +5,7 @@ public class Pager {
 	
 	//검색
 	private String search;
+	private String sequence;
 	
 	private Long pn;
 	private Long perPage;
@@ -124,6 +125,18 @@ public class Pager {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+
+	public String getSequence() {
+		if(this.sequence==null) {
+			this.sequence="desc";
+		}
+		return sequence;
+	}
+
+	public void setSequence(String sequence) {
+		this.sequence = sequence;
+	}
+	
 	
 	
 
