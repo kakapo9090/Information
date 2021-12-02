@@ -132,5 +132,24 @@
   		explain=#{explain}, etc=#{etc} where product_id = #{product_id}
   	</update>
   	
+  	<!-- 해당 상품 구매자 리스트 -->
+  	<select id="getOrderList" parameterType="ProductDTO" resultMap="orderListResult">
+  		select * from tuser U inner join cart_storage C 
+		on U.id=C.id inner join product P 
+		on C.product_name=P.product_name 
+		where P.product_id=#{product_id}
+  	</select>
+  	<resultMap type="TuserDTO" id="orderListResult">
+  		<id column="num" property="num"/>
+		<id column="id" property="id"/>
+		<collection property="products" javaType="List" ofType="ProductDTO">
+			<id column="product_id" property="product_id"/>
+	  		<result column="category" property="category"/>
+	  		<result column="product_name" property="product_name"/>
+	  		<result column="price" property="price"/>
+	  		<result column="explain" property="explain"/>
+	  		<result column="etc" property="etc"/>
+		</collection>
+  	</resultMap>
   
   </mapper>

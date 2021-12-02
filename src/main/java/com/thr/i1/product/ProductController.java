@@ -2,6 +2,8 @@ package com.thr.i1.product;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.thr.i1.member.TuserDTO;
 import com.thr.i1.util.Pager;
 
 @Controller
@@ -33,11 +36,20 @@ public class ProductController {
 	
 	//제품 상세페이지 사이트로 이동
 	 @GetMapping("productDetails") 
-	 public ModelAndView getSelect(ProductDTO productDTO) throws Exception { 
+	 public ModelAndView getSelect(ProductDTO productDTO, HttpSession session) throws Exception { 
 		 ModelAndView mv = new ModelAndView();
 		 productDTO = productService.getSelect(productDTO);
+		 List<TuserDTO> orderList = productService.getOrderList(productDTO);
+		 int order = 0;
+		 for(TuserDTO tuserDTO : orderList) {
+			 if(tuserDTO.getId().equals(session.getAttribute("tuser_Id"))) {
+				 order = 1;
+			 }
+		 }
+		 System.out.println("order : "+order);
 		 mv.setViewName("product/productDetails"); 
 		 mv.addObject("dto", productDTO);
+		 mv.addObject("order", order);
 		 return mv; 
 	 }
 	 

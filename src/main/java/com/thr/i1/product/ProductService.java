@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.thr.i1.member.TuserDTO;
 import com.thr.i1.util.FileUpload;
 import com.thr.i1.util.Pager;
 
@@ -136,6 +137,10 @@ public class ProductService {
 		}
 		
 		return result;
+	}
+	
+	public List<TuserDTO> getOrderList(ProductDTO productDTO) throws Exception {
+		return productDAO.getOrderList(productDTO);
 	}
 	
 	

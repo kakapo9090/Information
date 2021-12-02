@@ -156,7 +156,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>Smaple List</span>
+                            <span>Category</span>
                         </div>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/product/productList?category=3300">과일/야채</a></li>

@@ -1,5 +1,9 @@
 package com.thr.i1.member;
 
+import java.util.List;
+
+import com.thr.i1.product.ProductDTO;
+
 public class TuserDTO {
 	
 	//순서
@@ -22,6 +26,7 @@ public class TuserDTO {
 	//이미지
 	private String userimg;
 	
+	private List<ProductDTO> products;
 	
 	public Long getNum() {
 		return num;
@@ -77,6 +82,13 @@ public class TuserDTO {
 	public void setUserimg(String userimg) {
 		this.userimg = userimg;
 	}
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
+	}
+	
 	
 	
 }

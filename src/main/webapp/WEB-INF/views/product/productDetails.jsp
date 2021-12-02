@@ -353,7 +353,7 @@
 						</div>
 						<div>
 							<div class="btn_div">
-								<c:if test="${not empty tuser.id }">
+								<c:if test="${not empty tuser.id and order eq 1}">
 									<button type="button" class="btn_write" data-product-id="${dto.product_id}" data-product-name="${dto.product_name}">
 										후기 작성
 									</button>

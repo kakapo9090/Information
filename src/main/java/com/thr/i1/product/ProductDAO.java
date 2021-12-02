@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.thr.i1.member.TuserDTO;
 import com.thr.i1.util.Pager;
 
 @Repository
@@ -75,6 +76,10 @@ public class ProductDAO {
 	//상품 업데이트하기
 	public int setUpdate(ProductDTO productDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdate", productDTO);
+	}
+	
+	public List<TuserDTO> getOrderList(ProductDTO productDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getOrderList", productDTO);
 	}
 	
 }
